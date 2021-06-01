@@ -30,5 +30,4 @@ This project is my final piece of coursework for the CodeCore Academy Web Develo
 
 • Use mapping APIs to provide information about other Jitsu Canada clubs and also some farther afield
 
-
-
+• Official live deployment online e.g. with the Heroku platform

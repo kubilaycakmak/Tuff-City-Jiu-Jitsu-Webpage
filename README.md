@@ -1,4 +1,4 @@
-<p align="center">
+<p text-align="center">
     <h1>Tuff City Jiu Jitsu Club</h1>
 </p>
 
@@ -7,6 +7,7 @@
 </p>
 
 • Ruby on Rails API Backend, with JS React as the Frontend and some variant of CSS stylesheets
+
 • Fullstack implementation with rich feature set and application of web development concepts learned
 
 This project is my final piece of coursework for the CodeCore Academy Web Development Bootcamp, due mid-June, 2021. I have recently enrolled as the co-instructor for the Shorinji Kan Jiu Jitsu club (affiliated with Jitsu Canada) in the small community of Tofino, BC. Unfortunately we have only been able to put on one training session in the last year, but we are looking forward to resuming classes with the increasing uptake of COVID-19 vaccinations.In anticipation of this ever-approaching goalpost, I could not think of a better way to apply my recently-gained webdev skills than to launch an official website for the club. The primary motivation was to help serve as a bridge for instructors transitioning between different countries which host Shorinji Kan clubs, but this and other goals are within the scope of the project. Perhaps not all of them will be achieved in the short timeframe allocated to complete the work, however there will be time for them after that academic milestone. They are summarised as follows:

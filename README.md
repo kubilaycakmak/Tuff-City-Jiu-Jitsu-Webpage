@@ -21,7 +21,7 @@ This project is my final piece of coursework for the CodeCore Academy Web Develo
 
 • A clear and compelling recruitment tool with the joint aims of empowering the local community, to provide solidarity and strength in numbers, and to foster a welcoming and fun social scene
 
-• Incorporate a members section with content appropriately tailored according to the user's current belt grade and the next grade/qualifications they are working towards
+• Incorporate a members section with content appropriately tailored according to the user's current belt grade and the next grade/qualifications they are working towards; eventually this might become more granular with 1:1 feedback and detailed technique-by-technique breakdowns
 
 • Supplement and interface with existing social media websites for the club
 

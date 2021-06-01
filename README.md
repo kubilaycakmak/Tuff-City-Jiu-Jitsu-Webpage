@@ -1,4 +1,4 @@
-<p text-align="center">
+<p style="text-align: center;">
     <h1>Tuff City Jiu Jitsu Club</h1>
 </p>
 

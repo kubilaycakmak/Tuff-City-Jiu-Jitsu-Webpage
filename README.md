@@ -1,6 +1,8 @@
-<p style="text-align: center;">
-    <h1>Tuff City Jiu Jitsu Club</h1>
-</p>
+<div align="center">
+    <p style="text-align: center;">
+        <h1>Tuff City Jiu Jitsu Club Website Project</h1>
+    </p>
+</div>
 
 <p align="center">
     <img src="/src/img/45726016_249488879054810_1916338949194776576_n.jpg" width="350" title="Teaching practical self defence in westernmost Canada">

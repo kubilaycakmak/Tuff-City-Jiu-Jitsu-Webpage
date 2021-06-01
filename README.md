@@ -1,7 +1,9 @@
-p<h1>Tuff City Jiu Jitsu Club</h1>
+<p align="center">
+    <h1>Tuff City Jiu Jitsu Club</h1>
+</p>
 
 <p align="center">
-<img src="/src/img/45726016_249488879054810_1916338949194776576_n.jpg" width="350" title="Teaching practical self defence in westernmost Canada">
+    <img src="/src/img/45726016_249488879054810_1916338949194776576_n.jpg" width="350" title="Teaching practical self defence in westernmost Canada">
 </p>
 
 • Ruby on Rails API Backend, with JS React as the Frontend and some variant of CSS stylesheets

@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :email, index: {unique: true}
       t.string :password_digest
       t.boolean :is_admin
+      t.boolean :is_instructor # Instructors, like students, can see up to the grade above them for syllabus, but only the admin (i.e. me) can see the full syllabus. A fully fledged instructor gets the full syllabus, and full priviledges, we will get more of these instructors as they grade upwards.
       t.boolean :is_moderator # or alternatively (and probably better approach), use roles table: instructors, moderator, treasurer, social secretary, stuff like that
       t.string :belt_grade_id # foreign key linking to another table like products vs reviews, one to many
       t.string :qualifications # user table joins through qualifications table, using a model and controllers for qualifications
@@ -13,6 +14,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.boolean :owns_gi
       t.string :training_bubble_id # somehow links to other users in the same bubble i.e. with a foreign key and one to many relationship
 
+      t.string :differences_id
+      t.string :shared_id
+      
       # Instead of t.string it should probably be more like 
       t.bigint "user_id"
       t.index ["user_id"], name: "index_belt_grade_on_user_id"

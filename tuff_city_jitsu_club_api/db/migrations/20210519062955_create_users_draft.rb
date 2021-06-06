@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :password_digest
       t.boolean :is_admin
       t.boolean :is_instructor # Instructors, like students, can see up to the grade above them for syllabus, but only the admin (i.e. me) can see the full syllabus. A fully fledged instructor gets the full syllabus, and full priviledges, we will get more of these instructors as they grade upwards.
-      t.boolean :is_moderator # or alternatively (and probably better approach), use roles table: instructors, moderator, treasurer, social secretary, stuff like that
+      # t.boolean :is_moderator # or alternatively (and probably better approach), use roles table: instructors, moderator, treasurer, social secretary, stuff like that
       t.string :belt_grade_id # foreign key linking to another table like products vs reviews, one to many
       t.string :qualifications # user table joins through qualifications table, using a model and controllers for qualifications
       t.boolean :dues_paid

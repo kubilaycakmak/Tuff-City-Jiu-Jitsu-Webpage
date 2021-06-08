@@ -29,9 +29,6 @@ return (
                 <NavLink to="/posts" className="item">
                     Blog
                 </NavLink>
-                <NavLink to="/auctions" className="item">
-                    Auctions
-                </NavLink>
                 <NavLink exact to="/whatisjitsu" className="item">
                     What Is Jiu Jitsu?
                 </NavLink>
@@ -52,8 +49,6 @@ return (
                     <NavLink exact to="/events" className="item">
                         Events List 
                     </NavLink>
-
-                    
                     <NavLink to="/" onClick={onSignOut} className="item">
                         Sign Out
                     </NavLink>

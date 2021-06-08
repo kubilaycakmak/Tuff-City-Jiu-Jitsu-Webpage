@@ -91,32 +91,6 @@ export function SignUpPage(props) {
           />
           </div>
         </div>
-        <div className="field">
-          <label htmlFor="belt_grade_id">What is your grade?</label>
-          <div className="input">
-          <input
-            type="belt_grade_id"
-            name="belt_grade_id"
-            id="belt_grade_id"
-            placeholder="Choose a colour!"
-            required
-          />
-          {/* Rework the above into a dropdown menu with all grades as options */}
-          </div>
-        </div>
-        <div className="field">
-          <label htmlFor="owns_gi">Do you own a gi?</label>
-          <div className="input">
-          <input
-            type="owns_gi"
-            name="owns_gi"
-            id="owns_gi"
-            placeholder="Yes, or no?"
-            required
-          />
-          {/* Rework the above into a dropdown menu with yes/no */}
-          </div>
-        </div>
         <button className="ui button" type="submit">
           Submit
         </button>

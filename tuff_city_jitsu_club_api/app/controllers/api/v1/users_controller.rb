@@ -47,7 +47,6 @@ class Api::V1::UsersController < Api::ApplicationController
             :email,
             :password,
             :password_confirmation,
-            :owns_gi
         )
     end
     

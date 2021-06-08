@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: biddr_api_development
+  database: tuff_city_jitsu_club_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: biddr_api_test
+  database: tuff_city_jitsu_club_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: biddr_api_production
-  username: biddr_api
-  password: <%= ENV['BIDDR_API_DATABASE_PASSWORD'] %>
+  database: tuff_city_jitsu_club_production
+  username: tuff_city_jitsu_club
+  password: <%= ENV['TUFF_CITY_JITSU_CLUB_API_DATABASE_PASSWORD'] %>

@@ -1,2 +1,2 @@
-class Api::V1::QualificationsController < ApplicationController
+class Api::V1::QualificationsController < Api::ApplicationController
 end

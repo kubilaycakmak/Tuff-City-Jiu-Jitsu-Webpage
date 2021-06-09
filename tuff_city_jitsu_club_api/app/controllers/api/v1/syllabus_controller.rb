@@ -1,2 +1,2 @@
-class Api::V1::SyllabusController < ApplicationController
+class Api::V1::SyllabusController < Api::ApplicationController
 end

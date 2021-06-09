@@ -24,6 +24,20 @@ admin_user = User.create(
     owns_gi: true,
     training_bubble_id: "David Corbett" # The other instructor, the founder of the club and a purple belt
 )
+instructor_user = User.create(
+    first_name: "David",
+    last_name: "Corbett",
+    email: "tuffcityjitsu@gmail.com",
+    password: PASSWORD,
+    is_admin: false,
+    is_instructor: true,
+    belt_grade_id: "purple",
+    qualifications: "Assistant Instructor", "First Aid",
+    dues_paid: true,
+    owns_gi: true,
+    training_bubble_id: "Seumas Finlayson" # The other instructor, the founder of the club and a purple belt
+)
+
 20.times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name

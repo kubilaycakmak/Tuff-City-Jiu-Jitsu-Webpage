@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   return (
     <Box>
-      <h1 style={{ color: "blue", 
+      <h1 style={{ color: "orange", 
                    textAlign: "center", 
                    marginTop: "-50px" }}>
         Tuff City Jitsu Club: Teaching practical self defence in westernmost Canada

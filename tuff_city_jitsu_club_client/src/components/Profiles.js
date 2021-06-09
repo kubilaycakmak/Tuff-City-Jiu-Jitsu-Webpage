@@ -1,5 +1,9 @@
 import React from "react";
 
+<h1>Who Are We?</h1>
+
+<img src={require('../img/club_pic(sans_seumas).jpg')} />
+
 <p>We are the world's westernmost Shorinji Kan Jiu Jitsu club!
 Our instructors hail from the United Kingdom but have come to
 British Columbia to share their passion for jiu jitsu's ability

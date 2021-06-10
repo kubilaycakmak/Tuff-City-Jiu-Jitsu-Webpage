@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_030934) do
+ActiveRecord::Schema.define(version: 2021_06_09_024211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,19 @@ ActiveRecord::Schema.define(version: 2021_06_08_030934) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "techniques", force: :cascade do |t|
+    t.string "description"
+  end
+
   create_table "training_bubbles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_training_bubbles_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,9 +75,19 @@ ActiveRecord::Schema.define(version: 2021_06_08_030934) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "canadian_version"
+    t.bigint "syllabuses_id", null: false
+    t.string "uk_version"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["syllabuses_id"], name: "index_videos_on_syllabuses_id"
+  end
+
   add_foreign_key "belt_grades", "syllabuses", column: "syllabuses_id"
   add_foreign_key "belt_grades", "users"
   add_foreign_key "qualifications", "syllabuses", column: "syllabuses_id"
   add_foreign_key "qualifications", "users"
   add_foreign_key "training_bubbles", "users"
+  add_foreign_key "videos", "syllabuses", column: "syllabuses_id"
 end

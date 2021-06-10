@@ -1,5 +1,8 @@
 class TechniqueTypes < ActiveRecord::Migration[6.1]
   def change
-    t.string 
+    create_table :types do |t|
+
+       t.string :name
+    end
   end
 end

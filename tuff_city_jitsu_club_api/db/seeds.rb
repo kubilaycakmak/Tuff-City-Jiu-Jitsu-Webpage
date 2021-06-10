@@ -19,7 +19,7 @@ admin_user = User.create(
     is_admin: true,
     is_instructor: true,
     belt_grade_id: "brown",
-    qualifications: "Club Instructor", "First Aid",
+    qualifications: ["Club Instructor", "First Aid", "CPR"]
     dues_paid: true,
     owns_gi: true,
     training_bubble_id: "David Corbett" # The other instructor, the founder of the club and a purple belt
@@ -32,11 +32,18 @@ instructor_user = User.create(
     is_admin: false,
     is_instructor: true,
     belt_grade_id: "purple",
-    qualifications: "Assistant Instructor", "First Aid",
+    qualifications: ["Assistant Instructor", "First Aid", "CPR"]
     dues_paid: true,
     owns_gi: true,
-    training_bubble_id: "Seumas Finlayson" # The other instructor, the founder of the club and a purple belt
+    training_bubble_id: "Seumas Finlayson" # The other instructor, a brown belt new to the region
 )
+
+belt_grade_array = ["white", "yellow", "orange", "green", "purple", "light blue", "dark blue", "brown", "shodan", "nidan", "sandan"]
+
+10.times do
+
+
+end
 
 20.times do
     first_name = Faker::Name.first_name
@@ -46,11 +53,11 @@ instructor_user = User.create(
     last_name: last_name,
     email: "#{first_name.downcase}.#{last_name.downcase}@usermail.com",
     password: PASSWORD,
-    belt_grade_id: "random", # As in any colour from white to black inclusive
+    belt_grade_id: "random", # As in any colour from white to black (and three different shades of black) inclusive
     qualifications: "random" # Note that this random combination of qualifications is constrained by the belt grade; can devise rules for these
     # They are as follows: a green belt going for purple belt needs Assistant Instructor qualification, a light blue going for dark blue needs
     # Instructor, a dark blue going for brown has first aid and CPR, a brown going for dan has Club Instructor, and each successive instructor
-    # qualification supplants the previous. Also first aid needs to be renewed every so many years.
+    # qualification supplants the previous. Also first aid + CPR needs to be renewed every so many years.
     dues_paid: true, # They must at least soon have their dues paid to be a regularly training member of the club
     owns_gi: true, # Ditto as with dues_paid
     training_bubble_id: "random"

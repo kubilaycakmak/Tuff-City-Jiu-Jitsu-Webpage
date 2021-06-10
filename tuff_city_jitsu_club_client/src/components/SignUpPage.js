@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../requests";
+// import { User } from "../requests";
 
 export function SignUpPage(props) {
   const { onSignUp } = props;

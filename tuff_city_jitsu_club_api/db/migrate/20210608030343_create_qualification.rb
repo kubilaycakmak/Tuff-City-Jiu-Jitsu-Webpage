@@ -1,7 +1,7 @@
-class CreateBeltGrade < ActiveRecord::Migration[6.1]
+class CreateQualification < ActiveRecord::Migration[6.1]
   def change
-    create_table :belt_grades do |t|
-      t.string :colour
+    create_table :qualifications do |t|
+      t.string :qualifications
       t.references :user, null:false, foreign_key:true
       t.references :syllabuses, null:false, foreign_key:true
 

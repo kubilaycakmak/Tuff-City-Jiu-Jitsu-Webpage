@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Session } from "../requests";
+// import { Session } from "../requests";
 import "../App.css";
 
 class SignInPage extends Component {

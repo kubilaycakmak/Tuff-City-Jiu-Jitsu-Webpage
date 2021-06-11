@@ -10,28 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_024211) do
+ActiveRecord::Schema.define(version: 2021_06_11_020203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "belt_grades", force: :cascade do |t|
-    t.string "colour"
     t.bigint "user_id", null: false
-    t.bigint "syllabuses_id", null: false
+    t.bigint "belt_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["syllabuses_id"], name: "index_belt_grades_on_syllabuses_id"
+    t.index ["belt_id"], name: "index_belt_grades_on_belt_id"
     t.index ["user_id"], name: "index_belt_grades_on_user_id"
+  end
+
+  create_table "belts", force: :cascade do |t|
+    t.string "colour"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "qualifications", force: :cascade do |t|
     t.string "qualifications"
     t.bigint "user_id", null: false
-    t.bigint "syllabuses_id", null: false
+    t.bigint "syllabuse_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["syllabuses_id"], name: "index_qualifications_on_syllabuses_id"
+    t.index ["syllabuse_id"], name: "index_qualifications_on_syllabuse_id"
     t.index ["user_id"], name: "index_qualifications_on_user_id"
   end
 
@@ -66,7 +71,6 @@ ActiveRecord::Schema.define(version: 2021_06_09_024211) do
     t.string "password_digest"
     t.boolean "is_admin", default: false
     t.boolean "is_instructor", default: false
-    t.bigint "belt_grade_id"
     t.bigint "qualifications_id"
     t.boolean "dues_paid"
     t.boolean "owns_gi"
@@ -84,9 +88,9 @@ ActiveRecord::Schema.define(version: 2021_06_09_024211) do
     t.index ["syllabuses_id"], name: "index_videos_on_syllabuses_id"
   end
 
-  add_foreign_key "belt_grades", "syllabuses", column: "syllabuses_id"
+  add_foreign_key "belt_grades", "belts"
   add_foreign_key "belt_grades", "users"
-  add_foreign_key "qualifications", "syllabuses", column: "syllabuses_id"
+  add_foreign_key "qualifications", "syllabuses", column: "syllabuse_id"
   add_foreign_key "qualifications", "users"
   add_foreign_key "training_bubbles", "users"
   add_foreign_key "videos", "syllabuses", column: "syllabuses_id"

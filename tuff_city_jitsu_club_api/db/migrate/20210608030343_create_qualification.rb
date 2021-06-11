@@ -3,7 +3,7 @@ class CreateQualification < ActiveRecord::Migration[6.1]
     create_table :qualifications do |t|
       t.string :qualifications
       t.references :user, null:false, foreign_key:true
-      t.references :syllabuses, null:false, foreign_key:true
+      t.references :syllabuse, null:false, foreign_key:true
 
       t.timestamps
     end

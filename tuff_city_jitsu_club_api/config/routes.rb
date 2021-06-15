@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # Because we are using the API ontrollers, we use namespace to interface them for routes
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :belt_grade
+      resources :qualifications
       resource :session, only: [:create, :destroy]
       # -> api/v1/users
       resources :users, shallow: true, only: [:create, :new, :show, :index] do

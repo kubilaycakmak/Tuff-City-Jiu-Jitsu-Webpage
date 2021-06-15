@@ -6249,3 +6249,552 @@ FOREIGN KEY ("syllabuses_id")
   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "belts"[0m
   [1m[36mBeltGrade Load (0.5ms)[0m  [1m[34mSELECT "belt_grades".* FROM "belt_grades"[0m
   [1m[36mBeltGrade Load (1.3ms)[0m  [1m[34mSELECT "belt_grades".* FROM "belt_grades" WHERE (belt_id=4)[0m
+Started GET "/" for 127.0.0.1 at 2021-06-14 20:04:35 -0700
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/seumas/.rvm/gems/ruby-3.0.0/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/seumas/.rvm/gems/ruby-3.0.0/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.4ms | Allocations: 483)
+Completed 200 OK in 35ms (Views: 17.9ms | ActiveRecord: 0.0ms | Allocations: 4213)
+
+
+Started GET "/api/v1/beltgrade" for 127.0.0.1 at 2021-06-14 20:05:03 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrade"):
+  
+Started GET "/api/v1/beltgrade" for 127.0.0.1 at 2021-06-14 20:06:47 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrade"):
+  
+Started GET "/api/v1/beltgrade" for 127.0.0.1 at 2021-06-14 20:07:46 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrade"):
+  
+Started GET "/api/v1/beltgrades" for 127.0.0.1 at 2021-06-14 20:07:57 -0700
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BeltgradesController
+Did you mean?  Api::V1::BeltGradeController):
+  
+Started GET "/api/v1/beltgrades" for 127.0.0.1 at 2021-06-14 20:09:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrades"):
+  
+Started GET "/api/v1/beltgrades" for 127.0.0.1 at 2021-06-14 20:10:14 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrades"):
+  
+Started GET "/api/v1/beltgrades" for 127.0.0.1 at 2021-06-14 20:10:16 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrades"):
+  
+Started GET "/api/v1/beltgrades" for 127.0.0.1 at 2021-06-14 20:10:29 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/beltgrades"):
+  
+Started GET "/api/v1/belt_grades" for 127.0.0.1 at 2021-06-14 20:11:01 -0700
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BeltGradesController
+Did you mean?  Api::V1::BeltGradeController):
+  
+Started GET "/api/v1/belt_grades" for 127.0.0.1 at 2021-06-14 20:11:45 -0700
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BeltGradesController
+Did you mean?  Api::V1::BeltGradeController):
+  
+Started GET "/api/v1/belt_grades" for 127.0.0.1 at 2021-06-14 20:11:47 -0700
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BeltGradesController
+Did you mean?  Api::V1::BeltGradeController):
+  
+Started GET "/api/v1/belt_grades" for 127.0.0.1 at 2021-06-14 20:13:12 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BeltGradesController
+Did you mean?  Api::V1::BeltGradeController):
+  
+Started GET "/api/v1/belt_grades" for 127.0.0.1 at 2021-06-14 20:14:10 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/belt_grades"):
+  
+Started GET "/api/v1/belt_grade" for 127.0.0.1 at 2021-06-14 20:14:16 -0700
+  
+SyntaxError (/home/seumas/code_core/Tuff_City_Jiu_Jitsu_Webpage/tuff_city_jitsu_club_api/app/controllers/api/v1/belt_grade_controller.rb:73: syntax error, unexpected local variable or method, expecting '}'
+                record_type: invalid_record.class.to_s,
+                ^~~~~~~~~~~
+/home/seumas/code_core/Tuff_City_Jiu_Jitsu_Webpage/tuff_city_jitsu_club_api/app/controllers/api/v1/belt_grade_controller.rb:74: syntax error, unexpected label, expecting '='
+                field: field,
+                ^~~~~~
+):
+  
+app/controllers/api/v1/belt_grade_controller.rb:73: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/api/v1/belt_grade_controller.rb:74: syntax error, unexpected label, expecting '='
+app/controllers/api/v1/belt_grade_controller.rb:73: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/api/v1/belt_grade_controller.rb:74: syntax error, unexpected label, expecting '='
+app/controllers/api/v1/belt_grade_controller.rb:73: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/api/v1/belt_grade_controller.rb:74: syntax error, unexpected label, expecting '='
+Started GET "/api/v1/belt_grade" for 127.0.0.1 at 2021-06-14 20:15:21 -0700
+  
+NameError (uninitialized constant Api::ApplicationController):
+  
+app/controllers/api/v1/belt_grade_controller.rb:1:in `<main>'
+Started GET "/api/v1/belt_grade" for 127.0.0.1 at 2021-06-14 20:18:31 -0700
+Processing by Api::V1::BeltGradeController#index as JSON
+/home/seumas/code_core/Tuff_City_Jiu_Jitsu_Webpage/tuff_city_jitsu_club_api/app/controllers/api/v1/belt_grade_controller.rb:9:in `index': [1muninitialized constant Api::V1::BeltGradeController::BeltGradeCollectionSerializer ([1;4mNameError[m[1m)[m
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/abstract_controller/base.rb:228:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal/rendering.rb:30:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actiontext-6.1.3.2/lib/action_text/rendering.rb:20:in `with_renderer'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actiontext-6.1.3.2/lib/action_text/engine.rb:55:in `block (4 levels) in <class:Engine>'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/callbacks.rb:126:in `instance_exec'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/callbacks.rb:137:in `run_callbacks'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/abstract_controller/callbacks.rb:41:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal/rescue.rb:22:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/notifications.rb:203:in `block in instrument'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/notifications.rb:203:in `instrument'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activerecord-6.1.3.2/lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/abstract_controller/base.rb:165:in `process'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionview-6.1.3.2/lib/action_view/rendering.rb:39:in `process'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal.rb:190:in `dispatch'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_controller/metal.rb:254:in `dispatch'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/routing/route_set.rb:33:in `serve'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/journey/router.rb:50:in `block in serve'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/journey/router.rb:32:in `each'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/journey/router.rb:32:in `serve'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/routing/route_set.rb:842:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/tempfile_reaper.rb:15:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/etag.rb:27:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/conditional_get.rb:27:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/head.rb:12:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:266:in `context'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/session/abstract/id.rb:260:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/cookies.rb:689:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activerecord-6.1.3.2/lib/active_record/migration.rb:601:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/callbacks.rb:98:in `run_callbacks'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/web-console-4.1.0/lib/web_console/middleware.rb:132:in `call_app'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/web-console-4.1.0/lib/web_console/middleware.rb:28:in `block in call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/web-console-4.1.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/web-console-4.1.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/railties-6.1.3.2/lib/rails/rack/logger.rb:37:in `call_app'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/railties-6.1.3.2/lib/rails/rack/logger.rb:26:in `block in call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/tagged_logging.rb:37:in `tagged'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/tagged_logging.rb:99:in `tagged'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/railties-6.1.3.2/lib/rails/rack/logger.rb:26:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.2.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/method_override.rb:24:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/runtime.rb:22:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/activesupport-6.1.3.2/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/static.rb:24:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3/lib/rack/sendfile.rb:110:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/actionpack-6.1.3.2/lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-mini-profiler-2.3.2/lib/mini_profiler/profiler.rb:268:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/webpacker-5.4.0/lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/rack-proxy-0.7.0/lib/rack/proxy.rb:63:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/railties-6.1.3.2/lib/rails/engine.rb:539:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/puma-5.3.2/lib/puma/configuration.rb:249:in `call'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/puma-5.3.2/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/puma-5.3.2/lib/puma/thread_pool.rb:338:in `with_force_shutdown'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/puma-5.3.2/lib/puma/request.rb:76:in `handle_request'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/puma-5.3.2/lib/puma/server.rb:438:in `process_client'
+	from /home/seumas/.rvm/gems/ruby-3.0.0/gems/puma-5.3.2/lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/application_controller.rb:32:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.3ms)
+Completed 500 Internal Server Error in 46ms (Views: 19.5ms | ActiveRecord: 7.0ms | Allocations: 14093)
+
+
+Started GET "/api/v1/belt_grade" for 127.0.0.1 at 2021-06-14 20:19:16 -0700
+Processing by Api::V1::BeltGradeController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/application_controller.rb:32:in `current_user'
+  [1m[36mBeltGrade Load (2.0ms)[0m  [1m[34mSELECT "belt_grades".* FROM "belt_grades" ORDER BY "belt_grades"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/belt_grade_controller.rb:9:in `index'
+No serializer found for resource: #<BeltGrade id: 22, user_id: 13, belt_id: 1, created_at: "2021-06-11 03:39:37.704078000 +0000", updated_at: "2021-06-11 03:39:37.704078000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with BeltGrade::ActiveRecord_Relation (3.88ms)
+Completed 200 OK in 41ms (Views: 24.1ms | ActiveRecord: 12.7ms | Allocations: 16371)
+
+
+Started GET "/api/v1/qualification" for 127.0.0.1 at 2021-06-14 20:20:55 -0700
+  
+ActionController::RoutingError (uninitialized constant Api::V1::QualificationController
+Did you mean?  Api::V1::QualificationsController
+               Api::ApplicationController):
+  
+Started GET "/api/v1/qualification" for 127.0.0.1 at 2021-06-14 20:21:46 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/qualification"):
+  
+Started GET "/api/v1/qualifications" for 127.0.0.1 at 2021-06-14 20:21:59 -0700
+  
+SyntaxError (/home/seumas/code_core/Tuff_City_Jiu_Jitsu_Webpage/tuff_city_jitsu_club_api/app/controllers/api/v1/qualifications_controller.rb:72: syntax error, unexpected local variable or method, expecting '}'
+                record_type: invalid_record.class.to_s,
+                ^~~~~~~~~~~
+/home/seumas/code_core/Tuff_City_Jiu_Jitsu_Webpage/tuff_city_jitsu_club_api/app/controllers/api/v1/qualifications_controller.rb:73: syntax error, unexpected label, expecting '='
+                field: field,
+                ^~~~~~
+):
+  
+app/controllers/api/v1/qualifications_controller.rb:72: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/api/v1/qualifications_controller.rb:73: syntax error, unexpected label, expecting '='
+app/controllers/api/v1/qualifications_controller.rb:72: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/api/v1/qualifications_controller.rb:73: syntax error, unexpected label, expecting '='
+app/controllers/api/v1/qualifications_controller.rb:72: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/api/v1/qualifications_controller.rb:73: syntax error, unexpected label, expecting '='
+Started GET "/api/v1/qualifications" for 127.0.0.1 at 2021-06-14 20:22:16 -0700
+Processing by Api::V1::QualificationsController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/application_controller.rb:32:in `current_user'
+  [1m[36mQualification Load (1.5ms)[0m  [1m[34mSELECT "qualifications".* FROM "qualifications" ORDER BY "qualifications"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/qualifications_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 28ms (Views: 15.0ms | ActiveRecord: 5.3ms | Allocations: 6614)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (51.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tuff_city_jitsu_club_development"[0m
+  [1m[35m (29.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "tuff_city_jitsu_club_test"[0m
+  [1m[35m (210.1ms)[0m  [1m[35mCREATE DATABASE "tuff_city_jitsu_club_development" ENCODING = 'unicode'[0m
+  [1m[35m (68.5ms)[0m  [1m[35mCREATE DATABASE "tuff_city_jitsu_club_test" ENCODING = 'unicode'[0m
+  [1m[35m (24.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5792198365421468175)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210607070417)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "is_admin" boolean DEFAULT FALSE, "is_instructor" boolean DEFAULT FALSE, "qualifications_id" bigint, "dues_paid" boolean, "owns_gi" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210607070417"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSyllabuses (20210608024707)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "syllabuses" ("id" bigserial primary key, "technique" character varying, "technique_type" character varying, "is_different" boolean, "difference_content" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210608024707"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateQualifications (20210608030343)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5792198365421468175)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5792198365421468175)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateQualifications (20210608030343)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5792198365421468175)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5792198365421468175)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateQualifications (20210608030343)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "qualifications" ("id" bigserial primary key, "qualifications" character varying, "achieved_at" timestamp, "does_expire" boolean, "expires_at" timestamp, "user_id" bigint NOT NULL, "syllabuse_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d163882368"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_5fd8a1b042"
+FOREIGN KEY ("syllabuse_id")
+  REFERENCES "syllabuses" ("id")
+)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE INDEX "index_qualifications_on_user_id" ON "qualifications" ("user_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_qualifications_on_syllabuse_id" ON "qualifications" ("syllabuse_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210608030343"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTrainingBubble (20210608030934)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "training_bubbles" ("id" bigserial primary key, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_446b3d77f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE INDEX "index_training_bubbles_on_user_id" ON "training_bubbles" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210608030934"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVideos (20210609021709)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "videos" ("id" bigserial primary key, "canadian_version" character varying, "syllabuses_id" bigint NOT NULL, "uk_version" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c84d149cac"
+FOREIGN KEY ("syllabuses_id")
+  REFERENCES "syllabuses" ("id")
+)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_videos_on_syllabuses_id" ON "videos" ("syllabuses_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210609021709"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to TechniqueTypes (20210609024137)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "types" ("id" bigserial primary key, "name" character varying)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210609024137"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Technique (20210609024211)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "techniques" ("id" bigserial primary key, "description" character varying)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210609024211"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBelts (20210611014137)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "belts" ("id" bigserial primary key, "colour" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210611014137"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBeltGrades (20210611020203)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "belt_grades" ("id" bigserial primary key, "user_id" bigint NOT NULL, "belt_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_bc7c054b52"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_8d271deeba"
+FOREIGN KEY ("belt_id")
+  REFERENCES "belts" ("id")
+)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE INDEX "index_belt_grades_on_user_id" ON "belt_grades" ("user_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_belt_grades_on_belt_id" ON "belt_grades" ("belt_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210611020203"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-06-15 04:08:06.784153"], ["updated_at", "2021-06-15 04:08:06.784153"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5792198365421468175)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mBelt Destroy (0.3ms)[0m  [1m[31mDELETE FROM "belts"[0m
+  [1m[36mBeltGrade Destroy (0.3ms)[0m  [1m[31mDELETE FROM "belt_grades"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seumasfinlayson@googlemail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "is_admin", "is_instructor", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Seumas"], ["last_name", "Finlayson"], ["email", "seumasfinlayson@googlemail.com"], ["password_digest", "$2a$12$NjxR9Y/gqbpVV3Y8CGcileM2XWBbNXlVt6KYNEIJBDilMtfz4XxN2"], ["is_admin", true], ["is_instructor", true], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:14.221751"], ["updated_at", "2021-06-15 04:08:14.221751"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tuffcityjitsu@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "is_instructor", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "David"], ["last_name", "Corbett"], ["email", "tuffcityjitsu@gmail.com"], ["password_digest", "$2a$12$n754yGTTpRUpzL.mVZUn9OTHWFn/cLAJLPwXKUb/bwE4q1G2Eprxe"], ["is_instructor", true], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:14.414150"], ["updated_at", "2021-06-15 04:08:14.414150"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.3ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "brown"], ["created_at", "2021-06-15 04:08:14.420570"], ["updated_at", "2021-06-15 04:08:14.420570"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "dark blue"], ["created_at", "2021-06-15 04:08:14.425026"], ["updated_at", "2021-06-15 04:08:14.425026"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "light blue"], ["created_at", "2021-06-15 04:08:14.429111"], ["updated_at", "2021-06-15 04:08:14.429111"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "purple"], ["created_at", "2021-06-15 04:08:14.433312"], ["updated_at", "2021-06-15 04:08:14.433312"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "green"], ["created_at", "2021-06-15 04:08:14.437199"], ["updated_at", "2021-06-15 04:08:14.437199"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "orange"], ["created_at", "2021-06-15 04:08:14.441165"], ["updated_at", "2021-06-15 04:08:14.441165"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "yellow"], ["created_at", "2021-06-15 04:08:14.445010"], ["updated_at", "2021-06-15 04:08:14.445010"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBelt Create (0.2ms)[0m  [1m[32mINSERT INTO "belts" ("colour", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["colour", "white"], ["created_at", "2021-06-15 04:08:14.448985"], ["updated_at", "2021-06-15 04:08:14.448985"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.5ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["belt_id", 1], ["created_at", "2021-06-15 04:08:14.465086"], ["updated_at", "2021-06-15 04:08:14.465086"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["belt_id", 4], ["created_at", "2021-06-15 04:08:14.472305"], ["updated_at", "2021-06-15 04:08:14.472305"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marquis.mckenzie@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Marquis"], ["last_name", "McKenzie"], ["email", "marquis.mckenzie@usermail.com"], ["password_digest", "$2a$12$t7b729SzDrwlOs2rO9DRe.h3nsAY5ZxEY92cXO/oYMJW9QlM0OSNO"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:14.929311"], ["updated_at", "2021-06-15 04:08:14.929311"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "russel.aufderhar@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Russel"], ["last_name", "Aufderhar"], ["email", "russel.aufderhar@usermail.com"], ["password_digest", "$2a$12$e8t9XvczxxrLujIok0C7vOXw5JzAJYhqFfThALbWPXqJUYZEPOPeW"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:15.123107"], ["updated_at", "2021-06-15 04:08:15.123107"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "francoise.macejkovic@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Francoise"], ["last_name", "Macejkovic"], ["email", "francoise.macejkovic@usermail.com"], ["password_digest", "$2a$12$LayTPFZg2LoaOcb1OWrdGe9GIQ3.331W3kpBZlcYW821fyZD4CnYG"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:15.330009"], ["updated_at", "2021-06-15 04:08:15.330009"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rosanne.metz@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Rosanne"], ["last_name", "Metz"], ["email", "rosanne.metz@usermail.com"], ["password_digest", "$2a$12$pf6DKdk.xdQMvANZiu5ii.bS2os3VumvRyAYBnvOxYWnXj8U2A/hm"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:15.522569"], ["updated_at", "2021-06-15 04:08:15.522569"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "william.herman@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "William"], ["last_name", "Herman"], ["email", "william.herman@usermail.com"], ["password_digest", "$2a$12$r8h/H4hlF1Xw2UtSYU6CxOkKb/8Oo3Y0dMDSgLAy2gg71K9fY7I9C"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:15.729905"], ["updated_at", "2021-06-15 04:08:15.729905"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ernesto.kris@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Ernesto"], ["last_name", "Kris"], ["email", "ernesto.kris@usermail.com"], ["password_digest", "$2a$12$OhKqpaWFUdU/gs6PktXWZOJbaytNKfaZh/.1OXuzlUAtY97f47pz2"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:15.921887"], ["updated_at", "2021-06-15 04:08:15.921887"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "woodrow.harvey@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Woodrow"], ["last_name", "Harvey"], ["email", "woodrow.harvey@usermail.com"], ["password_digest", "$2a$12$iEYh2Z4Arh5MbDd7EplO5uEm/bSzxOfrEsyB5JVw2pZrRncLUjO3S"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:16.114163"], ["updated_at", "2021-06-15 04:08:16.114163"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jules.kuvalis@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Jules"], ["last_name", "Kuvalis"], ["email", "jules.kuvalis@usermail.com"], ["password_digest", "$2a$12$gOB3bdaExgIrrGs3tZbP2ujpBUuACQJ03qkGn1grC2rRlyeYlP05O"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:16.306443"], ["updated_at", "2021-06-15 04:08:16.306443"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "yadira.hoeger@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Yadira"], ["last_name", "Hoeger"], ["email", "yadira.hoeger@usermail.com"], ["password_digest", "$2a$12$BxeZOriP2VDvn9pDXT7FWefnEQ30sCB7rZDTqfneyAUwVVY1cM.mq"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:16.498163"], ["updated_at", "2021-06-15 04:08:16.498163"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "everette.altenwerth@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Everette"], ["last_name", "Altenwerth"], ["email", "everette.altenwerth@usermail.com"], ["password_digest", "$2a$12$HbXmQMpW1yDEALhL5r56PeJRAhFj4Ym16bddLHo4y3nn2HrrG2dLS"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:16.691354"], ["updated_at", "2021-06-15 04:08:16.691354"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "williams.walker@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Williams"], ["last_name", "Walker"], ["email", "williams.walker@usermail.com"], ["password_digest", "$2a$12$jtxMJ4rAuM3jVJjDgeegXOu/H/50dA7f15PwG.o2AbSYIpAKY1qzi"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:16.886072"], ["updated_at", "2021-06-15 04:08:16.886072"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claud.mclaughlin@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Claud"], ["last_name", "McLaughlin"], ["email", "claud.mclaughlin@usermail.com"], ["password_digest", "$2a$12$j/ZxNxN8dOaaunl4wIMxION1H7EBFPFJuWEuQIeHsWz5vt96II9j2"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:17.078405"], ["updated_at", "2021-06-15 04:08:17.078405"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "elvis.hilll@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Elvis"], ["last_name", "Hilll"], ["email", "elvis.hilll@usermail.com"], ["password_digest", "$2a$12$KgnnIKtnS8bxmEkv7R8EJeYUf6add6Trz9PWnqs6mOGB8gW63H7N2"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:17.271054"], ["updated_at", "2021-06-15 04:08:17.271054"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kerry.torphy@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Kerry"], ["last_name", "Torphy"], ["email", "kerry.torphy@usermail.com"], ["password_digest", "$2a$12$IdXqVreygIoHlyX8cyphMewoOZbAPruqeWNHpxfL/q6MoF/3hDo82"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:17.463021"], ["updated_at", "2021-06-15 04:08:17.463021"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jayne.friesen@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Jayne"], ["last_name", "Friesen"], ["email", "jayne.friesen@usermail.com"], ["password_digest", "$2a$12$dMwlQynunSWPYhoSDQVx7OslAwySqU1OmttTBk3ohvMzdRhRjIsiC"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:17.655039"], ["updated_at", "2021-06-15 04:08:17.655039"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "herschel.rodriguez@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Herschel"], ["last_name", "Rodriguez"], ["email", "herschel.rodriguez@usermail.com"], ["password_digest", "$2a$12$arDrY0Dz7dTymhIQ3UH/xOYl1DRjygtd5lS/D8kYiSCrv7TB0nHk."], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:17.847848"], ["updated_at", "2021-06-15 04:08:17.847848"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "walter.west@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Walter"], ["last_name", "West"], ["email", "walter.west@usermail.com"], ["password_digest", "$2a$12$g1ZIGaNHfXtUpUl2s06Xi.ZtOIdde00j7jDlTFGQoDtGZ1CsHvFnW"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:18.039710"], ["updated_at", "2021-06-15 04:08:18.039710"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shira.o'keefe@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Shira"], ["last_name", "O'Keefe"], ["email", "shira.o'keefe@usermail.com"], ["password_digest", "$2a$12$.0sGsdiIPFMCOm7KnQLRL.9U702SoXSvULG32wPMoZJlG9UgLij82"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:18.231585"], ["updated_at", "2021-06-15 04:08:18.231585"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ahmed.kuvalis@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Ahmed"], ["last_name", "Kuvalis"], ["email", "ahmed.kuvalis@usermail.com"], ["password_digest", "$2a$12$NpvP/WGnJUWtPmJ0UvFzhOHxCSwqF6R.e6piKHcnNSJIl6m2AUpqa"], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:18.425323"], ["updated_at", "2021-06-15 04:08:18.425323"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "imelda.swaniawski@usermail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "dues_paid", "owns_gi", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Imelda"], ["last_name", "Swaniawski"], ["email", "imelda.swaniawski@usermail.com"], ["password_digest", "$2a$12$MTdcggA0ihjreFjX2qDIfOHTsNIVTtCR7zoHar0qIAZHllmWnlRo."], ["dues_paid", true], ["owns_gi", true], ["created_at", "2021-06-15 04:08:18.618254"], ["updated_at", "2021-06-15 04:08:18.618254"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.1ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["belt_id", 3], ["created_at", "2021-06-15 04:08:18.626391"], ["updated_at", "2021-06-15 04:08:18.626391"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.3ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["belt_id", 1], ["created_at", "2021-06-15 04:08:18.640516"], ["updated_at", "2021-06-15 04:08:18.640516"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.5ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["belt_id", 2], ["created_at", "2021-06-15 04:08:18.648490"], ["updated_at", "2021-06-15 04:08:18.648490"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.7ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 12], ["belt_id", 4], ["created_at", "2021-06-15 04:08:18.657511"], ["updated_at", "2021-06-15 04:08:18.657511"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.2ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["belt_id", 8], ["created_at", "2021-06-15 04:08:18.665887"], ["updated_at", "2021-06-15 04:08:18.665887"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.6ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["belt_id", 7], ["created_at", "2021-06-15 04:08:18.674579"], ["updated_at", "2021-06-15 04:08:18.674579"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["belt_id", 7], ["created_at", "2021-06-15 04:08:18.683073"], ["updated_at", "2021-06-15 04:08:18.683073"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.6ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.7ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 21], ["belt_id", 1], ["created_at", "2021-06-15 04:08:18.702768"], ["updated_at", "2021-06-15 04:08:18.702768"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.5ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["belt_id", 4], ["created_at", "2021-06-15 04:08:18.727099"], ["updated_at", "2021-06-15 04:08:18.727099"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.1ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.2ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 12], ["belt_id", 3], ["created_at", "2021-06-15 04:08:18.735459"], ["updated_at", "2021-06-15 04:08:18.735459"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.3ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.4ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["belt_id", 3], ["created_at", "2021-06-15 04:08:18.743851"], ["updated_at", "2021-06-15 04:08:18.743851"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 17], ["belt_id", 8], ["created_at", "2021-06-15 04:08:18.753071"], ["updated_at", "2021-06-15 04:08:18.753071"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.3ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.4ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["belt_id", 5], ["created_at", "2021-06-15 04:08:18.762312"], ["updated_at", "2021-06-15 04:08:18.762312"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.1ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.2ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 19], ["belt_id", 8], ["created_at", "2021-06-15 04:08:18.771400"], ["updated_at", "2021-06-15 04:08:18.771400"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.5ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 20], ["belt_id", 5], ["created_at", "2021-06-15 04:08:18.779815"], ["updated_at", "2021-06-15 04:08:18.779815"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.4ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 19], ["belt_id", 5], ["created_at", "2021-06-15 04:08:18.788568"], ["updated_at", "2021-06-15 04:08:18.788568"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["belt_id", 4], ["created_at", "2021-06-15 04:08:18.797117"], ["updated_at", "2021-06-15 04:08:18.797117"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.4ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["belt_id", 6], ["created_at", "2021-06-15 04:08:18.804439"], ["updated_at", "2021-06-15 04:08:18.804439"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.2ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.3ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 13], ["belt_id", 6], ["created_at", "2021-06-15 04:08:18.813146"], ["updated_at", "2021-06-15 04:08:18.813146"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mBelt Load (0.1ms)[0m  [1m[34mSELECT "belts".* FROM "belts" WHERE "belts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBeltGrade Create (0.2ms)[0m  [1m[32mINSERT INTO "belt_grades" ("user_id", "belt_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 19], ["belt_id", 5], ["created_at", "2021-06-15 04:08:18.819643"], ["updated_at", "2021-06-15 04:08:18.819643"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "belt_grades"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "belts"[0m

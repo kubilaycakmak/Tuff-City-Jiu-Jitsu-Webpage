@@ -53,8 +53,8 @@ kyu_grade_array.size.times do |x|
     })
 end
 
-BeltGrade.create({user_id:1,belt_id:1})
-BeltGrade.create({user_id:2,belt_id:4})
+BeltGrade.create({user_id:1,belt_id:1}) # Seumas is a 1st Kyu so this id codifies his brown belt
+BeltGrade.create({user_id:2,belt_id:4}) # Likewise for David the 4th Kyu aka purple belt
 
 20.times do
     first_name = Faker::Name.first_name
@@ -85,10 +85,12 @@ belts = Belt.all
 end
 
 
-first_aid_qualifications = "First Aid + CPR" # Here we assume that a member will qualify for both First Aid and CPR simultaneously; therefore no need for an array, a string is sufficient
+first_aid_qualifications = "First Aid & CPR" # Here we assume that a member will qualify for both First Aid and CPR simultaneously; therefore no need for an array, a string is sufficient
 instructor_qualification_array = ["Assistant Instructor", "Instructor", "Club Instructor"] # A member can only have one of these at a time, and each successive one supplants the last
 # Other rules which define grading criteria: a green belt going for purple belt needs Assistant Instructor qualification, a light blue going for dark blue needs Instructor, a dark blue
 # going for brown has first aid and CPR, a brown going for dan has Club Instructor. Also, first aid + CPR needs to be renewed every so many years and should go inactive here as in real life.
+
+
 
 
 puts Cowsay.say("Generated #{User.count} users", :sheep) 

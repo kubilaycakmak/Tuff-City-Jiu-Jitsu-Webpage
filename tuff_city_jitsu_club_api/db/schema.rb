@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 2021_06_11_020203) do
 
   create_table "qualifications", force: :cascade do |t|
     t.string "qualifications"
+    t.datetime "achieved_at"
+    t.boolean "does_expire"
+    t.datetime "expires_at"
     t.bigint "user_id", null: false
     t.bigint "syllabuse_id", null: false
     t.datetime "created_at", precision: 6, null: false

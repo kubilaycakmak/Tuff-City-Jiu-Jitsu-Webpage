@@ -4,10 +4,10 @@ class Api::V1::BeltGradeController < Api::ApplicationController
     before_action :find_beltgrade, only: [:show, :edit, :update, :destroy]
    
     def index
-        beltgrades = BeltGrade.order(created_at: :desc)
+        # get all beltgrades belonging to user according to user_id
+        beltgrades = BeltGrade.find(:user_id, user_id).order(created_at: :desc)
         # Can we have it so that only the current belt is shown?
-        render(json: beltgrades, each_serializer: BeltGradeCollectionSerializer)
-        # But do we need a serializer for this?
+        render(json: beltgrades) 
     end 
 
     def create
@@ -20,9 +20,7 @@ class Api::V1::BeltGradeController < Api::ApplicationController
     def show
         if @beltgrade
         render(
-            json: @beltgrade,
-            # include: [ :author, {bids: [ :author]} ]
-            # Is there anything to implement here?
+            json: @beltgrade
         )
         else
             render(json: {error: "Grade Not Found"})
@@ -69,14 +67,14 @@ class Api::V1::BeltGradeController < Api::ApplicationController
         invalid_record = error.record_not_found
         errors = invalid_record.errors.map do |field, message|
             {
-                type: error.class.to_s
+                type: error.class.to_s,
                 record_type: invalid_record.class.to_s,
                 field: field,
                 message: message
             }
         end
         render(
-            json: { status: 422, erros:errors }
+            json: { status: 422, errors:errors }
         )
     end
 end

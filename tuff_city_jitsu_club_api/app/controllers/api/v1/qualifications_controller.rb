@@ -4,8 +4,7 @@ class Api::V1::QualificationsController < Api::ApplicationController
    
     def index
         qualifications = Qualification.order(created_at: :desc)
-        render(json: qualifications, each_serializer: QualificationCollectionSerializer)
-        # Do we need a Qualification serializer, though?
+        render(json: qualifications, each_serializer: QualificationSerializer)
     end 
 
     def create
@@ -18,9 +17,7 @@ class Api::V1::QualificationsController < Api::ApplicationController
     def show
         if @qualification
         render(
-            json: @qualification,
-            # include: [ :author, {bids: [ :author]} ]
-            # Is there anything to implement here?
+            json: @qualification
         )
         else
             render(json: {error: "Qualification Not Found"})
@@ -64,10 +61,11 @@ class Api::V1::QualificationsController < Api::ApplicationController
     end
 
     def record_invalid(error)
+
         invalid_record = error.record_not_found
         errors = invalid_record.errors.map do |field, message|
             {
-                type: error.class.to_s
+                type: error.class.to_s,
                 record_type: invalid_record.class.to_s,
                 field: field,
                 message: message

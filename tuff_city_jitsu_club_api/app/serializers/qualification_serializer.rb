@@ -1,3 +1,11 @@
 class QualificationSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes(
+    :id,
+    :qualifications,
+    :created_at,
+    :does_expire,
+    :expires_at
+    )
+
+    belongs_to :user
 end

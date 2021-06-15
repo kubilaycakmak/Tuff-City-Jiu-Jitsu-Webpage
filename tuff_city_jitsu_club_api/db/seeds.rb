@@ -10,9 +10,7 @@ PASSWORD = "justinbailey" # Inspired by a classic video game password
 
 User.delete_all
 Belt.delete_all
-
-
-
+BeltGrade.delete_all
 
 # Set up a user with admin privileges
 admin_user = User.create(
@@ -47,7 +45,7 @@ instructor_user = User.create(
 
 kyu_grade_array = ["brown", "dark blue", "light blue", "purple", "green", "orange", "yellow", "white"] # These are the "kyu" grades, the coloured belts below black
 dan_grade_array = ["shodan", "nidan", "sandan"] # These latter three grades are not colours, but types of black belt or "dan" grade
-# As there are no dan grades in the club yet, we will just include that array for later when we do have them
+# As there are no dan/black belt grades in the club yet, we will just include that array for later when we do have them
 
 kyu_grade_array.size.times do |x|
     Belt.create({
@@ -57,11 +55,6 @@ end
 
 BeltGrade.create({user_id:1,belt_id:1})
 BeltGrade.create({user_id:2,belt_id:4})
-
-
-# belts = Belt.all
-
-# users=User.all
 
 20.times do
     first_name = Faker::Name.first_name
@@ -79,8 +72,7 @@ end
 
 users = User.all
 belts = Belt.all
-
-# BeltGrade.create({user_id:1,belt_id:1})
+# beltgrades = BeltGrade.all
 
 20.times do
     user = users.sample

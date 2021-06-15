@@ -1,34 +1,36 @@
-class Api::V1::QualificationsController < Api::ApplicationController
+class Api::V1::BeltGradeController < Api::ApplicationController
+
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :find_qualification, only: [:show, :edit, :update, :destroy]
+    before_action :find_beltgrade, only: [:show, :edit, :update, :destroy]
    
     def index
-        qualifications = Qualification.order(created_at: :desc)
-        render(json: qualifications, each_serializer: QualificationCollectionSerializer)
-        # Do we need a Qualification serializer, though?
+        beltgrades = BeltGrade.order(created_at: :desc)
+        # Can we have it so that only the current belt is shown?
+        render(json: beltgrades, each_serializer: BeltGradeCollectionSerializer)
+        # But do we need a serializer for this?
     end 
 
     def create
-        qualification = Qualification.new qualification_params
-        qualification.user = current_user
-        qualification.save!
-        render json: { id: qualification.id }
+        beltgrade = BeltGrade.new beltgrade_params
+        beltgrade.user = current_user
+        beltgrade.save!
+        render json: { id: beltgrade.id }
     end
 
     def show
-        if @qualification
+        if @beltgrade
         render(
-            json: @qualification,
+            json: @beltgrade,
             # include: [ :author, {bids: [ :author]} ]
             # Is there anything to implement here?
         )
         else
-            render(json: {error: "Qualification Not Found"})
+            render(json: {error: "Grade Not Found"})
         end
     end
 
     def destroy
-        @qualification.destroy
+        @beltgrade.destroy
         render(json: { status: 200 }, status: 200)
     end
 
@@ -36,11 +38,11 @@ class Api::V1::QualificationsController < Api::ApplicationController
     end
 
     def update
-        if @qualification.update qualification_params
-            render json: { id: @qualification.id }
+        if @beltgrade.update beltgrade_params
+            render json: { id: @beltgrade.id }
         else
             render(
-                json: { errors: qualification.errors },
+                json: { errors: beltgrade.errors },
                 status: 422 # Unprocessable Entity
             )
         end
@@ -48,12 +50,12 @@ class Api::V1::QualificationsController < Api::ApplicationController
 
     private
 
-    def qualification_params
-        params.require(:qualification).permit(:amount)
+    def beltgrade_params
+        params.require(:beltgrade).permit(:amount)
     end
 
-    def find_qualification
-        @qualification ||= Qualification.find params[Id]
+    def find_beltgrade
+        @beltgrade ||= BeltGrade.find params[Id]
     end
 
     def record_not_found

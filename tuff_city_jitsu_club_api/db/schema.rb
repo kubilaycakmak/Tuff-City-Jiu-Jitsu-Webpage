@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_020203) do
+ActiveRecord::Schema.define(version: 2021_06_16_025648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,17 +30,11 @@ ActiveRecord::Schema.define(version: 2021_06_11_020203) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "qualifications", force: :cascade do |t|
-    t.string "qualifications"
+  create_table "instructor_qualifications", force: :cascade do |t|
+    t.string "instructor_qualifications"
     t.datetime "achieved_at"
-    t.boolean "does_expire"
-    t.datetime "expires_at"
-    t.bigint "user_id", null: false
-    t.bigint "syllabuse_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["syllabuse_id"], name: "index_qualifications_on_syllabuse_id"
-    t.index ["user_id"], name: "index_qualifications_on_user_id"
   end
 
   create_table "syllabuses", force: :cascade do |t|
@@ -73,10 +67,12 @@ ActiveRecord::Schema.define(version: 2021_06_11_020203) do
     t.string "email"
     t.string "password_digest"
     t.boolean "is_admin", default: false
-    t.boolean "is_instructor", default: false
-    t.bigint "qualifications_id"
+    t.bigint "instructor_qualification_id"
     t.boolean "dues_paid"
     t.boolean "owns_gi"
+    t.boolean "has_first_aid_qualification"
+    t.datetime "first_aid_achievement_date"
+    t.datetime "first_aid_expiry_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -93,8 +89,6 @@ ActiveRecord::Schema.define(version: 2021_06_11_020203) do
 
   add_foreign_key "belt_grades", "belts"
   add_foreign_key "belt_grades", "users"
-  add_foreign_key "qualifications", "syllabuses", column: "syllabuse_id"
-  add_foreign_key "qualifications", "users"
   add_foreign_key "training_bubbles", "users"
   add_foreign_key "videos", "syllabuses", column: "syllabuses_id"
 end

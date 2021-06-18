@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from "./NavBar";
+// import NavBar from 
 // Next step: incorporate navbar at top of the page
 
 // import AuthRoute from "./AuthRoute";

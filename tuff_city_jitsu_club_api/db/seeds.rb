@@ -141,11 +141,12 @@ InstructorQualification.create!({
     belt_grade_id: BeltGrade.first.id
 })
 
-# InstructorQualification.create({
-#     user_id: instructor_user.id,
-#     qualifications_id: Qualification.last.id, # This pairs David with Club Instructor
-#     achieved_at: Date.new(2017, 12, 03) # And sets the date he achieved it on
-# })
+InstructorQualification.create!({
+    user_id: instructor_user.id,
+    qualifications_id: Qualification.last.id, # This pairs David with Club Instructor
+    achieved_at: Date.new(2017, 12, 03), # And sets the date he achieved it on
+    belt_grade_id: BeltGrade.fourth.id
+})
 
 # And now for the fake users: 
 

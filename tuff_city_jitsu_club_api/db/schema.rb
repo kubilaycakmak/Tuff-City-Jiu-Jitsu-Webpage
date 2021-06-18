@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_025648) do
+ActiveRecord::Schema.define(version: 2021_06_18_013824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,19 @@ ActiveRecord::Schema.define(version: 2021_06_16_025648) do
   end
 
   create_table "instructor_qualifications", force: :cascade do |t|
-    t.string "instructor_qualifications"
     t.datetime "achieved_at"
+    t.bigint "user_id", null: false
+    t.bigint "belt_grade_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "qualifications_id", null: false
+    t.index ["belt_grade_id"], name: "index_instructor_qualifications_on_belt_grade_id"
+    t.index ["qualifications_id"], name: "index_instructor_qualifications_on_qualifications_id"
+    t.index ["user_id"], name: "index_instructor_qualifications_on_user_id"
+  end
+
+  create_table "qualifications", force: :cascade do |t|
+    t.string "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,7 +78,6 @@ ActiveRecord::Schema.define(version: 2021_06_16_025648) do
     t.string "email"
     t.string "password_digest"
     t.boolean "is_admin", default: false
-    t.bigint "instructor_qualification_id"
     t.boolean "dues_paid"
     t.boolean "owns_gi"
     t.boolean "has_first_aid_qualification"
@@ -80,15 +90,18 @@ ActiveRecord::Schema.define(version: 2021_06_16_025648) do
 
   create_table "videos", force: :cascade do |t|
     t.string "canadian_version"
-    t.bigint "syllabuses_id", null: false
+    t.bigint "syllabuse_id", null: false
     t.string "uk_version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["syllabuses_id"], name: "index_videos_on_syllabuses_id"
+    t.index ["syllabuse_id"], name: "index_videos_on_syllabuse_id"
   end
 
   add_foreign_key "belt_grades", "belts"
   add_foreign_key "belt_grades", "users"
+  add_foreign_key "instructor_qualifications", "belt_grades"
+  add_foreign_key "instructor_qualifications", "qualifications", column: "qualifications_id"
+  add_foreign_key "instructor_qualifications", "users"
   add_foreign_key "training_bubbles", "users"
-  add_foreign_key "videos", "syllabuses", column: "syllabuses_id"
+  add_foreign_key "videos", "syllabuses", column: "syllabuse_id"
 end

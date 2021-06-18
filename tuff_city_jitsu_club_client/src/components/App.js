@@ -55,13 +55,22 @@ class App extends React.Component {
                     <NavBar currentUser={currentUser} onSignOut={this.signOut}/>
                         <Switch>
                             <Route path="/" exact component={Welcome} />
+// or Home instead?
+                           <Route path="/posts" exact component={Blog} />
 
-                            <Route path="/auctions" exact component={AuctionIndexPage} />
+<Route path="/whatisjitsu" exact component={WhatIsJiuJitsu} />
+
+<Route path="/profiles" exact component={WhoAreWe} />
+                              
+<Route path="/map" exact component={Map} />
                             <AuthRoute
                             isAuthenticated={currentUser}
-                            path="/auctions/new"
-                            component={AuctionNewPage}
-                            />
+                            path="/syllabus"
+                            component={Syllabus}
+                            path="/syllabus/mindmap"
+                            component={MindmapForSyllabus}                           
+                            path="/events"
+                            component={Events List}                            />
                             <Route
                             exact
                             path="/sign_up"
@@ -69,6 +78,7 @@ class App extends React.Component {
                                 <SignUpPage {...routeProps} onSignUp={this.getUser} />
                             )}
                             />
+                            // Change this next one
                             <Route
                             path="/auctions/:id"
                             render={routeProps => (

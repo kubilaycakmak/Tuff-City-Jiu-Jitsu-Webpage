@@ -1,10 +1,9 @@
 class Qualification < ApplicationRecord
-    belongs_to :user
-    before_save :capitalize_title
+    before_save :capitalize_level
       
     private
     
-    def capitalize_title
-      self.title.capitalize!
+    def capitalize_level
+      self.level.capitalize!
     end
 end

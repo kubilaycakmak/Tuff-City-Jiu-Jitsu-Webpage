@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :belt_grade
-      resources :qualifications
+      resources :instructorqualifications
       resource :session, only: [:create, :destroy]
       # -> api/v1/users
       resources :users, shallow: true, only: [:create, :new, :show, :index] do

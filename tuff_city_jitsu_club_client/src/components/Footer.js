@@ -14,12 +14,13 @@ const Footer = () => {
       <h1 style={{ color: "orange", 
                    textAlign: "center", 
                    marginTop: "-50px" }}>
-        Tuff City Jitsu Club: Teaching practical self defence in westernmost Canada
+        Tuff City Jitsu Club: Teaching practical self defence in Tofino
       </h1>
       <Container>
         <Row>
           <Column>
             <Heading>Contact Us</Heading>
+            // How to include mailto links here?
             <FooterLink href="#">Club Email</FooterLink>
             <FooterLink href="#">David</FooterLink>
             <FooterLink href="#">Seumas</FooterLink>

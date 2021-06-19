@@ -1,6 +1,6 @@
 class CreateSyllabuses < ActiveRecord::Migration[6.1]
   def change
-    create_table :syllabuse do |t|
+    create_table :syllabuses do |t|
       t.string :technique
       t.string :technique_type
       t.boolean :is_different

@@ -14,7 +14,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.boolean :dues_paid
       t.boolean :owns_gi
       t.boolean :has_first_aid_qualification
-      # t.boolean :does_expire
       t.datetime :first_aid_achievement_date
       t.datetime :first_aid_expiry_date
 

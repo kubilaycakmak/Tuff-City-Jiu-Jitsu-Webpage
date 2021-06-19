@@ -123,11 +123,13 @@ instructor_qualification_array = ["Assistant Instructor", "Instructor", "Club In
 # at the earliest. Then Instructor to purple at the earliest, then Club Instructor to dark blue at the earliest (they have been mandated to teach solo in this fashion, before). This is all
 # arbirtrary and theoretical, but based on sound logic, and these users will be replaced by real ones in due course.
 
+belts_requiring_instructor_qualifications_array = [5,3,1] # Here this denotes for which grades a user requires an instructor qualification to be able to grade to the next one up: green, light blue and brown.
 
 instructor_qualification_array.size.times do |y|
-    user = users.sample
+    belt = belts_requiring_instructor_qualifications_array[y]
     qualification = instructor_qualification_array[y]
-    Qualification.create({
+    Qualification.create!({
+        belt_id: belt,
         level:qualification
     })
 end
@@ -136,16 +138,18 @@ end
 
 InstructorQualification.create!({
     user_id: admin_user.id,
-    qualifications_id: Qualification.last.id, # This pairs Seumas with Club Instructor
+    qualification_id: Qualification.last.id, # This pairs Seumas with Club Instructor
     achieved_at: Date.new(2016, 12, 03), # And sets the date he achieved it on
-    belt_grade_id: BeltGrade.first.id
+    belt_grade_id: BeltGrade.first.id,
+    belt_id: Belt.first.id
 })
 
 InstructorQualification.create!({
     user_id: instructor_user.id,
-    qualifications_id: Qualification.last.id, # This pairs David with Club Instructor
+    qualification_id: Qualification.last.id, # This pairs David with Club Instructor
     achieved_at: Date.new(2017, 12, 03), # And sets the date he achieved it on
-    belt_grade_id: BeltGrade.fourth.id
+    belt_grade_id: BeltGrade.second.id,
+    belt_id: Belt.fourth.id
 })
 
 # And now for the fake users: 
@@ -156,35 +160,51 @@ InstructorQualification.create!({
 #     random_instructors_qualifications_dice = [true, false].sample # roll the dice to determine what instructor type, if any, they are
 #     puts "randomness = ", random_instructors_qualifications_dice
 #     user = users.sample
+#     belt = belts.sample
 #     grade = beltgrades.sample
-#     puts "Generating instructor qualifications", users.sample
+#     puts "your grade is", belt.id, belt.colour
 #     if grade.belt_id >= 2
 #         if random_instructors_qualifications_dice == true
 #             # Randomly assign dark blue and brown belts Club Instructor (note, if they don't have this, we at least expect them to have Instructor instead,
 #             # and then they MUST have Club Instructor for grading to black belt)
-#             qualifications_id = Qualification.last.id
-#         else
-#             qualifications_id = Qualification.second.id
+#             qualification_id = Qualification.last.id
+#             achieved_at = Faker::Date.backward(days:365 *1)
+#         elsif random_instructors_qualifications_dice == false
+#             puts "trying to work with false"
+#             qualification_id = Qualification.second.id
+#             achieved_at = Faker::Date.backward(days:365 *1)
 #         end
-#     elsif grade.belt_id >= 4
+#     elsif grade.belt_id >= 4 
 #         if random_instructors_qualifications_dice == true
 #             # Randomly assign purple belts and above the Instructor qualification
-#             qualifications_id = Qualification.second.id
-#         else
+#             qualification_id = Qualification.second.id
+#             achieved_at = Faker::Date.backward(days:365 *1)
+#         elsif random_instructors_qualifications_dice == false
 #             # (note: a purple belt MUST have this Assistant Instructor qualification)
-#             qualifications_id = Qualification.first.id
+#             puts "also trying to work with false"
+#             qualification_id = Qualification.first.id
+#             achieved_at = Faker::Date.backward(days:365 *1)
 #         end
 #     elsif grade.belt_id >= 6
 #         if random_instructors_qualifications_dice == true
 #             # Randomly assign orange belt and above the Assistant Instructor qualification (note: a purple belt MUST have this),
 #             # otherwise they have no instructor qualifications (but the instructors should push them to gain these!)
-#             qualifications_id = Qualification.first.id
+#             qualification_id = Qualification.first.id
+#             achieved_at = Faker::Date.backward(days:365 *1)
+#         elsif random_instructors_qualifications_dice == false
+#             puts "still trying to work with false"
+#             qualification_id = nil
+#             achieved_at = nil
 #         end
 #     end
-#     InstructorQualification.create({
+#     puts "Generating instructor qualifications", user.id, qualification_id
+
+#     InstructorQualification.create!({
 #         user_id: user.id,
-#         qualifications_id: qualifications_id,
-#         achieved_at: Faker::Date.backward(days:365 *1)
+#         qualification_id: qualification_id,
+#         achieved_at: Faker::Date.backward(days:365 *1),
+#         belt_grade_id: grade.id,
+#         belt_id: belt.id
 #     })
 # end
 

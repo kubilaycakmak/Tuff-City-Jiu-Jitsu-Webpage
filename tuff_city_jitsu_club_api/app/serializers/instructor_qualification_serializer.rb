@@ -1,7 +1,7 @@
 class InstructorQualificationSerializer < ActiveModel::Serializer
   attributes(
     :id,
-    :instructorqualifications,
+    :instructor_qualifications,
     :created_at,
     :does_expire,
     :expires_at

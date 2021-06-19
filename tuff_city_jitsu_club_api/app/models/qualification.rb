@@ -1,5 +1,8 @@
 class Qualification < ApplicationRecord
     before_save :capitalize_level
+    belongs_to :belt
+    has_one :instructor_qualification
+    
       
     private
     

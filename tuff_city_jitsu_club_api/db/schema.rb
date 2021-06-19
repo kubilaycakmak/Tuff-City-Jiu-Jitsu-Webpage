@@ -33,19 +33,23 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
   create_table "instructor_qualifications", force: :cascade do |t|
     t.datetime "achieved_at"
     t.bigint "user_id", null: false
+    t.bigint "belt_id", null: false
     t.bigint "belt_grade_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "qualifications_id", null: false
+    t.bigint "qualification_id", null: false
     t.index ["belt_grade_id"], name: "index_instructor_qualifications_on_belt_grade_id"
-    t.index ["qualifications_id"], name: "index_instructor_qualifications_on_qualifications_id"
+    t.index ["belt_id"], name: "index_instructor_qualifications_on_belt_id"
+    t.index ["qualification_id"], name: "index_instructor_qualifications_on_qualification_id"
     t.index ["user_id"], name: "index_instructor_qualifications_on_user_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
     t.string "level"
+    t.bigint "belt_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["belt_id"], name: "index_qualifications_on_belt_id"
   end
 
   create_table "syllabuses", force: :cascade do |t|
@@ -100,8 +104,10 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
   add_foreign_key "belt_grades", "belts"
   add_foreign_key "belt_grades", "users"
   add_foreign_key "instructor_qualifications", "belt_grades"
-  add_foreign_key "instructor_qualifications", "qualifications", column: "qualifications_id"
+  add_foreign_key "instructor_qualifications", "belts"
+  add_foreign_key "instructor_qualifications", "qualifications"
   add_foreign_key "instructor_qualifications", "users"
+  add_foreign_key "qualifications", "belts"
   add_foreign_key "training_bubbles", "users"
   add_foreign_key "videos", "syllabuses", column: "syllabuse_id"
 end

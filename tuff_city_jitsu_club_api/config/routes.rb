@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :belt_grade
       resources :instructorqualifications
+      resources :syllabus
       resource :session, only: [:create, :destroy]
       # -> api/v1/users
       resources :users, shallow: true, only: [:create, :new, :show, :index] do

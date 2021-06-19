@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :instructorqualifications
       resources :syllabus
       resources :profiles
+      resources :whatisjitsu
 
       resource :session, only: [:create, :destroy]
       # -> api/v1/users

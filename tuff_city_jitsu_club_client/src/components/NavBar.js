@@ -26,18 +26,18 @@ return (
                 <NavLink to="/" className="item">
                     Home
                 </NavLink>
-                <NavLink to="/posts" className="item">
+                {/* <NavLink to="/posts" className="item">
                     Blog
-                </NavLink>
+                </NavLink> */}
                 <NavLink exact to="/whatisjitsu" className="item">
                     What Is Jiu Jitsu?
                 </NavLink>
                 <NavLink exact to="/profiles" className="item">
                     Who Are We?
                 </NavLink>
-                <NavLink exact to="/map" className="item">
+                {/* <NavLink exact to="/map" className="item">
                     Map 
-                </NavLink>
+                </NavLink> */}
                 {currentUser ? (
                     <>
                     <NavLink exact to="/syllabus" className="item">
@@ -46,9 +46,9 @@ return (
                     <NavLink exact to="/syllabus/mindmap" className="item">
                         Mindmap For Syllabus 
                     </NavLink>
-                    <NavLink exact to="/events" className="item">
+                    {/* <NavLink exact to="/events" className="item">
                         Events List 
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink to="/" onClick={onSignOut} className="item">
                         Sign Out
                     </NavLink>

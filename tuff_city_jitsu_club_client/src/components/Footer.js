@@ -20,33 +20,44 @@ const Footer = () => {
         <Row>
           <Column>
             <Heading>Contact Us</Heading>
-            // How to include mailto links here?
-            <FooterLink href="#">Club Email</FooterLink>
-            <FooterLink href="#">David</FooterLink>
-            <FooterLink href="#">Seumas</FooterLink>
+            <FooterLink href="mailto:tuffcityjitsu@gmail.com ">Club Email</FooterLink>
+            {/* <FooterLink href="#">David</FooterLink> */}
+            <FooterLink href="https://t.me/TartanSpartan">Seumas</FooterLink>
           </Column>
           <Column>
             <Heading>Facebook</Heading>
-            <FooterLink href="#">
-              <i className="fab fa-facebook-f">
-                <span style={{ marginLeft: "10px" }}>
-                  Tuff City
-                </span>
-              </i>
+            <FooterLink href="https://www.facebook.com/tuffcityjitsu">
+              <span style={{ marginLeft: "10px" }}>
+                Tuff City
+              </span>
             </FooterLink>
-            <FooterLink href="#">
-              <i className="fab fa-facebook-f">
-                <span style={{ marginLeft: "10px" }}>
-                  Jitsu Canada
-                </span>
-              </i>
+            <FooterLink href="https://www.facebook.com/JitsuCanada">
+              <span style={{ marginLeft: "10px" }}>
+                Jitsu Canada
+              </span>
             </FooterLink>
-            <FooterLink href="#">
-              <i className="fab fa-facebook-f">
+            <FooterLink href="https://www.facebook.com/groups/2406409734">
                 <span style={{ marginLeft: "10px" }}>
-                  Jiu Jitsu Foundation (UK style)
+                  The Jiu Jitsu Foundation (UK style)
                 </span>
-              </i>
+            </FooterLink>
+          </Column>
+          <Column>
+            <Heading>Other Websites</Heading>
+            <FooterLink href="https://jitsucanada.com/">
+              <span style={{ marginLeft: "10px" }}>
+                Jitsu Canada
+              </span>
+            </FooterLink>
+            <FooterLink href="https://www.jitsufoundation.org/">
+              <span style={{ marginLeft: "10px" }}>
+                The Jiu Jitsu Foundation
+              </span>
+            </FooterLink>
+            <FooterLink href="https://jitsunz.weebly.com/">
+                <span style={{ marginLeft: "10px" }}>
+                  Jitsu New Zealand
+                </span>
             </FooterLink>
           </Column>
         </Row>

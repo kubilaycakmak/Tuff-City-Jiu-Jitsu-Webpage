@@ -43,6 +43,9 @@ return (
                     <NavLink exact to="/syllabus" className="item">
                         Syllabus
                     </NavLink>
+                    <NavLink exact to="/syllabus/new" className="item">
+                        Add Techniques To Syllabus
+                    </NavLink>
                     <NavLink exact to="/syllabus/mindmap" className="item">
                         Mindmap For Syllabus 
                     </NavLink>

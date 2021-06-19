@@ -1,4 +1,11 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id
-  # Add the rest as appropriate
+  attributes(
+    :id, 
+    :email,
+    :first_name, 
+    :last_name, 
+    :full_name,
+    :created_at, 
+    :updated_at
+)
 end

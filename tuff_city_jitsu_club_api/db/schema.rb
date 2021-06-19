@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
     t.index ["belt_id"], name: "index_qualifications_on_belt_id"
   end
 
-  create_table "syllabuses", force: :cascade do |t|
+  create_table "syllabi", force: :cascade do |t|
     t.string "technique"
     t.string "technique_type"
     t.boolean "is_different"
@@ -94,11 +94,11 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
 
   create_table "videos", force: :cascade do |t|
     t.string "canadian_version"
-    t.bigint "syllabuse_id", null: false
+    t.bigint "syllabi_id", null: false
     t.string "uk_version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["syllabuse_id"], name: "index_videos_on_syllabuse_id"
+    t.index ["syllabi_id"], name: "index_videos_on_syllabi_id"
   end
 
   add_foreign_key "belt_grades", "belts"
@@ -109,5 +109,5 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
   add_foreign_key "instructor_qualifications", "users"
   add_foreign_key "qualifications", "belts"
   add_foreign_key "training_bubbles", "users"
-  add_foreign_key "videos", "syllabuses", column: "syllabuse_id"
+  add_foreign_key "videos", "syllabi", column: "syllabi_id"
 end

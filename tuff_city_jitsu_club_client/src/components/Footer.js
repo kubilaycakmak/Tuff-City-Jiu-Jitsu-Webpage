@@ -21,8 +21,9 @@ const Footer = () => {
           <Column>
             <Heading>Contact Us</Heading>
             <FooterLink href="mailto:tuffcityjitsu@gmail.com ">Club Email</FooterLink>
-            {/* <FooterLink href="#">David</FooterLink> */}
             <FooterLink href="https://t.me/TartanSpartan">Seumas</FooterLink>
+            <FooterLink href="https://github.com/TartanSpartan">&#9757; I also designed this website and if anyone is interested e.g. in moving between Jiu Jitsu countries I would be happy to discuss my work </FooterLink>
+
           </Column>
           <Column>
             <Heading>Facebook</Heading>

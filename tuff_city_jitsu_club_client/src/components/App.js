@@ -15,7 +15,7 @@ import SyllabusMindmapPage from "./SyllabusMindmapPage";
 import SyllabusNewPage from "./SyllabusNewPage";
 import SyllabusShowPage from "./SyllabusShowPage";
 import WhatIsJiuJitsu from "./WhatIsJiuJitsu";
-import WhoAreWe from "./WhoAreWe";
+// import WhoAreWe from "./WhoAreWe";
 
 
 class App extends React.Component {
@@ -68,7 +68,7 @@ class App extends React.Component {
 
 <Route path="/whatisjitsu" exact component={WhatIsJiuJitsu} />
 
-<Route path="/profiles" exact component={WhoAreWe} />
+{/* <Route path="/profiles" exact component={WhoAreWe} /> */}
 
 {/* Ensure that without signing up, users can't even see the link to syllabus  */}
                             <AuthRoute
@@ -106,8 +106,8 @@ class App extends React.Component {
                                 <SignUpPage {...routeProps} onSignUp={this.getUser} />
                             )}
                             />
-                            // Change this next one
-                            {/* <Route
+                            
+                            {/* Change this next one <Route
                             path="/auctions/:id"
                             render={routeProps => (
                                 <AuctionShowPage {...routeProps} currentUser={currentUser} />

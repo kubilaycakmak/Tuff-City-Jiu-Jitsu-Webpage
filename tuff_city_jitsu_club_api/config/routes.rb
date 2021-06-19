@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       resources :belt_grade
       resources :instructorqualifications
       resources :syllabus
+      resources :profiles
+
       resource :session, only: [:create, :destroy]
       # -> api/v1/users
       resources :users, shallow: true, only: [:create, :new, :show, :index] do

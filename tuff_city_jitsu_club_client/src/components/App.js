@@ -15,6 +15,7 @@ import SyllabusMindmapPage from "./SyllabusMindmapPage";
 import SyllabusNewPage from "./SyllabusNewPage";
 import SyllabusShowPage from "./SyllabusShowPage";
 import WhatIsJiuJitsu from "./WhatIsJiuJitsu";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import WhoAreWe from "./WhoAreWe";
 
 

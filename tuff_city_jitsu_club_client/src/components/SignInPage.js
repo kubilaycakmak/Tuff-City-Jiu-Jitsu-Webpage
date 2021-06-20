@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Session } from "../requests";
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+import styled from "styled-components"
 import "../App.css";
 
 class SignInPage extends Component {
@@ -40,33 +43,25 @@ class SignInPage extends Component {
   }
   render() {
     const { errors } = this.state;
-    return (
-      <main>
-        <div className="ui header">Sign In</div>
-        <form className="ui form" onSubmit={this.createSession}>
-          {errors.length > 0 ? (
-            <div className="ui negative message FormErrors">
-              <div className="header">Error Signing in...</div>
-              <p>{errors.map(err => err.message).join(",")}</p>
-            </div>
-          ) : null}
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <div className="input">
-            <input type="email" name="email" id="email" placeholder="yourname@usermail.com"/>
-            </div>
-          </div>
-          <div className="field">
-            <label htmlFor="password">Password</label>
-            <div className="input">
-            <input type="password" name="password" id="password" placeholder="Enter password here"/
-            ></div>
-          </div>
-          <button className="ui black button" type="submit">
-            Sign In
-          </button>
-        </form>
-      </main>
+    return (      
+      <Form onSubmit={this.createSession}>
+        <Form.Label id="top-label">Sign in here</Form.Label>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control name="email" type="email" placeholder="Enter email e.g. yourname@usermail.com"  required="true"/>
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control name="password" type="password" placeholder="Enter password"  required="true"/>
+        </Form.Group>
+        <Button variant="primary" type="submit" onClick={this.onSubmit}>
+          Submit
+        </Button>
+      </Form>
     );
   }
 }

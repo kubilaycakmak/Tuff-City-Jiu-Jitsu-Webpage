@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+#top-label {
+  font-weight: bold !important;
+}
+
+#nav-container {
+
+  /* Make a collapsible navbar for small page widths */
+}

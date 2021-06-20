@@ -46,7 +46,9 @@ class Api::V1::UsersController < Api::ApplicationController
             :last_name,
             :email,
             :password,
-            :password_confirmation,
+            :password_confirmation
+            # :owns_gi,
+            # :belt_grade_id
         )
     end
     
@@ -60,6 +62,7 @@ class Api::V1::UsersController < Api::ApplicationController
             status: 422
         )
     end
+    
 
     def record_invalid(error)
         invalid_record = error.record_not_found

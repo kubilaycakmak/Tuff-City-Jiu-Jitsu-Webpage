@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css";
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Container } from 'react-bootstrap';
 
 function NavBar(props) {
     const { currentUser, onSignOut } = props;
@@ -16,62 +17,36 @@ function NavBar(props) {
 
 };
 return (
-    <div className="ui-pointing-menu">
-        <div className = "d-inline-flex justify-content-start left menu">
-            <NavLink to="/" className ="item">
-                <img src="https://www.numicanada.com/medias/pieces-de-monnaie/valeur/25-cents-2012.jpg" height= "35px"/>
-            </NavLink>
-            </div>
-            <div className="d-flex flex-row flex-shrink:0 justify-content-end right menu">
-                <NavLink to="/" className="item">
-                    Home
-                </NavLink>
-                {/* <NavLink to="/posts" className="item">
-                    Blog
-                </NavLink> */}
-                <NavLink exact to="/whatisjitsu" className="item">
-                    What Is Jiu Jitsu?
-                </NavLink>
-                <NavLink exact to="/profiles" className="item">
-                    Who Are We?
-                </NavLink>
-                {/* <NavLink exact to="/map" className="item">
-                    Map 
-                </NavLink> */}
-                {currentUser ? (
-                    <>
-                    <NavLink exact to="/syllabus" className="item">
-                        Syllabus
-                    </NavLink>
-                    <NavLink exact to="/syllabus/new" className="item">
-                        Add Techniques To Syllabus
-                    </NavLink>
-                    <NavLink exact to="/syllabus/mindmap" className="item">
-                        Mindmap For Syllabus 
-                    </NavLink>
-                    {/* <NavLink exact to="/events" className="item">
-                        Events List 
-                    </NavLink> */}
-                    <NavLink to="/" onClick={onSignOut} className="item">
-                        Sign Out
-                    </NavLink>
-                    <span className="item" style={{ color: "green" }}>
+    <Navbar bg="light" variant="light">
+    <Container id="nav-container">
+    <Navbar.Brand href="/">Getting around</Navbar.Brand>
+    <Nav className="me-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      {/* <Nav.Link href="/posts">Blog</Nav.Link> */}
+      <Nav.Link href="/whatisjtsu">What Is Jiu Jitsu?</Nav.Link>
+      <Nav.Link href="/profiles">Who Are We?</Nav.Link>
+      {currentUser ? (
+        <>
+      <Nav.Link href="/syllabus">Syllabus</Nav.Link>
+      <Nav.Link href="/syllabus/new">Add Techniques To Syllabus</Nav.Link>
+      <Nav.Link href="/syllabus/mindmap">Mindmap For Syllabus</Nav.Link>
+      {/* <Nav.Link href="/events">Events</Nav.Link> */}
+      <Nav.Link href="/" onClick={onSignOut}>Sign Out</Nav.Link>
+      <Nav.Link className="item" style={{ color: "green" }}>
                         Welcome {currentUser.full_name}
-                    </span>
-                    </>
-                ) : (
-                    <React.Fragment>
-                        <NavLink exact to="/sign_in" className="item">
-                        Sign In
-                        </NavLink>
-                        <NavLink exact to="/sign_up" className="item">
-                        Sign Up
-                        </NavLink>
-                        </React.Fragment>
-                )}
-            </div>
-        </div>
+                    </Nav.Link>
+      {/* Need "Welcome Current User" span here */}
+      </>
+      ) : (
+        <React.Fragment>
+        <Nav.Link href="/sign_in">Sign In</Nav.Link>
+        <Nav.Link href="/sign_up">Sign Up</Nav.Link>
+        </React.Fragment>
+      )}
+      </Nav>
+      </Container>
+      </Navbar>
+
     );
 }
-
 export default NavBar;

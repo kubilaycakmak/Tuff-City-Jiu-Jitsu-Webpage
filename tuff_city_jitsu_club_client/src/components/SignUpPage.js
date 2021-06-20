@@ -1,5 +1,9 @@
 import React from "react";
 import { User } from "../requests";
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+import styled from "styled-components"
+import "../App.css";
 
 export function SignUpPage(props) {
   const { onSignUp } = props;
@@ -29,72 +33,35 @@ export function SignUpPage(props) {
   }
 
   return (
-    <main>
-      <form className="ui form" onSubmit={handleSubmit}>
-        <div className="field">
-          <label htmlFor="first_name">First Name</label>
-          <div className="input">
-          <input
-            type="text"
-            name="first_name"
-            id="first_name"
-            placeholder="First Name"
-            required
-          />
-          </div>
-        </div>
-        <div className="field">
-          <label htmlFor="last_name">Last Name</label>
-          <div className="input">
-          <input
-            type="text"
-            name="last_name"
-            id="last_name"
-            placeholder="Last Name"
-            required
-          />
-          </div>
-        </div>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <div className="input">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email@usermail.com"
-            required
-          />
-          </div>
-        </div>
-        <div className="field">
-          <label htmlFor="password">Password</label>
-          <div className="input">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter your password"
-            required
-          />
-         </div>
-        </div>
-        <div className="field">
-          <label htmlFor="password_confirmation">Password Confirmation</label>
-          <div className="input">
-          <input
-            type="password"
-            name="password_confirmation"
-            id="password_confirmation"
-            placeholder="Enter your password again"
-            required
-          />
-          </div>
-        </div>
-        <button className="ui button" type="submit">
-          Submit
-        </button>
-      </form>
-    </main>
+    <Form onSubmit={handleSubmit}>
+    <Form.Label id="top-label">Sign up here</Form.Label>
+    <Form.Group controlId="formBasicName">
+      <Form.Label>First name</Form.Label>
+      <Form.Control name="first_name" type="name" placeholder="First name"  required="true"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicName">
+      <Form.Label>Last name</Form.Label>
+      <Form.Control name="last_name" type="name" placeholder="Last name"  required="true"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicEmail">
+      <Form.Label>Email address</Form.Label>
+      <Form.Control name = "email" type="email" placeholder="Enter email e.g. yourname@usermail.com"  required="true"/>
+      <Form.Text className="text-muted">
+        We'll never share your email with anyone else.
+      </Form.Text>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+      <Form.Label>Password</Form.Label>
+      <Form.Control name = "password" type="password" placeholder="Enter password"  required="true"/>
+    </Form.Group>
+    <Form.Group controlId="formBasicPassword">
+      <Form.Label>Password Confirmation</Form.Label>
+      <Form.Control name = "password" type="password" placeholder="Enter password again"  required="true"/>
+    </Form.Group>
+    <Button variant="primary" type="submit">
+      Submit
+    </Button>
+  </Form>
+  
   );
 }

@@ -9,13 +9,13 @@ export class Welcome extends React.Component {
     render() {
       return (
         <main className="Welcome">
-          <h1 className="ml-a">
+          <h1 className="ml-4a">
             Tuff City Jitsu Club
             <br />
             Learn self defence and make some new friends
           </h1>
           <span style={{ marginLeft: "20rem" }}>
-            <img src={tuff_logo} alt="clublogo"  />
+          <li><a href='/profiles'><img src={tuff_logo} alt="clublogo" /></a></li>
           </span>
         </main>
       );

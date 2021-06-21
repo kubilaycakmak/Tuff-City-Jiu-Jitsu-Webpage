@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_235539) do
 
   create_table "technique_types", force: :cascade do |t|
     t.string "category"
+    t.string "sub_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

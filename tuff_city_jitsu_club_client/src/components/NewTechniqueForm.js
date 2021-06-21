@@ -1,75 +1,68 @@
 import React from "react";
 import FormErrors from "./FormErrors"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 
-function NewTenchiqueForm(props) {
+function NewTechniqueForm(props) {
     function handleSubmit(event) {
         event.preventDefault();
         const { currentTarget } = event;
         const formData = new FormData(currentTarget);
 
         props.onSubmit({
-            title: formData.get("title"),
-            description: formData.get("description"),
-            reserve_price: formData.get("reserve_price"),
-            end_date: formData.get("end_date")
+            summary: formData.get("summary"),
+            category: formData.get("category"),
+            sub_category: formData.get("sub_category"),
+            // videos: formData.get("videos"), This is an ID so need a different way to share e.g. YouTube URLs?
+            is_different: formData.get("is_different"),
+            difference_content: formData.get("difference_content")
         });
         currentTarget.reset();
     }
     return (
-
-        
-        <form className="ui form" onSubmit={handleSubmit}>
-            <div className="field">
-                <label>Title *</label>
-                <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    required
-                    placeholder="Product title"
-                />
-                <FormErrors forField="title" errors={props.errors} />
-            </div>
-            <div className="inline">
-            <div className="field">
-                <div className="middle">
-                <label>Description *</label>
-                </div>
-                <div className="big-form">
-                <textarea
-                    type="description"
-                    name="description"
-                    id="description"
-                    required
-                    placeholder="Details"
-                    cols = "20" rows = "3"
-                />
-                </div>
-                </div>
-                <FormErrors forField="description" errors={props.errors} />
-            </div>
-            <div className="field">
-                <label>Reserve Price ($) *</label>
-                <input
-                    type="number"
-                    name="reserve_price"
-                    id="reserve_price"
-                    placeholder="1.00"
-                    required
-                    />
-                <FormErrors forField="reserve_price" errors={props.errors} />
-        </div>
-            <div className="field">
-                <label>End date *</label>
-                <input type="date" name="end_date" id="end_date" required />
-                <FormErrors forField="end_date" errors={props.errors} />
-            </div>
-
-            <button className="ui button" type="submit">
-               Save
-            </button>
-       </form>
+        <Form onSubmit={handleSubmit}>
+        <Form.Label id="top-label">Input new technique</Form.Label>
+        <Form.Group controlId="formBasicSummary">
+          <Form.Label>Name of the technique</Form.Label>
+          <Form.Control name="summary" type="summary" placeholder="E.g. O-goshi"  required="true"/>
+        </Form.Group>
+        {/* Note: italicise options */}
+        <Form.Group controlId="formBasicCategory">
+            <Form.Label>Category of technique</Form.Label>
+            <Form.Control name = "category" type="category" as="select" defaultValue="Waza(techniques)">
+                <option>Ukemi (breakfalling) </option>
+                <option>Atemi (striking)</option>
+                <option>Kansetsu (locks)</option>
+                <option>Shime-waza (chokes)</option>
+                <option>Ne-waza (groundwork)</option>
+                <option>Nage-waza (throwing)</option>
+                <option>Nage-no-kata (throwing form)</option>
+                <option>Henka-waza (transition techniques)</option>
+                <option>Kaeshi-waza (counter techniques)</option>
+                <option>Bunkai (application for defence)</option>
+                <option>Weapons (striking)</option>
+            </Form.Control>
+        </Form.Group>
+        <Form.Group controlId="formBasicSubCategory">
+          <Form.Label>Sub Category</Form.Label>
+          <Form.Control name = "sub_category" type="sub_category" placeholder="Can be blank if none comes to mind." />
+        </Form.Group>
+        <Form.Group controlId="formBasicDifferenceCheck">
+          <Form.Label>Is this different from the UK syllabus?</Form.Label>
+          <Form.Control name = "is_different" type="is_different" as="select" defaultValue="Maybe it's on a different belt or is done differently in the UK" defaultValue="No">
+                <option>No </option>
+                <option>Yes </option>
+            </Form.Control>        
+        </Form.Group>
+        <Form.Group controlId="formBasicDifferenceContent">
+          <Form.Label>If yes, describe the differences here</Form.Label>
+          <Form.Control name = "difference_content" type="difference_content" placeholder="E.g. transitions aren't present for the UK syllabus"/>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     );
 }
 
-export default NewTenchiqueForm;
+export default NewTechniqueForm;

@@ -23,7 +23,7 @@ return (
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>
       {/* <Nav.Link href="/posts">Blog</Nav.Link> */}
-      <Nav.Link href="/whatisjtsu">What Is Jiu Jitsu?</Nav.Link>
+      <Nav.Link href="/whatisjitsu">What Is Jiu Jitsu?</Nav.Link>
       <Nav.Link href="/profiles">Who Are We?</Nav.Link>
       {currentUser ? (
         <>

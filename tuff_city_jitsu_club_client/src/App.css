@@ -45,3 +45,7 @@
 
   /* Make a collapsible navbar for small page widths */
 }
+
+.whiteText {
+  color: white !important;
+}

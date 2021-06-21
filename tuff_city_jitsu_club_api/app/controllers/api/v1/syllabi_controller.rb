@@ -5,10 +5,11 @@ class Api::V1::SyllabusController < Api::ApplicationController
     rescue_from(ActiveRecord:: RecordNotFound, with: :record_not_found)
     rescue_from(ActiveRecord:: RecordInvalid, with: :record_invalid)
 
-    # Need to carefully consider how Rails handles the word "syllabus" and it's plural
+    # Note- have instructed the initializer "inflection" file about the proper plural form of syllabus
+
     def index
-        syllabi = Syllabus.order(created_at: :desc)
-        render(json: syllabi, each_serializer: SyllabusCollectionSerializer) # Find out what should be in this serializer
+        syllabi = Syllabus.order(belt_id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
+        render(json: syllabi, each_serializer: SyllabusSerializer) # Find out what should be in this serializer
     end
 
     def create

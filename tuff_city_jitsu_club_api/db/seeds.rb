@@ -51,18 +51,13 @@ instructor_user = User.create(
     # training_bubble_id: "Seumas Finlayson" # The other instructor, a brown belt new to the region
 )
 
-# Belt.create({colour:"brown"})
-# Belt.create({colour:"purple"})
-
-
-
 kyu_grade_array = ["brown", "dark blue", "light blue", "purple", "green", "orange", "yellow", "white"] # These are the "kyu" grades, the coloured belts below black
 # This reverse order list means that brown will have a belt_id of 1 which matches how it is denoted as 1st Kyu, and so on going down the ladder.
 dan_grade_array = ["shodan", "nidan", "sandan"] # These latter three grades are not colours, but types of black belt or "dan" grade
 # As there are no dan/black belt grades in the club yet, we will just include that array for later when we do have them
 
 kyu_grade_array.size.times do |x|
-    Belt.create({
+    Belt.create!({
         colour:kyu_grade_array[x]
     })
 end

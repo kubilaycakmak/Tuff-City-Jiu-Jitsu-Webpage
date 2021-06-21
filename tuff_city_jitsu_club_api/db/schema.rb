@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_013824) do
+ActiveRecord::Schema.define(version: 2021_06_20_235539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,16 +53,31 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
   end
 
   create_table "syllabi", force: :cascade do |t|
-    t.string "technique"
-    t.string "technique_type"
-    t.boolean "is_different"
-    t.string "difference_content"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "technique_type_id", null: false
+    t.bigint "belt_id", null: false
+    t.index ["belt_id"], name: "index_syllabi_on_belt_id"
+    t.index ["technique_type_id"], name: "index_syllabi_on_technique_type_id"
+  end
+
+  create_table "technique_types", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "techniques", force: :cascade do |t|
-    t.string "description"
+    t.string "summary"
+    t.bigint "videos_id", null: false
+    t.boolean "is_different"
+    t.string "difference_content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "technique_type_id", null: false
+    t.index ["technique_type_id"], name: "index_techniques_on_technique_type_id"
+    t.index ["videos_id"], name: "index_techniques_on_videos_id"
   end
 
   create_table "training_bubbles", force: :cascade do |t|
@@ -70,10 +85,6 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_training_bubbles_on_user_id"
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,11 +105,9 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
 
   create_table "videos", force: :cascade do |t|
     t.string "canadian_version"
-    t.bigint "syllabi_id", null: false
     t.string "uk_version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["syllabi_id"], name: "index_videos_on_syllabi_id"
   end
 
   add_foreign_key "belt_grades", "belts"
@@ -108,6 +117,9 @@ ActiveRecord::Schema.define(version: 2021_06_18_013824) do
   add_foreign_key "instructor_qualifications", "qualifications"
   add_foreign_key "instructor_qualifications", "users"
   add_foreign_key "qualifications", "belts"
+  add_foreign_key "syllabi", "belts"
+  add_foreign_key "syllabi", "technique_types"
+  add_foreign_key "techniques", "technique_types"
+  add_foreign_key "techniques", "videos", column: "videos_id"
   add_foreign_key "training_bubbles", "users"
-  add_foreign_key "videos", "syllabi", column: "syllabi_id"
 end

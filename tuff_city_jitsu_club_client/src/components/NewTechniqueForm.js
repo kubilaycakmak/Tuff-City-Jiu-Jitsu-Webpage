@@ -16,6 +16,8 @@ function NewTenchiqueForm(props) {
         currentTarget.reset();
     }
     return (
+
+        
         <form className="ui form" onSubmit={handleSubmit}>
             <div className="field">
                 <label>Title *</label>

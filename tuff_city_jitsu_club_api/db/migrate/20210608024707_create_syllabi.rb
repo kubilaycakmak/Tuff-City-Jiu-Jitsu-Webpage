@@ -1,11 +1,7 @@
 class CreateSyllabi < ActiveRecord::Migration[6.1]
   def change
     create_table :syllabi do |t|
-      t.string :technique
-      t.string :technique_type
-      t.boolean :is_different
-      t.string :difference_content
-
+      t.string :country
 
       t.timestamps
     end

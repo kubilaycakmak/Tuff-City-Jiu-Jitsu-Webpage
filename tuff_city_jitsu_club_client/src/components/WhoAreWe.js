@@ -1,37 +1,72 @@
 import React from "react";
+import Card from "react-bootstrap/Card"
+import CardGroup from "react-bootstrap/Card"
+import club_pic_sans_seumas_selina_in_gi from '../img/club_pic_sans_seumas_selina_in_gi.jpg'
+import seumas_casual from '../img/seumas_casual.jpg'
+import seumas_training from '../img/seumas_training.jpg'
 
-<h1>Who Are We?</h1>
+export class WhoAreWe extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
+  
+    render() {
+      return (
+        <Card style={{backgroundColor: "gray", color: "white"}}>
+          <Card.Header id="capitalised-header" style={{textTransform: 'uppercase'}}>Who Are We?</Card.Header>
+          <br />
+          <img src={club_pic_sans_seumas_selina_in_gi} alt="clubpic"></img>
 
-<img src={require('../img/club_pic(sans_seumas).jpg')} />
+          <Card.Text style={{paddingLeft: 15, paddingRight: 15, fontSize: 14}} >
+          <br />
+<br />
+            We are the world's westernmost Shorinji Kan Jiu Jitsu club!
+            Our instructors hail from the United Kingdom but have come to
+            British Columbia to share their passion for jiu jitsu's ability
+            to empower self defence within the district of Tofino. They are
+            co-equals and both bring their individual experiences and
+            skillsets to the table as leaders. We already have a handful of
+            earnest beginners and can't wait to help drive them forward in
+            their journey towards better and better belts. We warmly welcome
+            more of the community to join the club and become confident not
+            just in violent situations but more broadly in life, too. The
+            COVID-19 pandemic has unfortunately limited what we can do in
+            training for the time being, but as we reopen we hope to reach
+            a point where masks will no longer be necessary and where we may
+            gather closely together to throw each other around and perform
+            some cool locks, ground fighting bouts or whatever takes our
+            fancy! Outside of the dojo, we are also looking forward to having
+            some fun recreational and social activities to help underline our
+            place as a vital component of the local community with the virus
+            becoming a distant memory.
+            </Card.Text>
 
-<p>We are the world's westernmost Shorinji Kan Jiu Jitsu club!
-Our instructors hail from the United Kingdom but have come to
-British Columbia to share their passion for jiu jitsu's ability
-to empower self defence within the district of Tofino. They are
-co-equals and both bring their individual experiences and
-skillsets to the table as leaders. We already have a handful of
-earnest beginners and can't wait to help drive them forward in
-their journey towards better and better belts. We warmly welcome
-more of the community to join the club and become confident not
-just in violent situations but more broadly in life, too. The
-COVID-19 pandemic has unfortunately limited what we can do in
-training for the time being, but as we reopen we hope to reach
-a point where masks will no longer be necessary and where we may
-gather closely together to throw each other around and perform
-some cool locks, ground fighting bouts or whatever takes our
-fancy! Outside of the dojo, we are also looking forward to having
-some fun recreational and social activities to help underline our
-place as a vital component of the local community with the virus
-becoming a distant memory.
-</p>
+              <Card.Header id="capitalised-header" style={{backgroundColor: "gray", textTransform: 'uppercase'}}>Seumas Finlayson Sempai</Card.Header>
 
-<h1>Seumas Finlayson</h1>
+            <CardGroup style={{display: 'flex', flexDirection: 'row'}}>
+                
+  <Card style={{backgroundColor: "gray", flex: 1}}>
+    <Card.Body>
+    <img src={seumas_training} alt="seumastraining" className="photo"></img>
 
-<img src={require('../img/seumas_training.jpg')} />
-<img src={require('../img/seumas_casual.jpg')} />
+    </Card.Body>
 
+  </Card>
 
-<p>Seumas started training under Bruce Davies, Colin Armstrong
+  <Card style={{backgroundColor: "gray", flex: 1}}>
+    <Card.Body>
+    <img src={seumas_casual} alt="seumascasual" className="photo"></img>
+
+    </Card.Body>
+
+  </Card>
+</CardGroup>
+<Card.Text style={{paddingLeft: 15, paddingRight: 15, fontSize: 14}} >
+
+<br />
+<br />
+Seumas started training under Bruce Davies, Colin Armstrong
 and Ian Lambert in Edinburgh, Scotland. He was drawn to the art
 by it's dramatic depiction in films and video games, and was
 interested in learning an effective martial art when he came to
@@ -52,7 +87,8 @@ competitive environment. Always drawn to Canada, he connected
 with David and resolved to come to work in Tofino and help run
 the club. He managed this at the end of September 2020 despite
 COVID's best efforts!
-
+<br />
+<br />
 Even with only one training session in the books before another
 wave of the virus had the district's sports shut down again, he
 was happy to be part of the scene and eager to help develop the 
@@ -68,6 +104,15 @@ event, he has been present for it in Edinburgh, then in
 Collingwood, Ontario, Canada, and most recently in Drakensberg,
 South Africa. It's one of his earnest wishes that he'll be able
 to attend the next event in Vienna, Austria, with the virus
-hopefully more or less eradicated by then.</p>
+hopefully more or less eradicated by then.
+<br />
+<br />
+</Card.Text>
+            
+        </Card>
 
-export default WhoAreWe;
+
+
+        );
+    }
+}

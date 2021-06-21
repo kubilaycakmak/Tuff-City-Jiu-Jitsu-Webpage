@@ -16,7 +16,7 @@ import SyllabusNewPage from "./SyllabusNewPage";
 import SyllabusShowPage from "./SyllabusShowPage";
 import { WhatIsJiuJitsu } from "./WhatIsJiuJitsu";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import WhoAreWe from "./WhoAreWe";
+import { WhoAreWe } from "./WhoAreWe";
 
 
 class App extends React.Component {
@@ -69,7 +69,7 @@ class App extends React.Component {
 
 <Route path="/whatisjitsu" exact component={WhatIsJiuJitsu} />
 
-{/* <Route path="/profiles" exact component={WhoAreWe} /> */}
+<Route path="/profiles" exact component={WhoAreWe} />
 
 {/* Ensure that without signing up, users can't even see the link to syllabus  */}
                             <AuthRoute

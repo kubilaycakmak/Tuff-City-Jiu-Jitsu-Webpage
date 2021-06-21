@@ -130,8 +130,12 @@ export class WhatIsJiuJitsu extends React.Component {
         <div class="col-md-8">
   <Card style={{backgroundColor: "gray", color: "white", paddingLeft: 0}}>
     <Card.Body >
+    <br />
+    <br />
     <Card.Header id="capitalised-header" style={{textTransform: 'uppercase', paddingLeft: 0}}>Belt System</Card.Header>
     <Card.Text  style={{paddingLeft: 0, paddingRight: 0, fontSize: 14}}>
+    <br />
+    <br />
     Advancement in jiu jitsu is recognised by a series of ranks. The student ranks are called "kyu" (meaning grade) and are differentiated by coloured belts. The ten black belt ranks
     are called "dan" (meaning degree or step).
     <br />
@@ -309,7 +313,10 @@ export class WhatIsJiuJitsu extends React.Component {
   </tbody>
 </Table>
     </Card.Body>
-</Card>
+</Card> 
+    <Card.Text style={{paddingLeft: 90, fontSize: 14}} >
+        Reproduced With Permission. All Contents Copyright © Jitsu Canada 1999-2018 
+    </Card.Text>
         </Card>
 
 

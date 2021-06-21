@@ -49,3 +49,11 @@
 .whiteText {
   color: white !important;
 }
+
+.photo {
+  height: 35vh;
+  width: 35vh;
+  display:flex;
+  justify-content: center;
+
+}

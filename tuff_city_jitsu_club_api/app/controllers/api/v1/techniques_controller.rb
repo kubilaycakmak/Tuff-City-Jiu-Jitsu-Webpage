@@ -7,7 +7,7 @@ class Api::V1::TechniquesController < Api::ApplicationController
 
 
     def index
-        techniques = Technique.order(belt_id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
+        techniques = Technique.order(created_at: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
         render(json: techniques, each_serializer: TechniqueSerializer) # Find out what should be in this serializer
     end
 
@@ -27,7 +27,8 @@ class Api::V1::TechniquesController < Api::ApplicationController
         technique_type_id = type_of_technique.id
         puts "The technique type ID is ", technique_type_id
         puts "This is the summary", params["technique"]["summary"]
-        technique = Technique.new summary:params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id:technique_type_id, belt_id:1
+        puts "This is the belt", params["belt_id"]
+        technique = Technique.new summary:params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id:technique_type_id, belt_id:params["belt_id"]
         technique.save!
         render json: { id: new_syllabus.id }
     end
@@ -35,9 +36,8 @@ class Api::V1::TechniquesController < Api::ApplicationController
     def show
         if @technique
         render(
-            json: @technique,
-            include: [ :author, {bids: [ :author]} ] # replace with techniques and technique types
-        )
+            json: @technique
+                )
         else
             render(json: {error: "Technique Not Found"})
         end

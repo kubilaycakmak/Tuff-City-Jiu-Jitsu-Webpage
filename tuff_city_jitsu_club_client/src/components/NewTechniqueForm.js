@@ -11,6 +11,7 @@ function NewTechniqueForm(props) {
 
         props.onSubmit({
             syllabus: formData.get("country").toLowerCase(),
+            belt: formData.get("belt"),
             summary: formData.get("summary"),
             category: formData.get("category"),
             sub_category: formData.get("sub_category"),
@@ -19,7 +20,11 @@ function NewTechniqueForm(props) {
             difference_content: formData.get("difference_content")
         });
 
+        
+
         currentTarget.reset();
+        
+        
     }
     return (
         <Form onSubmit={handleSubmit}>
@@ -32,6 +37,19 @@ function NewTechniqueForm(props) {
         <Form.Group controlId="formBasicSummary">
           <Form.Label>Name of the technique</Form.Label>
           <Form.Control name="summary" type="summary" placeholder="E.g. O-goshi"  required={true}/>
+        </Form.Group>
+        {/* Note: italicise options */}
+        <Form.Group controlId="formBasicGrade">
+            <Form.Label>Grade</Form.Label>
+            <Form.Control className="color-belt" name = "belt" type="belt" as="select" defaultValue="Yellow">
+                <option style={{backgroundColor:"yellow", color:"black"}}>Yellow </option>
+                <option style={{backgroundColor:"orange"}}>Orange</option>
+                <option style={{backgroundColor:"green"}}>Green</option>
+                <option style={{backgroundColor:"purple"}}>Purple</option>
+                <option style={{backgroundColor:"#add8e6", color:"black"}}>Light Blue</option>
+                <option style={{backgroundColor:"#00008b"}}>Dark Blue</option>
+                <option style={{backgroundColor:"#b5651d"}}>Brown</option>
+            </Form.Control>
         </Form.Group>
         {/* Note: italicise options */}
         <Form.Group controlId="formBasicCategory">
@@ -48,6 +66,7 @@ function NewTechniqueForm(props) {
                 <option>Kaeshi-waza (counter techniques)</option>
                 <option>Bunkai (application for defence)</option>
                 <option>Weapons (striking)</option>
+                <option>Miscellaneous</option>
             </Form.Control>
         </Form.Group>
         <Form.Group controlId="formBasicSubCategory">

@@ -57,3 +57,7 @@
   justify-content: center;
 
 }
+
+.color-belt:hover {
+  background-color:white !important;
+}

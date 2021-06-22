@@ -65,6 +65,21 @@ const BASE_URL = `http://localhost:3000/api/v1`;
 //     }
 // }
 
+export const Technique = {
+  create(params) {
+            // Params is an object that represents an auction
+        return fetch(`${BASE_URL}/techniques`, {
+            method: 'POST',
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(params)
+        }).then(res => res.json());
+
+  }
+}
+
 export const Session = {
     // Create a session
     create(params) {

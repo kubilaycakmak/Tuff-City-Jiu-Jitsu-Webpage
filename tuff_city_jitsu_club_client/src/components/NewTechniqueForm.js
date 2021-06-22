@@ -10,21 +10,28 @@ function NewTechniqueForm(props) {
         const formData = new FormData(currentTarget);
 
         props.onSubmit({
+            syllabus: formData.get("country").toLowerCase(),
             summary: formData.get("summary"),
             category: formData.get("category"),
             sub_category: formData.get("sub_category"),
             // videos: formData.get("videos"), This is an ID so need a different way to share e.g. YouTube URLs?
-            is_different: formData.get("is_different"),
+            is_different: formData.get("is_different") ==="No"?false:true,
             difference_content: formData.get("difference_content")
         });
+
         currentTarget.reset();
     }
     return (
         <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicSyllabus">
+        <Form.Control name = "country" type="country" as="select" defaultValue="Canada">
+        <option id={1}>Canada </option> 
+        </Form.Control>
+        </Form.Group>
         <Form.Label id="top-label">Input new technique</Form.Label>
         <Form.Group controlId="formBasicSummary">
           <Form.Label>Name of the technique</Form.Label>
-          <Form.Control name="summary" type="summary" placeholder="E.g. O-goshi"  required="true"/>
+          <Form.Control name="summary" type="summary" placeholder="E.g. O-goshi"  required={true}/>
         </Form.Group>
         {/* Note: italicise options */}
         <Form.Group controlId="formBasicCategory">

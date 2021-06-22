@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :belt_grade
       resources :instructorqualifications
-      resources :syllabus
+      resources :syllabi
+      resources :techniques
       resources :profiles
       resources :whatisjitsu
 

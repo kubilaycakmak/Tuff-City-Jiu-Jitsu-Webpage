@@ -1,9 +1,10 @@
 import React from "react";
-import new_students from '../img/new_students.jpg'
-import Card from "react-bootstrap/Card"
-import CardGroup from "react-bootstrap/CardGroup"
-import Table from "react-bootstrap/Table"
-
+import new_students from '../img/new_students.jpg';
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
+import Table from "react-bootstrap/Table";
+import * as Scroll from 'react-scroll';
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 
 export class WhatIsJiuJitsu extends React.Component {
@@ -12,19 +13,21 @@ export class WhatIsJiuJitsu extends React.Component {
       this.state = {};
     }
   
+    
     render() {
       return (
+          <>
           <Card style={{backgroundColor: "gray", color: "white"}}>
             <img src={new_students} alt="newstudents"></img>
               <Card.Header id="capitalised-header" style={{textTransform: 'uppercase'}}>Beginner's Information for New Students</Card.Header>
               <br />
-              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14, paddingLeft: 20}}>Equipment Requirements</Card.Link>
-              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}}>What to Expect When Training</Card.Link>
-              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}}>Dojo Etiquette</Card.Link>
-              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}}>Belt System</Card.Link>
-              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}}>Terminology</Card.Link>
+              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14, paddingLeft: 20}} activeClass="active" to="equipment" spy={true} smooth={true}>Equipment Requirements</Card.Link>
+              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}}  to="expect" spy={true} smooth={true}>What to Expect When Training</Card.Link>
+              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}} to="etiquette" spy={true} smooth={true}>Dojo Etiquette</Card.Link>
+              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}} to="belts" spy={true} smooth={true}>Belt System</Card.Link>
+              <Card.Link href="#" style={{textDecorationLine: 'underline', color: 'red', fontSize: 14}} to="terminology" spy={true} smooth={true}>Terminology</Card.Link>
               <br />
-
+              <div id="home" style={{height: 500}}>
             <Card.Header id="capitalised-header" style={{textTransform: 'uppercase'}}>Equipment Requirements</Card.Header>
             <br />
 
@@ -37,7 +40,7 @@ export class WhatIsJiuJitsu extends React.Component {
 
 
             As you progress in your Jiu Jitsu training, you may wish to purchase other equipment. You can discuss these options with your instructor.</Card.Text>
-
+            </div>
             <Card.Header id="capitalised-header" style={{textTransform: 'uppercase'}}>What To Expect When Training</Card.Header>
             <br />
 
@@ -320,7 +323,7 @@ export class WhatIsJiuJitsu extends React.Component {
         </Card>
 
 
-
+</>
 
         
       );

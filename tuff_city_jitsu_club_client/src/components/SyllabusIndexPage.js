@@ -1,0 +1,1 @@
+// Fetch all syllabus data and render here, not on the show page(s)

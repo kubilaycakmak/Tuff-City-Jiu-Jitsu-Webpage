@@ -12,7 +12,7 @@ import { User, Session } from "../requests";
 import { Welcome } from "./Welcome";
 import SyllabusIndexPage from "./SyllabusIndexPage";
 import SyllabusMindmapPage from "./SyllabusMindmapPage";
-import SyllabusNewPage from "./SyllabusNewPage";
+import TechniqueNewPage from "./TechniqueNewPage";
 import SyllabusShowPage from "./SyllabusShowPage";
 import { WhatIsJiuJitsu } from "./WhatIsJiuJitsu";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -92,8 +92,8 @@ class App extends React.Component {
 {/* Ensure that only admin, and no other users, can see and do actions on this page  */}
                             <AuthRoute
                             isAuthenticated={currentUser}
-                            path="/syllabus/new"
-                            component={SyllabusNewPage}
+                            path="/technique/new"
+                            component={TechniqueNewPage}
                             />
                             {/*
                             <Route

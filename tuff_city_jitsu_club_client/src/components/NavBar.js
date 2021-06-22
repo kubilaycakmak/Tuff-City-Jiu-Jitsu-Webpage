@@ -28,7 +28,7 @@ return (
       {currentUser ? (
         <>
       <Nav.Link href="/syllabus">Syllabus</Nav.Link>
-      <Nav.Link href="/syllabus/new">Add Techniques To Syllabus</Nav.Link>
+      <Nav.Link href="/technique/new">Add Techniques To Syllabus</Nav.Link>
       <Nav.Link href="/syllabus/mindmap">Mindmap For Syllabus</Nav.Link>
       {/* <Nav.Link href="/events">Events</Nav.Link> */}
       <Nav.Link href="/" onClick={onSignOut}>Sign Out</Nav.Link>

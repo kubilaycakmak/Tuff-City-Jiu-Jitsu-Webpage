@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_235539) do
+ActiveRecord::Schema.define(version: 2021_06_22_024605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 2021_06_20_235539) do
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "technique_type_id", null: false
     t.bigint "belt_id", null: false
+    t.bigint "user_id", null: false
     t.index ["belt_id"], name: "index_syllabi_on_belt_id"
-    t.index ["technique_type_id"], name: "index_syllabi_on_technique_type_id"
+    t.index ["user_id"], name: "index_syllabi_on_user_id"
   end
 
   create_table "technique_types", force: :cascade do |t|
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_235539) do
     t.string "sub_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "syllabus_id", null: false
+    t.index ["syllabus_id"], name: "index_technique_types_on_syllabus_id"
   end
 
   create_table "techniques", force: :cascade do |t|
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_235539) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "technique_type_id", null: false
+    t.bigint "belt_id", null: false
+    t.index ["belt_id"], name: "index_techniques_on_belt_id"
     t.index ["technique_type_id"], name: "index_techniques_on_technique_type_id"
     t.index ["videos_id"], name: "index_techniques_on_videos_id"
   end
@@ -119,7 +123,9 @@ ActiveRecord::Schema.define(version: 2021_06_20_235539) do
   add_foreign_key "instructor_qualifications", "users"
   add_foreign_key "qualifications", "belts"
   add_foreign_key "syllabi", "belts"
-  add_foreign_key "syllabi", "technique_types"
+  add_foreign_key "syllabi", "users"
+  add_foreign_key "technique_types", "syllabi"
+  add_foreign_key "techniques", "belts"
   add_foreign_key "techniques", "technique_types"
   add_foreign_key "techniques", "videos", column: "videos_id"
   add_foreign_key "training_bubbles", "users"

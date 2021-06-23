@@ -2,6 +2,8 @@ import React from "react";
 import FormErrors from "./FormErrors"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
+import "../App.css";
+
 
 function NewTechniqueForm(props) {
     function handleSubmit(event) {
@@ -42,13 +44,13 @@ function NewTechniqueForm(props) {
         <Form.Group controlId="formBasicGrade">
             <Form.Label>Grade</Form.Label>
             <Form.Control className="color-belt" name = "belt" type="belt" as="select" defaultValue="Yellow">
-                <option style={{backgroundColor:"yellow", color:"black"}}>Yellow </option>
-                <option style={{backgroundColor:"orange"}}>Orange</option>
-                <option style={{backgroundColor:"green"}}>Green</option>
-                <option style={{backgroundColor:"purple"}}>Purple</option>
-                <option style={{backgroundColor:"#add8e6", color:"black"}}>Light Blue</option>
-                <option style={{backgroundColor:"#00008b"}}>Dark Blue</option>
-                <option style={{backgroundColor:"#b5651d"}}>Brown</option>
+                <option className="gradecoloroption" style={{backgroundColor:"yellow"}}>Yellow </option>
+                <option className="gradecoloroption" style={{backgroundColor:"orange"}} >Orange</option>
+                <option className="gradecoloroption" style={{backgroundColor:"green"}}>Green</option>
+                <option className="gradecoloroption" style={{backgroundColor:"purple"}}>Purple</option>
+                <option className="gradecoloroption" style={{backgroundColor:"#add8e6", color:"black"}}>Light Blue</option>
+                <option className="gradecoloroption" style={{backgroundColor:"#00008b"}}>Dark Blue</option>
+                <option className="gradecoloroption" style={{backgroundColor:"#b5651d"}}>Brown</option>
             </Form.Control>
         </Form.Group>
         {/* Note: italicise options */}

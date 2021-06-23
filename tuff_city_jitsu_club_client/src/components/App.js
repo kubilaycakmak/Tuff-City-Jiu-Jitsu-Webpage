@@ -10,10 +10,10 @@ import SignInPage from "./SignInPage";
 import { SignUpPage } from "./SignUpPage";
 import { User, Session } from "../requests";
 import { Welcome } from "./Welcome";
-import SyllabusIndexPage from "./SyllabusIndexPage";
+import { SyllabusIndexPage } from "./SyllabusIndexPage";
 import SyllabusMindmapPage from "./SyllabusMindmapPage";
 import TechniqueNewPage from "./TechniqueNewPage";
-import SyllabusShowPage from "./SyllabusShowPage";
+// import SyllabusShowPage from "./SyllabusShowPage";
 import { WhatIsJiuJitsu } from "./WhatIsJiuJitsu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { WhoAreWe } from "./WhoAreWe";
@@ -82,12 +82,12 @@ class App extends React.Component {
                             path="/syllabus/mindmap"
                             component={SyllabusMindmapPage} 
                             />
-                            <AuthRoute
+                            {/* <AuthRoute
                             isAuthenticated={currentUser}
                             path="/syllabus/:id"
                             render={routeProps => (
                             <SyllabusShowPage {...routeProps} currentUser={currentUser} />
-                            )}
+                            )} */}
                             />
 {/* Ensure that only admin, and no other users, can see and do actions on this page  */}
                             <AuthRoute

@@ -66,6 +66,15 @@ const BASE_URL = `http://localhost:3000/api/v1`;
 // }
 
 export const Technique = {
+
+  // Fetch all techniques from the server
+  all() {
+    return fetch(`${BASE_URL}/techniques`, {
+      credentials: "include"
+    }).then(res => res.json());
+  },
+
+  // Create a technique
   create(params) {
             // Params is an object that represents an auction
         return fetch(`${BASE_URL}/techniques`, {
@@ -104,7 +113,6 @@ export const Technique = {
         }).then(res => res.json());
     },
 
-  }
 }
 
 

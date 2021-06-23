@@ -1,7 +1,5 @@
 // Fetch all syllabus data and render here, not on the show page(s)
 
-
-
 import React from "react";
 
 import { Technique } from '../requests';
@@ -22,6 +20,7 @@ export class SyllabusIndexPage extends React.Component {
 
     componentDidMount() {
         Technique.all().then(techniques => {
+            console.log(techniques)
           this.setState({
             techniques: techniques,
             isLoading: false
@@ -39,6 +38,8 @@ export class SyllabusIndexPage extends React.Component {
     }
 
     render() {
+        const currentUser = this.props.currentUser;
+
         const { showAll = false} = this.props;
         const filteredTechnique = this.state.techniques.filter((q, index) => {
             if (showAll || index < 40) {
@@ -61,16 +62,26 @@ export class SyllabusIndexPage extends React.Component {
                         }}
                         >
                         {filteredTechnique.map(technique => (
-                            <li className="ui segment" key={technique.id}>
-                            /* Or is the next one /technique/${technique.id}?*/
-                            <Link to={`/syllabus/${technique.id}`} className="item" href="">
+                            // <li className="ui segment" key={technique.id}>
+                            {/* <Link to={`/syllabus/${technique.id}`} className="item" href="">
                                 {technique.title}
-                            </Link>
+                            </Link> */}
+                            {technique.summary}
+                            <br />
+                            {technique.videos_id}
+                            {is_different ? (
+                             <>
+                             <br />
+                             {technique.difference_content}
+                             </>
+                            ) : (
+
                             <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
-                            </li>
-                        ))}
+                        )))}
                     </div>
             </main>
         );
     }
 }
+
+/* Or is it the next one /technique/${technique.id}?*/

@@ -9,7 +9,7 @@ class Api::V1::SyllabiController < Api::ApplicationController
 
     def index
         syllabi = Syllabus.order(belt_id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
-        render(json: syllabi, each_serializer: SyllabusSerializer) # Find out what should be in this serializer
+        render(json: syllabi, each_serializer: SyllabusSerializer) 
     end
 
     def create

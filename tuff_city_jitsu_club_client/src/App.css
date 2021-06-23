@@ -58,6 +58,10 @@
 
 }
 
-.color-belt:hover {
+.gradecoloroption:hover, .gradecoloroption:focus {
   background-color:white !important;
 }
+
+/* .gradecoloroption {
+  font-size: 20px;
+} */

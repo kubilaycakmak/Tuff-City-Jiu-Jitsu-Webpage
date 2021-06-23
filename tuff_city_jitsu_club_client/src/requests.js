@@ -76,9 +76,38 @@ export const Technique = {
             },
             body: JSON.stringify(params)
         }).then(res => res.json());
+  },
+    // Fetch a single technique
+    one(id) {
+        return fetch(`${BASE_URL}/techniques/${id}`, {
+            credentials: "include"
+        }).then(res => res.json());
+    },
+
+    // Update a technique
+    update(id, params) {
+        return fetch(`${BASE_URL}/techniques/${id}`, {
+            method: 'PATCH',
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(params)
+        }).then(res => res.json());
+    },
+
+    // Destroy a technique
+    destroy(id) {
+        return fetch(`${BASE_URL}/techniques/${id}`, {
+            method: 'DELETE',
+            credentials: "include"
+        }).then(res => res.json());
+    },
 
   }
 }
+
+
 
 export const Session = {
     // Create a session

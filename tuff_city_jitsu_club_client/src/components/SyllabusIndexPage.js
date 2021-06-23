@@ -4,35 +4,35 @@
 
 import React from "react";
 
-import { Auction } from '../requests';
+import { Technique } from '../requests';
 import { Link } from 'react-router-dom';
 import moment from "moment";
 import "../App.css";
 
 
-export class AuctionIndexPage extends React.Component {
+export class SyllabusIndexPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        // Populate the list of auctions through fetching them from the server and allow the page to load
-        auctions: [],
+        // Populate the list of techniques through fetching them from the server and allow the page to load
+        techniques: [],
         isLoading: true
       };
     }
 
     componentDidMount() {
-        Auction.all().then(auctions => {
+        Technique.all().then(techniques => {
           this.setState({
-            auctions: auctions,
+            techniques: techniques,
             isLoading: false
           });
         });
       }
     
-    deleteAuction(id) {
-        Auction.destroy(id).then(() => {
+    deleteTechnique(id) {
+        Technique.destroy(id).then(() => {
             this.setState({
-            auctions: this.state.auctions.filter(q => q.id !== id)
+            techniques: this.state.techniques.filter(q => q.id !== id)
             });
         });
 
@@ -40,17 +40,17 @@ export class AuctionIndexPage extends React.Component {
 
     render() {
         const { showAll = false} = this.props;
-        const filteredAuction = this.state.auctions.filter((q, index) => {
+        const filteredTechnique = this.state.techniques.filter((q, index) => {
             if (showAll || index < 40) {
                 return true;
             }
             return false;
         });
         return (
-            <main className="AuctionIndexPage">
+            <main className="SyllabusIndexPage">
                 <br />
                 <div className="central">
-                <h2>AUCTIONS</h2>
+                <h2>SYLLABUS</h2>
                 </div>
                 <br />
                     <div
@@ -60,12 +60,13 @@ export class AuctionIndexPage extends React.Component {
                             paddingLeft: 0
                         }}
                         >
-                        {filteredAuction.map(auction => (
-                            <li className="ui segment" key={auction.id}>
-                            <Link to={`/auctions/${auction.id}`} className="item" href="">
-                                {auction.title}
+                        {filteredTechnique.map(technique => (
+                            <li className="ui segment" key={technique.id}>
+                            /* Or is the next one /technique/${technique.id}?*/
+                            <Link to={`/syllabus/${technique.id}`} className="item" href="">
+                                {technique.title}
                             </Link>
-                            <p>Posted on {moment(auction.created_at ).format("MMM Do, YYYY")}</p>
+                            <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
                             </li>
                         ))}
                     </div>

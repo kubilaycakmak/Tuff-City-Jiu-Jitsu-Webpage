@@ -10,6 +10,7 @@ class Api::V1::SyllabiController < Api::ApplicationController
     def index
         syllabi = Syllabus.order(belt_id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
         render(json: syllabi, each_serializer: SyllabusSerializer) 
+        # Now do we need a belt/technique_type controller to account for their serializers, or can we simply call their serializers in this controller?
     end
 
     def create
@@ -22,8 +23,7 @@ class Api::V1::SyllabiController < Api::ApplicationController
     def show
         if @syllabus
         render(
-            json: @syllabus,
-            include: [ :author, {bids: [ :author]} ] # replace with techniques and technique types
+            json: @syllabus
         )
         else
             render(json: {error: "Syllabus Not Found"})

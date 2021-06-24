@@ -17,6 +17,7 @@ import TechniqueNewPage from "./TechniqueNewPage";
 import { WhatIsJiuJitsu } from "./WhatIsJiuJitsu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { WhoAreWe } from "./WhoAreWe";
+// import { AdminPage } from "./AdminPage";
 
 
 class App extends React.Component {
@@ -79,7 +80,7 @@ class App extends React.Component {
                             />
                             <AuthRoute
                             isAuthenticated={currentUser}
-                            path="/syllabus/mindmap"
+                            path="/api/v1/syllabi/:syllabus_id/mindmap"
                             component={SyllabusMindmapPage} 
                             />
                             {/* <AuthRoute

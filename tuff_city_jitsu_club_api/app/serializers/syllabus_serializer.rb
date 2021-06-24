@@ -8,6 +8,38 @@ class SyllabusSerializer < ActiveModel::Serializer
   :techniques
   )
 
+  class Belt < ActiveModel::Serializer
+    attributes(
+      :id, 
+      :colour,
+      :created_at, 
+      :updated_at
+  )
+  end
+
+  class TechniquesSerializer < ActiveModel::Serializer
+    attributes(
+      :id, 
+      :summary,
+      :videos_id,
+      :is_different,
+      :difference_content,
+      :technique_type_id,
+      :created_at, 
+      :updated_at
+  )
+  end
+
+  class TechniqueTypesSerializer < ActiveModel::Serializer
+    attributes(
+      :id, 
+      :category,
+      :sub_category,
+      :created_at, 
+      :updated_at
+  )
+  end
+
   def technique_types
     TechniqueType.where("syllabus_id = " +  object.id.to_s)
   end

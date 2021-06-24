@@ -1,7 +1,7 @@
 import React from "react";
-import FormErrors from "./FormErrors"
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
+import FormErrors from "./FormErrors";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import "../App.css";
 
 
@@ -21,6 +21,8 @@ function NewTechniqueForm(props) {
             is_different: formData.get("is_different") ==="No"?false:true,
             difference_content: formData.get("difference_content")
         });
+
+        console.log(props);
 
         
 
@@ -44,13 +46,13 @@ function NewTechniqueForm(props) {
         <Form.Group controlId="formBasicGrade">
             <Form.Label>Grade</Form.Label>
             <Form.Control className="color-belt" name = "belt" type="belt" as="select" defaultValue="Yellow">
-                <option className="gradecoloroption" style={{backgroundColor:"yellow"}}>Yellow </option>
-                <option className="gradecoloroption" style={{backgroundColor:"orange"}} >Orange</option>
-                <option className="gradecoloroption" style={{backgroundColor:"green"}}>Green</option>
-                <option className="gradecoloroption" style={{backgroundColor:"purple"}}>Purple</option>
-                <option className="gradecoloroption" style={{backgroundColor:"#add8e6", color:"black"}}>Light Blue</option>
-                <option className="gradecoloroption" style={{backgroundColor:"#00008b"}}>Dark Blue</option>
-                <option className="gradecoloroption" style={{backgroundColor:"#b5651d"}}>Brown</option>
+                <option className="gradecoloroption" style={{backgroundColor:"yellow"}} value={7}>Yellow </option>
+                <option className="gradecoloroption" style={{backgroundColor:"orange"}} value={6}>Orange</option>
+                <option className="gradecoloroption" style={{backgroundColor:"green"}} value={5}>Green</option>
+                <option className="gradecoloroption" style={{backgroundColor:"purple"}} value={4}>Purple</option>
+                <option className="gradecoloroption" style={{backgroundColor:"#add8e6", color:"black"}} value={3}>Light Blue</option>
+                <option className="gradecoloroption" style={{backgroundColor:"#00008b"}} value={2}>Dark Blue </option>
+                <option className="gradecoloroption" style={{backgroundColor:"#b5651d"}} value={1}>Brown</option>
             </Form.Control>
         </Form.Group>
         {/* Note: italicise options */}

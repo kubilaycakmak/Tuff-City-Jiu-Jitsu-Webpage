@@ -1,0 +1,1 @@
+// Show an individual technique here, including it's video, and allow for an edit function

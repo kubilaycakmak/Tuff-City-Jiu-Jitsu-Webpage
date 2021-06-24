@@ -11,13 +11,15 @@ class Api::V1::TechniquesController < Api::ApplicationController
         render(json: techniques, each_serializer: TechniquesSerializer) # Find out what should be in this serializer
     end
 
+
+
     def create
         # Get params for technique type and syllabus_id
         # Save technique_type 
         # Create technique with technique_type and the params
         # Use belt and technique_type serializers to help display that info
 
-# {"syllabus"=>"Canada", "summary"=>"O-goshi", "category"=>"Nage-waza (throwing)", "sub_category"=>"Hip throw", "is_different"=>"No", "difference_content"=>"", "format"=>:json, "controller"=>"api/v1/techniques", "action"=>"create", "technique"=>{"summary"=>"O-goshi", "is_different"=>"No", "difference_content"=>""}}
+        # {"syllabus"=>"Canada", "summary"=>"O-goshi", "category"=>"Nage-waza (throwing)", "sub_category"=>"Hip throw", "is_different"=>"No", "difference_content"=>"", "format"=>:json, "controller"=>"api/v1/techniques", "action"=>"create", "technique"=>{"summary"=>"O-goshi", "is_different"=>"No", "difference_content"=>""}}
 
         puts "Here are the params", params
         new_syllabus = Syllabus.find_by(country: params["syllabus"])
@@ -28,8 +30,8 @@ class Api::V1::TechniquesController < Api::ApplicationController
         technique_type_id = type_of_technique.id
         puts "The technique type ID is ", technique_type_id
         puts "This is the summary", params["technique"]["summary"]
-        puts "This is the belt", params["belt_id"]
-        technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id: technique_type_id, belt_id: 1
+        technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i
+        puts "This is the belt", technique.belt_id
         technique.save!
         render json: { id: new_syllabus.id }
     end
@@ -70,7 +72,8 @@ class Api::V1::TechniquesController < Api::ApplicationController
         .permit( # Replace these as appropriate
             :summary,
             :is_different,
-            :difference_content
+            :difference_content,
+            :belt_id
         )
     end
     

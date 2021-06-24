@@ -4,7 +4,7 @@ import "../App.css";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Container } from 'react-bootstrap';
 
 function NavBar(props) {
-    const { currentUser, onSignOut } = props;
+    const { currentUser, adminUser, onSignOut } = props;
 
     const handleSignOutClick = event => {
         event.preventDefault();
@@ -35,7 +35,6 @@ return (
       <Nav.Link className="item" style={{ color: "green" }}>
                         Welcome {currentUser.full_name}
                     </Nav.Link>
-      {/* Need "Welcome Current User" span here */}
       </>
       ) : (
         <React.Fragment>
@@ -43,6 +42,13 @@ return (
         <Nav.Link href="/sign_up">Sign Up</Nav.Link>
         </React.Fragment>
       )}
+      {/* {adminUser ? (
+      <> */}
+      <Nav.Link href="/admin">Admin Page</Nav.Link>
+      {/* </>
+      ) : (
+        <div></div>
+      )} */}
       </Nav>
       </Container>
       </Navbar>

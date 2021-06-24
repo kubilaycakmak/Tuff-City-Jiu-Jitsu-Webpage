@@ -14,6 +14,7 @@ export default class TechniqueNewPage extends Component {
       } else {
         this.props.history.push(`/syllabus`);
       }
+      console.log(params);
     });
   };
 

@@ -107,6 +107,16 @@ to attend the next event in Vienna, Austria, with the virus
 hopefully more or less eradicated by then.
 <br />
 <br />
+One of Seumas' major goals in creating this website was to provide
+an easily searchable syllabus document, not just for students but
+also with a view to allow foreign instructors such as himself to 
+better understand the Canadian version, which is quite similar to
+the UK version but does differ in several key ways with specific
+techniques and ordering through the belt grades. He also hopes that
+students will engage with it and comment on any techniques they like
+or have difficulty with in particular.
+<br />
+<br />
 </Card.Text>
             
         </Card>

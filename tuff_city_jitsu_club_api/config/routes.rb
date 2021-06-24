@@ -5,10 +5,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :belt_grade
       resources :instructorqualifications
-      resources :syllabi
+      resources :syllabi do
+        resources :mindmap
+      end
       resources :techniques
       resources :profiles
       resources :whatisjitsu
+      resources :admin
 
       resource :session, only: [:create, :destroy]
       # -> api/v1/users

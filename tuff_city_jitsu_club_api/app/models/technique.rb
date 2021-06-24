@@ -5,6 +5,9 @@ class Technique < ApplicationRecord
     belongs_to :technique_type
     has_many :videos
     
+
+    validates :summary, uniqueness: true, presence: true 
+
     private
     
     def capitalize_summary

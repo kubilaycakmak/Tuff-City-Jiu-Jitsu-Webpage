@@ -65,6 +65,16 @@ const BASE_URL = `http://localhost:3000/api/v1`;
 //     }
 // }
 
+export const Syllabus = {
+
+  // Fetch all techniques from the server
+  one(id) {
+    return fetch(`${BASE_URL}/syllabi/${id}`, {
+      credentials: "include"
+    }).then(res => res.json());
+  },
+}
+
 export const Technique = {
 
   // Fetch all techniques from the server
@@ -84,7 +94,10 @@ export const Technique = {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(params)
-        }).then(res => res.json());
+
+        }).then(res=>{res.json()}
+
+        );
   },
     // Fetch a single technique
     one(id) {
@@ -112,10 +125,7 @@ export const Technique = {
             credentials: "include"
         }).then(res => res.json());
     },
-
-}
-
-
+  }
 
 export const Session = {
     // Create a session

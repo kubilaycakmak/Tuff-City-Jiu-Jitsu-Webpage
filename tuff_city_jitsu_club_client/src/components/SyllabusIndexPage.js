@@ -1,10 +1,12 @@
 // Fetch all syllabus data and render here, not on the show page(s)
 
-import React from "react";
-
+import React, {useState} from 'react';
 import { Technique } from '../requests';
+import { Syllabus } from '../requests';
 import { Link } from 'react-router-dom';
 import moment from "moment";
+import Button from "react-bootstrap/Button";
+import {confirm} from 'react-bootstrap-confirmation';
 import "../App.css";
 
 
@@ -14,17 +16,24 @@ export class SyllabusIndexPage extends React.Component {
       this.state = {
         // Populate the list of techniques through fetching them from the server and allow the page to load
         techniques: [],
-        isLoading: true
+        isLoading: true,
+        technique_types: []
       };
     }
 
     componentDidMount() {
         Technique.all().then(techniques => {
-            console.log(techniques)
+            // console.log(techniques)
           this.setState({
             techniques: techniques,
-            isLoading: false
           });
+        });
+
+        Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
+            this.setState({
+            technique_types: syllabus.technique_types,
+            isLoading: false
+            });
         });
       }
     
@@ -37,16 +46,15 @@ export class SyllabusIndexPage extends React.Component {
 
     }
 
+
     render() {
         const currentUser = this.props.currentUser;
-
         const { showAll = false} = this.props;
-        const filteredTechnique = this.state.techniques.filter((q, index) => {
-            if (showAll || index < 40) {
-                return true;
-            }
-            return false;
-        });
+        
+        this.state.techniques.forEach(t => console.log(t))
+
+        const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 40);
+
         return (
             <main className="SyllabusIndexPage">
                 <br />
@@ -61,15 +69,28 @@ export class SyllabusIndexPage extends React.Component {
                             paddingLeft: 0
                         }}
                         >
-                        {filteredTechnique.map(technique => (
-                            // <li className="ui segment" key={technique.id}>
+                        {filteredTechnique.map(technique => {
+                            <li className="ui segment" key={technique.id}></li>
+                            return(
+                                <>
                             {/* <Link to={`/syllabus/${technique.id}`} className="item" href="">
                                 {technique.title}
                             </Link> */}
+
+                            {this.state.technique_types.map(type => {
+                                return(
+                                    <>
+                                    {type.category}
+                                    {type.sub_category}
+                                    </>
+                                )
+                            })}
+                                                        <br />
                             {technique.summary}
                             <br />
+
                             {technique.videos_id}
-                            {is_different ? (
+                            {technique.is_different ? (
                              <>
                              <br />
                              {technique.difference_content}
@@ -77,7 +98,14 @@ export class SyllabusIndexPage extends React.Component {
                             ) : (
 
                             <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
-                        )))}
+                            )}
+                                 <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(technique.id)}>
+                                    Delete
+                                  </Button>
+                            </>
+
+                            )})}
+                            
                     </div>
             </main>
         );
@@ -85,3 +113,5 @@ export class SyllabusIndexPage extends React.Component {
 }
 
 /* Or is it the next one /technique/${technique.id}?*/
+
+// First fix this page and then adapt it to React Bootstrap

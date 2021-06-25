@@ -4,6 +4,10 @@ import CardGroup from "react-bootstrap/Card"
 import club_pic_sans_seumas_selina_in_gi from '../img/club_pic_sans_seumas_selina_in_gi.jpg'
 import seumas_casual from '../img/seumas_casual.jpg'
 import seumas_training from '../img/seumas_training.jpg'
+import david_teaching from '../img/david_teaching.jpg'
+import david_casual from '../img/david_casual.jpg'
+
+
 
 export class WhoAreWe extends React.Component {
     constructor(props) {
@@ -66,7 +70,7 @@ export class WhoAreWe extends React.Component {
 
 <br />
 <br />
-Seumas started training under Bruce Davies, Colin Armstrong
+Seumas started training in 2007 under Bruce Davies, Colin Armstrong
 and Ian Lambert in Edinburgh, Scotland. He was drawn to the art
 by it's dramatic depiction in films and video games, and was
 interested in learning an effective martial art when he came to
@@ -119,7 +123,62 @@ or have difficulty with in particular.
 <br />
 </Card.Text>
             
+<Card.Header id="capitalised-header" style={{backgroundColor: "gray", textTransform: 'uppercase'}}>David Corbett Sempai</Card.Header>
+
+<CardGroup style={{display: 'flex', flexDirection: 'row'}}>
+    
+<Card style={{backgroundColor: "gray", flex: 1}}>
+<Card.Body>
+<img src={david_teaching} alt="davidteaching" className="photo"></img>
+
+</Card.Body>
+
+</Card>
+
+<Card style={{backgroundColor: "gray", flex: 1}}>
+<Card.Body>
+<img src={david_casual} alt="davidcasual" className="photo"></img>
+
+</Card.Body>
+
+</Card>
+</CardGroup>
+<Card.Text style={{paddingLeft: 15, paddingRight: 15, fontSize: 14}} >
+
+<br />
+<br />
+David began his Jitsu career under Max Bauer Sensei in 2013 at University
+College Birmingham, England, enjoying his eventual stint as a committee 
+captain for the club. He first came to Tofino in 2015 but quickly found
+there were no Shorinji Kan clubs in the local area with the closest
+being in Vancouver. To make up for this absence, he trained at the Tofino
+judo club whenever the opportunity presented itself. On a return to England
+in June 2017, he got back into Jitsu training with a lot of passion, 3-4
+times a week on average. He helped to teach a local Birmingham club and
+achieved his purple belt and Club Instructor qualification.
+
+
+<br />
+<br />
+He was grateful for other instructors who helped him get there including
+James Owen, Eric Lau and Paul Glieboska of University of Birmingham and
+Aston University, and perhaps foremost with the assistance of Pristen 
+Sibanda. Back in Tofino again, and now a permanent resident of
+Canada, David founded the Tuff City Jitsu club. He's very proud of this and
+also his students who regularly come to learn about the martial art. He
+couldn't be more keen to get training resumed in a safe and welcoming
+fashion, and is delighted to see enduring interest during the closure
+amongst like-minded newbies in the community. His other interests include
+hiking, running a YouTube channel revolving around the outdoors, working 
+as a hotelier and the district of Tofino in general. David is very enthusiastic
+about working with Seumas as a fellow instructor, as a mentor to help him
+achieve the final few coloured belt grades and to develop the club in general.
+<br />
+<br />
+</Card.Text>
+            
         </Card>
+
 
 
 

@@ -1,8 +1,7 @@
 // Fetch all syllabus data and render here, not on the show page(s)
 
 import React, {useState} from 'react';
-import { Technique } from '../requests';
-import { Syllabus } from '../requests';
+import { Technique, Syllabus, Belt } from '../requests';
 import { Link } from 'react-router-dom';
 import moment from "moment";
 import Button from "react-bootstrap/Button";
@@ -16,8 +15,10 @@ export class SyllabusIndexPage extends React.Component {
       this.state = {
         // Populate the list of techniques through fetching them from the server and allow the page to load
         techniques: [],
-        isLoading: true,
-        technique_types: []
+        technique_types: [],
+        belts : [],
+        isLoading: true
+
       };
     }
 
@@ -26,6 +27,12 @@ export class SyllabusIndexPage extends React.Component {
             // console.log(techniques)
           this.setState({
             techniques: techniques,
+          });
+        });
+
+        Belt.all().then(belts => {
+          this.setState({
+            belts: belts,
           });
         });
 
@@ -46,12 +53,19 @@ export class SyllabusIndexPage extends React.Component {
 
     }
 
+    string_to_array = function (str) {
+      return str.trim().split(" ");
+ };
+
 
     render() {
         const currentUser = this.props.currentUser;
         const { showAll = false} = this.props;
         
         this.state.techniques.forEach(t => console.log(t))
+        // this.state.belts.forEach(b => console.log(b))
+        console.log("These are the belts" + Belt.all())
+        console.log(Array.isArray(this.state.belts))
 
         const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 40);
 
@@ -77,19 +91,47 @@ export class SyllabusIndexPage extends React.Component {
                                 {technique.title}
                             </Link> */}
 
-                            {this.state.technique_types.map(type => {
-                                return(
+                            {this.state.belts.map(belt => {
+                             if(belt.id === technique.belt_id) 
+                              if((belt.colour.trim().split(" ")).length === 2)
+                                  return(
                                     <>
-                                    {type.category}
+                                    <option className="gradecoloroption" style={{backgroundColor:"lightblue"}}>3rd kyu (Light Blue) </option>
+                                    </>
+                                  )
+
+                                  else if(belt.id === 1)
+                                  return(
+                                    <>
+                                    <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "st kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                    </>
+                                  )
+
+                              else
+                                  return(
+                                    <>
+                                    <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                    </>
+                                  )}
+                             )}
+                            {this.state.technique_types.map(type => {
+                             if(type.id === technique.technique_type_id) 
+                             return(
+                                 <>
+
+
+                                    {<text style={{fontStyle:"italic"}}>{type.category}</text> }
+                                    <br />
                                     {type.sub_category}
                                     </>
-                                )
+                               )
                             })}
-                                                        <br />
+                            <br />
                             {technique.summary}
                             <br />
 
-                            {technique.videos_id}
+                            {/* {technique.videos_id} */}
+                            <br />
                             {technique.is_different ? (
                              <>
                              <br />
@@ -99,9 +141,14 @@ export class SyllabusIndexPage extends React.Component {
 
                             <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
                             )}
+   
                                  <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(technique.id)}>
                                     Delete
                                   </Button>
+                                  <br />
+                                  <br />
+                                  <br />
+
                             </>
 
                             )})}
@@ -111,7 +158,5 @@ export class SyllabusIndexPage extends React.Component {
         );
     }
 }
-
-/* Or is it the next one /technique/${technique.id}?*/
 
 // First fix this page and then adapt it to React Bootstrap

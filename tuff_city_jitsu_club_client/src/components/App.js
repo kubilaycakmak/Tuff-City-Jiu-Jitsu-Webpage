@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import AuthRoute from "./AuthRoute";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import NotFoundPage from "./NotFoundPage";
+// import NotFoundPage from "./NotFoundPage";
 import SignInPage from "./SignInPage";
 import { SignUpPage } from "./SignUpPage";
 import { User, Session } from "../requests";
@@ -13,7 +13,7 @@ import { Welcome } from "./Welcome";
 import { SyllabusIndexPage } from "./SyllabusIndexPage";
 import SyllabusMindmapPage from "./SyllabusMindmapPage";
 import TechniqueNewPage from "./TechniqueNewPage";
-// import SyllabusShowPage from "./SyllabusShowPage";
+import TechniqueShowPage from "./TechniqueShowPage";
 import { WhatIsJiuJitsu } from "./WhatIsJiuJitsu";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { WhoAreWe } from "./WhoAreWe";
@@ -58,6 +58,7 @@ class App extends React.Component {
         if (loading) {
             return <div />;
         }
+
         return (
           <>
                 <BrowserRouter>
@@ -65,18 +66,21 @@ class App extends React.Component {
                     <NavBar currentUser={currentUser} onSignOut={this.signOut}/>
                         <Switch>
                             <Route path="/" exact component={Welcome} />
-// or Home instead?
                            {/* <Route path="/posts" exact component={Blog} /> */}
 
 <Route path="/whatisjitsu" exact component={WhatIsJiuJitsu} />
 
 <Route path="/profiles" exact component={WhoAreWe} />
 
-{/* Ensure that without signing up, users can't even see the link to syllabus  */}
                             <AuthRoute
                             isAuthenticated={currentUser}
                             path="/syllabus"
                             component={SyllabusIndexPage}
+                            />
+                            <AuthRoute
+                            isAuthenticated={currentUser}
+                            path="/techniques/:id"
+                            component={TechniqueShowPage}
                             />
                             <AuthRoute
                             isAuthenticated={currentUser}
@@ -109,19 +113,13 @@ class App extends React.Component {
                             )}
                             />
                             
-                            {/* Change this next one <Route
-                            path="/auctions/:id"
-                            render={routeProps => (
-                                <AuctionShowPage {...routeProps} currentUser={currentUser} />
-                            )}
-                            /> */}
                             <Route
                             path="/sign_in"
                             render={routeProps => (
                                 <SignInPage {...routeProps} onSignIn={this.getUser} />
                             )}
                             />
-                            <Route component={NotFoundPage} />
+                            {/* <Route component={NotFoundPage} /> */}
                         </Switch>
                 </div>
             </BrowserRouter>

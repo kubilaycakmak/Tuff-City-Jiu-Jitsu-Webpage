@@ -2,74 +2,21 @@ const BASE_URL = `http://localhost:3000/api/v1`;
 
 // Handling fetch requests for sessions, users etc
 
-// export const Auction = {
-//     // Fetch all auctions from the server
-//     all() {
-//         return fetch(`${BASE_URL}/auctions`, {
-//             credentials: "include"
-//         }).then(res => res.json());
-//     },
-
-//     // Fetch a single auction
-//     one(id) {
-//         return fetch(`${BASE_URL}/auctions/${id}`, {
-//             credentials: "include"
-//         }).then(res => res.json());
-//     },
-
-//     // Create an auction
-//     create(params) {
-//         // Params is an object that represents an auction
-//         return fetch(`${BASE_URL}/auctions`, {
-//             method: 'POST',
-//             credentials: "include",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(params)
-//         }).then(res => res.json());
-//     },
-
-//     // Update an auction
-//     update(id, params) {
-//         return fetch(`${BASE_URL}/auctions/${id}`, {
-//             method: 'PATCH',
-//             credentials: "include",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(params)
-//         }).then(res => res.json());
-//     },
-
-//     // Destroy an auction
-//     destroy(id) {
-//         return fetch(`${BASE_URL}/auctions/${id}`, {
-//             method: 'DELETE',
-//             credentials: "include"
-//         }).then(res => res.json());
-//     },
-// }
-
-// export const Bid = {
-//     // Create a bid
-//     create(id, params) {
-//         return fetch(`${BASE_URL}/auctions/${id}/bids`, {
-//             method: 'PATCH',
-//             credentials: "include",
-//             headers: {
-//                 "Content-Type": "application/json"
-//             },
-//             body: JSON.stringify(params)
-//         }).then(res => res.json());
-//     }
-// }
-
 export const Syllabus = {
 
-  // Fetch all techniques from the server
+  // Fetch a syllabus from the server
   one(id) {
     return fetch(`${BASE_URL}/syllabi/${id}`, {
+      credentials: "include"
+    }).then(res => res.json());
+  },
+}
+
+export const Belt = {
+
+  // Fetch all belts from the server
+  all() {
+    return fetch(`${BASE_URL}/belts`, {
       credentials: "include"
     }).then(res => res.json());
   },
@@ -103,7 +50,8 @@ export const Technique = {
     one(id) {
         return fetch(`${BASE_URL}/techniques/${id}`, {
             credentials: "include"
-        }).then(res => res.json());
+        }).then(res => res.json())
+        .catch(console.error);
     },
 
     // Update a technique

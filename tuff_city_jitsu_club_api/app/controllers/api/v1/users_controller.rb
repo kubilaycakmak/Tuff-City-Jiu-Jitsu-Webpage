@@ -27,9 +27,6 @@ class Api::V1::UsersController < Api::ApplicationController
     # def show (check if needed)
     #     if @user
     #     render(
-    #         # Ensure that Rails includes the nested user association for bids
-    #         # (in the serializer this denoted as author )
-    #         include: [ :author, {bids: [ :author]} ]
     #     )
     #     else
     #         render(json: {error: "User Not Found"})

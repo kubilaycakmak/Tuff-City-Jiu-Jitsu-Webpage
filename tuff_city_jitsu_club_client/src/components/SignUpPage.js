@@ -2,7 +2,7 @@ import React from "react";
 import { User } from "../requests";
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
-import styled from "styled-components"
+// import styled from "styled-components"
 import "../App.css";
 
 export function SignUpPage(props) {

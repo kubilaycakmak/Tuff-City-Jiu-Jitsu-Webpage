@@ -11,7 +11,7 @@ import { SignUpPage } from "./SignUpPage";
 import { User, Session } from "../requests";
 import { Welcome } from "./Welcome";
 import { SyllabusIndexPage } from "./SyllabusIndexPage";
-import SyllabusMindmapPage from "./SyllabusMindmapPage";
+// import SyllabusMindmapPage from "./SyllabusMindmapPage";
 import TechniqueNewPage from "./TechniqueNewPage";
 import TechniqueShowPage from "./TechniqueShowPage";
 import { WhatIsJiuJitsu } from "./WhatIsJiuJitsu";
@@ -82,11 +82,11 @@ class App extends React.Component {
                             path="/techniques/:id"
                             component={TechniqueShowPage}
                             />
-                            <AuthRoute
+                            {/* <AuthRoute
                             isAuthenticated={currentUser}
                             path="/api/v1/syllabi/:syllabus_id/mindmap"
                             component={SyllabusMindmapPage} 
-                            />
+                            /> */}
                             {/* <AuthRoute
                             isAuthenticated={currentUser}
                             path="/syllabus/:id"

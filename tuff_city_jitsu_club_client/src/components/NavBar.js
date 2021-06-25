@@ -1,7 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "../App.css";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+// import { NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
+
 
 function NavBar(props) {
     const { currentUser, adminUser, onSignOut } = props;
@@ -29,7 +32,7 @@ return (
         <>
       <Nav.Link href="/syllabus">Syllabus</Nav.Link>
       <Nav.Link href="/technique/new">Add Techniques To Syllabus</Nav.Link>
-      <Nav.Link href="/syllabus/mindmap">Mindmap For Syllabus</Nav.Link>
+      {/* <Nav.Link href="/syllabus/mindmap">Mindmap For Syllabus</Nav.Link> */}
       {/* <Nav.Link href="/events">Events</Nav.Link> */}
       <Nav.Link href="/" onClick={onSignOut}>Sign Out</Nav.Link>
       <Nav.Link className="item" style={{ color: "green" }}>
@@ -43,9 +46,9 @@ return (
         </React.Fragment>
       )}
       {/* {adminUser ? (
-      <> */}
+      <>
       <Nav.Link href="/admin">Admin Page</Nav.Link>
-      {/* </>
+      </>
       ) : (
         <div></div>
       )} */}

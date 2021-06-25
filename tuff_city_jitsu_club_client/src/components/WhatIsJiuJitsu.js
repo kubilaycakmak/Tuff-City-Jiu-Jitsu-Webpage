@@ -3,8 +3,8 @@ import new_students from '../img/new_students.jpg';
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Table from "react-bootstrap/Table";
-import * as Scroll from 'react-scroll';
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+// import * as Scroll from 'react-scroll';
+// import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 
 export class WhatIsJiuJitsu extends React.Component {

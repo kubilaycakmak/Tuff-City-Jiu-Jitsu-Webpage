@@ -162,7 +162,7 @@ achieved his purple belt and Club Instructor qualification.
 <br />
 He was grateful for other instructors who helped him get there including
 James Owen, Eric Lau and Paul Glieboska of University of Birmingham and
-Aston University, and perhaps foremost with the assistance of Pristen 
+Aston University, and perhaps foremost so with the assistance of Pristen 
 Sibanda. Back in Tofino again, and now a permanent resident of
 Canada, David founded the Tuff City Jitsu club. He's very proud of this and
 also his students who regularly come to learn about the martial art. He
@@ -171,8 +171,9 @@ fashion, and is delighted to see enduring interest during the closure
 amongst like-minded newbies in the community. His other interests include
 hiking, running a YouTube channel revolving around the outdoors, working 
 as a hotelier and the district of Tofino in general. David is very enthusiastic
-about working with Seumas as a fellow instructor, as a mentor to help him
-achieve the final few coloured belt grades and to develop the club in general.
+about working with Seumas as a fellow instructor, with Seumas serving as a
+mentor to help him achieve the final few coloured belt grades and to develop
+the club in general.
 <br />
 <br />
 </Card.Text>

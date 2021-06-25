@@ -6,4 +6,8 @@ class Belt < ApplicationRecord
   # belongs_to :syllabus
   
   validates :colour, presence: true
+
+  def capitalize_colour
+    self.colour.capitalize!
+  end
 end

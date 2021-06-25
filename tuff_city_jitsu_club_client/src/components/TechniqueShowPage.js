@@ -1,13 +1,13 @@
 // Show an individual technique here, including it's video, and allow for an edit function
+// Work in progress
 
 import React, { Component } from "react";
 
-// import AuctionDetails from "./AuctionDetails";
+
 import { Technique, Syllabus } from "../requests";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
-// import { BidList } from "./BidList";
-// import NewBidForm from "./NewBidForm";
+
 
 class TechniqueShowPage extends Component {
     constructor(props) {
@@ -21,16 +21,6 @@ class TechniqueShowPage extends Component {
       };
     }
 
-    // Use the following block for when comments are implemented (but not bids of course!)
-    // createBid = (id, params) => {
-    //     Bid.create(id, params).then(bid => {
-    //         if (bid.errors) {
-    //             this.setState({ errors: bid.errors })      // When using a constructor in a class-based
-    //             // component, you must call the 'Component' class
-    //             // constructor with 'super' passing it props;
-    //         }
-    //     });
-    // };
 
     componentDidMount() {
         console.log(this.props)
@@ -41,12 +31,12 @@ class TechniqueShowPage extends Component {
             });
         });
 
-        // Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
-        //     this.setState({
-        //     technique_types: syllabus.technique_types,
-        //     isLoading: false
-        //     });
-        // });
+        Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
+            this.setState({
+            technique_types: syllabus.technique_types,
+            isLoading: false
+            });
+        });
     }
 
     deleteTechnique() {

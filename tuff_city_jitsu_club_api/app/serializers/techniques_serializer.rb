@@ -7,6 +7,7 @@ class TechniquesSerializer < ActiveModel::Serializer
     :difference_content,
     :technique_type_id,
     :created_at, 
-    :updated_at
+    :updated_at,
+    :belt_id
 )
 end

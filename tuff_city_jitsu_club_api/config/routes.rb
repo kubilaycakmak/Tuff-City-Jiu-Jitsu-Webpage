@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :belt_grade
+      resources :belts
       resources :instructorqualifications
       resources :syllabi do
         resources :mindmap
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
       resources :profiles
       resources :whatisjitsu
       resources :admin
+      # resources :belts
 
       resource :session, only: [:create, :destroy]
       # -> api/v1/users
@@ -23,3 +25,5 @@ Rails.application.routes.draw do
     end
   end
 end
+
+#     match "*unmatched_route", to: "application#not_found", via: :all

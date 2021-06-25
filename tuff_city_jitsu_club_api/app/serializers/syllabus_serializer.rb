@@ -8,7 +8,7 @@ class SyllabusSerializer < ActiveModel::Serializer
   :techniques
   )
 
-  class Belt < ActiveModel::Serializer
+  class BeltSerializer < ActiveModel::Serializer
     attributes(
       :id, 
       :colour,

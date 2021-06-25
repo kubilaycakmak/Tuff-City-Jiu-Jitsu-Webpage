@@ -2,10 +2,10 @@
 
 import React, {useState} from 'react';
 import { Technique, Syllabus, Belt } from '../requests';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import moment from "moment";
 import Button from "react-bootstrap/Button";
-import {confirm} from 'react-bootstrap-confirmation';
+// import {confirm} from 'react-bootstrap-confirmation';
 import "../App.css";
 
 
@@ -93,26 +93,33 @@ export class SyllabusIndexPage extends React.Component {
 
                             {this.state.belts.map(belt => {
                              if(belt.id === technique.belt_id) 
-                              if((belt.colour.trim().split(" ")).length === 2)
-                                  return(
-                                    <>
-                                    <option className="gradecoloroption" style={{backgroundColor:"lightblue"}}>3rd kyu (Light Blue) </option>
-                                    </>
-                                  )
+                              if(belt.id === 3)
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:"lightblue", pointerEvents:"none"}}>3rd kyu (Light Blue) </option>
+                                  </>
+                                )
 
-                                  else if(belt.id === 1)
-                                  return(
-                                    <>
-                                    <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "st kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
-                                    </>
-                                  )
+                              else if(belt.id === 2)
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:"#00008b", color:"white", pointerEvents:"none"}}>2nd kyu (Dark Blue) </option>
+                                  </>
+                                )
+
+                              else if(belt.id === 1)
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "st kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                  </>
+                                )
 
                               else
-                                  return(
-                                    <>
-                                    <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
-                                    </>
-                                  )}
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                  </>
+                                )}
                              )}
                             {this.state.technique_types.map(type => {
                              if(type.id === technique.technique_type_id) 
@@ -134,8 +141,13 @@ export class SyllabusIndexPage extends React.Component {
                             <br />
                             {technique.is_different ? (
                              <>
+                             {<text style={{fontWeight:"bold"}}>What's different to the UK syllabus?</text> }
                              <br />
                              {technique.difference_content}
+                             <br />
+                             <br />
+                             <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
+
                              </>
                             ) : (
 

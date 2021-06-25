@@ -33,7 +33,7 @@ export const Technique = {
 
   // Create a technique
   create(params) {
-            // Params is an object that represents an auction
+            // Params is an object that represents a technique
         return fetch(`${BASE_URL}/techniques`, {
             method: 'POST',
             credentials: "include",

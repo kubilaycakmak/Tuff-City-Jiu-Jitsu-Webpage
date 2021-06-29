@@ -15,7 +15,7 @@ class TechniqueShowPage extends Component {
   
       this.state = {
         technique: {},
-        techique_type: [],
+        technique_type: [],
         isLoading: true,
         errors: []
       };
@@ -118,16 +118,24 @@ class TechniqueShowPage extends Component {
                          {this.state.technique.difference_content}
                          </>
                         ) : (
+                        <>
+                        { this.state.technique?.created_at? 
 
-                        <p>Posted on {moment(this.state.technique.created_at ).format("MMM Do, YYYY")}</p>
+                        <>
+                            <p>Posted on {moment(this.state.technique.created_at ).format("MMM Do, YYYY")}</p>
+                            <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(this.state.technique.id)}>
+                            Delete
+                          </Button>
+                          <br />
+                          <br />
+                          <br />
+                          </>
+                        : ""
+                        }
+                        </>
                         )}
 
-                             <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(this.state.technique.id)}>
-                                Delete
-                              </Button>
-                              <br />
-                              <br />
-                              <br />
+
 
                         </>
               </div>

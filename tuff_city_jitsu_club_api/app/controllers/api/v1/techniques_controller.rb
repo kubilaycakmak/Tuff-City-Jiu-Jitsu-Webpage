@@ -1,13 +1,13 @@
 class Api::V1::TechniquesController < Api::ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :find_technique, only: [:show, :edit, :update, :destroy]
+    before_action :find_technique, only: [:edit, :update, :destroy]
     
     rescue_from(ActiveRecord:: RecordNotFound, with: :record_not_found)
     rescue_from(ActiveRecord:: RecordInvalid, with: :record_invalid)
 
 
     def index
-        techniques = Technique.all.order(belt_id: :desc) # This should order the techniques by belt
+        techniques = Technique.all.order(belt_id: :desc) # This should order the techniques by beltcode
         render(json: techniques, each_serializer: TechniquesSerializer) # Find out what should be in this serializer
     end
 
@@ -26,7 +26,7 @@ class Api::V1::TechniquesController < Api::ApplicationController
         puts new_syllabus
         type_of_technique = TechniqueType.new category: params["category"], sub_category: params["sub_category"], syllabus_id:new_syllabus.id
         puts type_of_technique
-        type_of_technique.save! # Note: on next line, videos is hardcoded until video functionality added
+        type_of_technique.save! # Note: on next lines, videos is hardcoded until video functionality added
         technique_type_id = type_of_technique.id
         puts "The technique type ID is ", technique_type_id
         puts "This is the summary", params["technique"]["summary"]
@@ -37,10 +37,14 @@ class Api::V1::TechniquesController < Api::ApplicationController
     end
 
     def show
-        if @technique
-        puts "Here is the technique", @technique
+
+        puts "Here are the params", params["id"]
+        technique = Technique.find params["id"]
+        puts technique
+        if technique
+        puts "Here is the technique", technique
         render(
-            json: @technique
+            json: technique
                 )
         else
             render(json: {error: "Technique Not Found"})

@@ -68,6 +68,7 @@ export class SyllabusIndexPage extends React.Component {
         console.log(Array.isArray(this.state.belts))
 
         const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 40);
+        let previousBeltId = 0;
 
         return (
             <main className="SyllabusIndexPage">
@@ -92,34 +93,47 @@ export class SyllabusIndexPage extends React.Component {
                             </Link> */}
 
                             {this.state.belts.map(belt => {
-                             if(belt.id === technique.belt_id) 
-                              if(belt.id === 3)
+                             if(belt.id === technique.belt_id) // Here we need to match the main belt.id with the technique.belt_id which has many different values based on which technique it is
+                              if(belt.id === 3){ // Special case for light blue belt with "rd" as a suffix
+                                // Store previous belt id (define it first) and only put a new header up if and when the belt id changes for the next colour.
+                                if(previousBeltId != belt.id){
+                                  previousBeltId = belt.id;
                                 return(
                                   <>
                                   <option className="gradecoloroption" style={{backgroundColor:"lightblue", pointerEvents:"none"}}>3rd kyu (Light Blue) </option>
                                   </>
-                                )
-
-                              else if(belt.id === 2)
+                                )}}
+                              else if(belt.id === 2){ // Special case for dark blue belt with "nd" as a suffix
+                                if(previousBeltId != belt.id){
+                                  previousBeltId = belt.id;
                                 return(
                                   <>
                                   <option className="gradecoloroption" style={{backgroundColor:"#00008b", color:"white", pointerEvents:"none"}}>2nd kyu (Dark Blue) </option>
                                   </>
-                                )
+                                )}}
 
-                              else if(belt.id === 1)
+                              else if(belt.id === 1){ // Special case for brown belt with "st" as a suffix
+                                if(previousBeltId != belt.id){
+                                  previousBeltId = belt.id;
                                 return(
                                   <>
                                   <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "st kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
                                   </>
-                                )
+                                )}}
+                              else{
+                              console.log("This is the previous belt id: " + previousBeltId)
+                              console.log("This is the current belt id: " + belt.id)
+                                if(previousBeltId != belt.id){
+                                  previousBeltId = belt.id;
 
-                              else
-                                return(
-                                  <>
-                                  <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
-                                  </>
-                                )}
+                                  return(
+                                    <>
+                                    <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                    </>
+
+                                  )}
+                                  
+                              }}
                              )}
                             {this.state.technique_types.map(type => {
                              if(type.id === technique.technique_type_id) 

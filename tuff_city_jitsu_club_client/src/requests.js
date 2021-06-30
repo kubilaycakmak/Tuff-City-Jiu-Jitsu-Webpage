@@ -20,6 +20,13 @@ export const Belt = {
       credentials: "include"
     }).then(res => res.json());
   },
+
+  // // Fetch one belt from the server
+  // one() {
+  //   return fetch(`${BASE_URL}/belts`, {
+  //     credentials: "include"
+  //   }).then(res => res.json());
+  // },
 }
 
 export const Technique = {

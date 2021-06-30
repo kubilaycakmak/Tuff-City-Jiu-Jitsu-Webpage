@@ -5,6 +5,7 @@ import { Technique, Syllabus, Belt } from '../requests';
 // import { Link } from 'react-router-dom';
 import moment from "moment";
 import Button from "react-bootstrap/Button";
+import { Nav } from 'react-bootstrap'
 // import {confirm} from 'react-bootstrap-confirmation';
 import "../App.css";
 
@@ -69,6 +70,7 @@ export class SyllabusIndexPage extends React.Component {
 
         const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 40);
         let previousBeltId = 0;
+        let previousTechniqueTypeId = 0;
 
         return (
             <main className="SyllabusIndexPage">
@@ -96,7 +98,7 @@ export class SyllabusIndexPage extends React.Component {
                              if(belt.id === technique.belt_id) // Here we need to match the main belt.id with the technique.belt_id which has many different values based on which technique it is
                               if(belt.id === 3){ // Special case for light blue belt with "rd" as a suffix
                                 // Store previous belt id (define it first) and only put a new header up if and when the belt id changes for the next colour.
-                                if(previousBeltId != belt.id){
+                                if(previousBeltId !== belt.id){
                                   previousBeltId = belt.id;
                                 return(
                                   <>
@@ -104,7 +106,7 @@ export class SyllabusIndexPage extends React.Component {
                                   </>
                                 )}}
                               else if(belt.id === 2){ // Special case for dark blue belt with "nd" as a suffix
-                                if(previousBeltId != belt.id){
+                                if(previousBeltId !== belt.id){
                                   previousBeltId = belt.id;
                                 return(
                                   <>
@@ -113,7 +115,7 @@ export class SyllabusIndexPage extends React.Component {
                                 )}}
 
                               else if(belt.id === 1){ // Special case for brown belt with "st" as a suffix
-                                if(previousBeltId != belt.id){
+                                if(previousBeltId !== belt.id){
                                   previousBeltId = belt.id;
                                 return(
                                   <>
@@ -123,7 +125,7 @@ export class SyllabusIndexPage extends React.Component {
                               else{
                               console.log("This is the previous belt id: " + previousBeltId)
                               console.log("This is the current belt id: " + belt.id)
-                                if(previousBeltId != belt.id){
+                                if(previousBeltId !== belt.id){
                                   previousBeltId = belt.id;
 
                                   return(
@@ -136,19 +138,25 @@ export class SyllabusIndexPage extends React.Component {
                               }}
                              )}
                             {this.state.technique_types.map(type => {
-                             if(type.id === technique.technique_type_id) 
-                             return(
-                                 <>
-
-
-                                    {<text style={{fontStyle:"italic"}}>{type.category}</text> }
-                                    <br />
-                                    {type.sub_category}
-                                    </>
-                               )
+                             if(type.id === technique.technique_type_id){ 
+                              console.log("This is the previous technique type id: " + previousTechniqueTypeId)
+                              console.log("This is the current technique type id: " + technique.technique_type_id)
+                               if(previousTechniqueTypeId !== technique.technique_type_id){ // Attempting here to only print the technique type once per belt; not currently working, but why?
+                                  previousTechniqueTypeId = technique.technique_type_id;
+                                  console.log("Have we achieved success?" + previousTechniqueTypeId + technique.technique_type_id)
+                                  return(
+                                      <>
+      
+      
+                                        {<text style={{fontStyle:"italic"}}>{type.category}</text> }
+                                        <br />
+                                        {type.sub_category}
+                                        </>
+                               )}}
                             })}
                             <br />
-                            {technique.summary}
+                            {/* {technique.summary} */}
+                            <Nav.Link style={{ paddingLeft: 0, paddingTop: 0 }} href={`/techniques/${technique.id}`}>{technique.summary}</Nav.Link>
                             <br />
 
                             {/* {technique.videos_id} */}

@@ -4,7 +4,7 @@
 import React, { Component } from "react";
 
 
-import { Technique, Syllabus } from "../requests";
+import { Technique, Syllabus, Belt  } from "../requests";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
 
@@ -16,6 +16,7 @@ class TechniqueShowPage extends Component {
       this.state = {
         technique: {},
         technique_type: [],
+        belt : [],
         isLoading: true,
         errors: []
       };
@@ -30,6 +31,12 @@ class TechniqueShowPage extends Component {
                 isLoading: false
             });
         });
+
+        Belt.all().then(belt => {
+            this.setState({
+              belt: belt,
+            });
+          });
 
         Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
             this.setState({
@@ -78,62 +85,62 @@ class TechniqueShowPage extends Component {
                     }}
                     >
                         
-                            <>
-                        {/* <Link to={`/syllabus/${technique.id}`} className="item" href="">
-                            {technique.title}
-                        </Link> */}
+                        <>
                         {/* {this.state.belts.map(belt => {
                         console.log("Testing 1 2 3");
-                        console.log("LHS " + belt.id + "RHS " + technique.belt_id);
-                         if(belt.id === technique.belt_id) 
+                        console.log("LHS " + belt.id + "RHS " + this.state.technique.belt_id);
+                         if(belt.id === this.state.technique.belt_id){
                          return(
                              <>
                                 {belt}
                              </>
-                            )
+                            )}
                          })} */}
-                        {/* {this.state.technique_types.map(type => {
-                         if(type.id === this.state.technique.technique_type_id) 
+                        {this.state.technique_type.map(type => {
+                        console.log("Testing 1 2 3"); // These print statments aren't being hit
+                        console.log("LHS " + type.id + "RHS " + this.state.technique.technique_type_id);
+                         if(type.id === this.state.technique.technique_type_id){
                          return(
                              <>
-                             style={{backgroundColor:"yellow"}}
-                             <option className="gradecoloroption" style={{backgroundColor:"yellow"}} value={7}>Yellow </option>
-
-
                                 {<text style={{fontWeight:"italics"}}>type.category</text> }
                                 <br />
                                 {type.sub_category}
                                 </>
-                           )
-                        })} */}
+                           )}
+                        })}
                         <br />
                         {this.state.technique.summary}
                         <br />
 
-                        {this.state.technique.videos_id}
+                        {/*{this.state.technique.videos_id}*/}
                         <br />
-                        {this.state.technique.is_different ? (
+                        {this.state.technique.is_different ? 
                          <>
-                         <br />
-                         {this.state.technique.difference_content}
+                             {<text style={{fontWeight:"bold"}}>What's different to the UK syllabus?</text> }
+                             <br />
+                             {this.state.technique.difference_content}
+                             <br />
+                             <br />
                          </>
-                        ) : (
+                         
+                        : ""
+
+                        }
                         <>
                         { this.state.technique?.created_at? 
-
                         <>
-                            <p>Posted on {moment(this.state.technique.created_at ).format("MMM Do, YYYY")}</p>
-                            <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(this.state.technique.id)}>
-                            Delete
-                          </Button>
-                          <br />
-                          <br />
-                          <br />
-                          </>
-                        : ""
-                        }
-                        </>
-                        )}
+                             <p>Posted on {moment(this.state.technique.created_at ).format("MMM Do, YYYY")}</p>
+                             <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(this.state.technique.id)}>
+                             Delete
+                           </Button>
+                           <br />
+                           <br />
+                           <br />
+                           </>
+                         : ""
+                         }
+                         </>
+                        
 
 
 

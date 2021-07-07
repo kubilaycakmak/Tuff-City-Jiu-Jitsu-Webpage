@@ -77,6 +77,10 @@ function NewTechniqueForm(props) {
           <Form.Label>Sub Category</Form.Label>
           <Form.Control name = "sub_category" type="sub_category" placeholder="Can be blank if none comes to mind." />
         </Form.Group>
+        <Form.Group controlId="formBasicPrimaryVideo">
+          <Form.Label>Video URL</Form.Label>
+          <Form.Control name = "primary_video" type="primary_video" placeholder="Try to source this from YouTube if possible."/>
+        </Form.Group>
         <Form.Group controlId="formBasicDifferenceCheck">
           <Form.Label>Is this different from the UK syllabus?</Form.Label>
           <Form.Control name = "is_different" type="is_different" as="select" defaultValue="Maybe it's on a different belt or is done differently in the UK" defaultValue="No">
@@ -87,6 +91,10 @@ function NewTechniqueForm(props) {
         <Form.Group controlId="formBasicDifferenceContent">
           <Form.Label>If yes, describe the differences here</Form.Label>
           <Form.Control name = "difference_content" type="difference_content" placeholder="E.g. transitions aren't present for the UK syllabus"/>
+        </Form.Group>
+        <Form.Group controlId="formBasicSecondaryVideo">
+          <Form.Label>If different, provide the UK video URL</Form.Label>
+          <Form.Control name = "secondary_video" type="secondary_video" placeholder="Try to source this from YouTube if possible."/>
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit

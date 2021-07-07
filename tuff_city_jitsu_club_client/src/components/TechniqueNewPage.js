@@ -9,6 +9,7 @@ export default class TechniqueNewPage extends Component {
   };
   createTechnique = params => {
     Technique.create(params).then(technique => {
+      console.log("$$$$$$$$$", technique)
       if (Technique.errors) {
         this.setState({ errors: technique.errors });
       } else {

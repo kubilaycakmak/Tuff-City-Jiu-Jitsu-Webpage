@@ -11,6 +11,15 @@ export const Syllabus = {
     }).then(res => res.json());
   },
 }
+export const Video = {
+
+  // Fetch all videos from the server
+  all() {
+    return fetch(`${BASE_URL}/videos`, {
+      credentials: "include"
+    }).then(res => res.json());
+  },
+}
 
 export const Belt = {
 
@@ -35,11 +44,16 @@ export const Technique = {
   all() {
     return fetch(`${BASE_URL}/techniques`, {
       credentials: "include"
-    }).then(res => res.json());
+    }).then(res=>{
+      console.log(res);
+      return(res.json())
+      }
+    );
   },
 
   // Create a technique
   create(params) {
+        console.log("##############", params)
             // Params is an object that represents a technique
         return fetch(`${BASE_URL}/techniques`, {
             method: 'POST',
@@ -49,7 +63,7 @@ export const Technique = {
             },
             body: JSON.stringify(params)
 
-        }).then(res=>{res.json()}
+        }).then(res=>res.json()
 
         );
   },
@@ -63,15 +77,15 @@ export const Technique = {
 
     // Update a technique
     update(id, params) {
-        return fetch(`${BASE_URL}/techniques/${id}`, {
-            method: 'PATCH',
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(params)
-        }).then(res => res.json());
-    },
+      return fetch(`${BASE_URL}/techniques/${id}`, {
+          method: 'PATCH',
+          credentials: "include",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(params)
+      }).then(res => res.json());
+  },
 
     // Destroy a technique
     destroy(id) {

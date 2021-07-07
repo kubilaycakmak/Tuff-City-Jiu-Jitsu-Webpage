@@ -18,24 +18,28 @@ export class SyllabusIndexPage extends React.Component {
         techniques: [],
         technique_types: [],
         belts : [],
+        belts_group : [],
         isLoading: true
 
       };
     }
 
     componentDidMount() {
-        Technique.all().then(techniques => {
-            // console.log(techniques)
-          this.setState({
-            techniques: techniques,
-          });
+      Belt.all().then(belts => {
+        this.setState({
+          belts: belts,
         });
+      });
 
-        Belt.all().then(belts => {
-          this.setState({
-            belts: belts,
-          });
+      Technique.all().then(techniques => {
+          // console.log(techniques)
+        this.setState({
+          techniques: techniques,
+          belts_group: this.group_techniques_belts[techniques]
         });
+        console.log("techniques", this.state.techniques)
+      });
+
 
         Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
             this.setState({
@@ -58,6 +62,28 @@ export class SyllabusIndexPage extends React.Component {
       return str.trim().split(" ");
  };
 
+    group_techniques_belts = function (techniques) {
+      const output = [];
+      const belt_array = this.state.belts.map(belt => belt.id);
+      const j = 0;
+      // First belt id's technique id should be the first technique's belt id
+      // Then keep comparing the belt id with the next belt id, and keep reassigning it 
+      let belt = this.state.techniques[0].belt_id;
+      this.state.techniques.forEach(technique => {
+        let group = [];
+        if(belt === technique.belt_id){
+          group.push(technique)
+
+        }
+        belt = technique.belt_id;
+        output.push(group);
+        // Loop through each technique
+        // Push all the techniques that have the same belt id into the belt array
+        // When displaying at the bottom take everything from the belt array, hence grouping them by the belt id
+      })
+      return output;
+    };
+
 
     render() {
         const currentUser = this.props.currentUser;
@@ -68,9 +94,12 @@ export class SyllabusIndexPage extends React.Component {
         console.log("These are the belts" + Belt.all())
         console.log(Array.isArray(this.state.belts))
 
-        const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 40);
+        // const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 400);
         let previousBeltId = 0;
         let previousTechniqueTypeId = 0;
+        let technique_types_array = [];
+        console.log("these are the technique types", this.state.technique_types)
+
 
         return (
             <main className="SyllabusIndexPage">
@@ -87,13 +116,10 @@ export class SyllabusIndexPage extends React.Component {
                         }}
                         >
                         {filteredTechnique.map(technique => {
+                          {console.log(technique)}
                             <li className="ui segment" key={technique.id}></li>
                             return(
                                 <>
-                            {/* <Link to={`/syllabus/${technique.id}`} className="item" href="">
-                                {technique.title}
-                            </Link> */}
-
                             {this.state.belts.map(belt => {
                              if(belt.id === technique.belt_id) // Here we need to match the main belt.id with the technique.belt_id which has many different values based on which technique it is
                               if(belt.id === 3){ // Special case for light blue belt with "rd" as a suffix
@@ -127,18 +153,19 @@ export class SyllabusIndexPage extends React.Component {
                               console.log("This is the current belt id: " + belt.id)
                                 if(previousBeltId !== belt.id){
                                   previousBeltId = belt.id;
-
                                   return(
                                     <>
                                     <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
                                     </>
-
                                   )}
-                                  
                               }}
                              )}
-                            {this.state.technique_types.map(type => {
-                             if(type.id === technique.technique_type_id){ 
+                            <br />
+                            {this.state.techniques.map(technique => {
+                              // Check if grouped, loop through the belts group and render each group of techniques for a belt
+                             if(technique.id && technique.belt_id === previousBeltId){ 
+                              const type = this.state.technique_types.filter(item => item.id === technique.technique_type_id)
+                              console.log("this is the type", type)
                               console.log("This is the previous technique type id: " + previousTechniqueTypeId)
                               console.log("This is the current technique type id: " + technique.technique_type_id)
                                if(previousTechniqueTypeId !== technique.technique_type_id){ // Attempting here to only print the technique type once per belt; not currently working, but why?
@@ -146,46 +173,47 @@ export class SyllabusIndexPage extends React.Component {
                                   console.log("Have we achieved success?" + previousTechniqueTypeId + technique.technique_type_id)
                                   return(
                                       <>
-      
-      
-                                        {<text style={{fontStyle:"italic"}}>{type.category}</text> }
+                                        {<text style={{fontStyle:"italic"}}>{type?.length ? type[0].category : ""}</text> }
                                         <br />
-                                        {type.sub_category}
-                                        </>
+                                        {type?.length ? type[0].sub_category : ""}
+                            {/* Need to wrap the following line over subsequent code, very carefully */}
+                              {/* {this.state.techniques.map(technique => { return})} */}
+                              <br />
+                              <Nav.Link style={{ paddingLeft: 0, paddingTop: 0 }} href={`/techniques/${technique.id}`}>{technique.summary}</Nav.Link>
+                              <br />
+
+                              {/* {technique.videos_id} */}
+                              <br />
+                              {technique.is_different ? (
+                              <>
+                              {<text style={{fontWeight:"bold"}}>What's different to the UK syllabus?</text> }
+                              <br />
+                              {technique.difference_content}
+                              <br />
+                              <br />
+                              <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
+
+                              </>
+                              ) : (
+
+                              <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
+                              )}
+    
+                                  <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(technique.id)}>
+                                      Delete
+                                    </Button>
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    </>
                                )}}
                             })}
-                            <br />
-                            {/* {technique.summary} */}
-                            <Nav.Link style={{ paddingLeft: 0, paddingTop: 0 }} href={`/techniques/${technique.id}`}>{technique.summary}</Nav.Link>
-                            <br />
-
-                            {/* {technique.videos_id} */}
-                            <br />
-                            {technique.is_different ? (
-                             <>
-                             {<text style={{fontWeight:"bold"}}>What's different to the UK syllabus?</text> }
-                             <br />
-                             {technique.difference_content}
-                             <br />
-                             <br />
-                             <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
-
-                             </>
-                            ) : (
-
-                            <p>Posted on {moment(technique.created_at ).format("MMM Do, YYYY")}</p>
-                            )}
-   
-                                 <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(technique.id)}>
-                                    Delete
-                                  </Button>
-                                  <br />
-                                  <br />
-                                  <br />
 
                             </>
 
-                            )})}
+                            )}
+                            )}
                             
                     </div>
             </main>

@@ -24,10 +24,15 @@ class Api::V1::TechniquesController < Api::ApplicationController
         puts "Here are the params", params
         new_syllabus = Syllabus.find_by(country: params["syllabus"])
         puts new_syllabus
-        type_of_technique = TechniqueType.new category: params["category"], sub_category: params["sub_category"], syllabus_id:new_syllabus.id
-        puts type_of_technique
-        type_of_technique.save! # Note: on next lines, videos is hardcoded until video functionality added
-        technique_type_id = type_of_technique.id
+        existing_technique_type = TechniqueType.where(category: params["category"], sub_category: params["sub_category"])
+        if existing_technique_type.length > 0
+            technique_type_id = existing_technique_type[0].id
+        else 
+            type_of_technique = TechniqueType.new category: params["category"], sub_category: params["sub_category"], syllabus_id:new_syllabus.id
+            puts type_of_technique
+            type_of_technique.save! # Note: on next lines, videos is hardcoded until video functionality added
+            technique_type_id = type_of_technique.id
+        end
         puts "The technique type ID is ", technique_type_id
         puts "This is the summary", params["technique"]["summary"]
         technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i

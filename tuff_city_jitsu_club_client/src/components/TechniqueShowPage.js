@@ -39,8 +39,9 @@ class TechniqueShowPage extends Component {
           });
 
         Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
+            console.log(syllabus)
             this.setState({
-            technique_types: syllabus.technique_types,
+            technique_type: syllabus.technique_types,
             isLoading: false
             });
         });
@@ -51,6 +52,19 @@ class TechniqueShowPage extends Component {
             technique: null
         });
     }
+
+    // Edit the following codeblock for updating a technique; never really did this in CodeCore
+
+    // updateTechnique(id, params) {
+    //     return fetch(`${BASE_URL}/techniques/${id}`, {
+    //         method: 'PATCH',
+    //         credentials: "include",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(params)
+    //     }).then(res => res.json());
+    // },
 
     // Modify this block to delete comments
 
@@ -64,6 +78,7 @@ class TechniqueShowPage extends Component {
     // }
     // const technique = this.state.technique;
     render() {
+
 
         const currentUser = this.props.currentUser;
         console.log(currentUser)
@@ -86,23 +101,45 @@ class TechniqueShowPage extends Component {
                     >
                         
                         <>
-                        {/* {this.state.belts.map(belt => {
-                        console.log("Testing 1 2 3");
-                        console.log("LHS " + belt.id + "RHS " + this.state.technique.belt_id);
-                         if(belt.id === this.state.technique.belt_id){
-                         return(
-                             <>
-                                {belt}
-                             </>
-                            )}
-                         })} */}
+
+                        {this.state.belt.map(belt => {
+                             if(belt.id === this.state.technique.belt_id) // Here we need to match the main belt.id with the technique.belt_id which has many different values based on which technique it is
+                              if(belt.id === 3){ // Special case for light blue belt with "rd" as a suffix
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:"lightblue", pointerEvents:"none"}}>3rd kyu (Light Blue) </option>
+                                  </>
+                                )}
+                              else if(belt.id === 2){ // Special case for dark blue belt with "nd" as a suffix
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:"#00008b", color:"white", pointerEvents:"none"}}>2nd kyu (Dark Blue) </option>
+                                  </>
+                                )}
+                              else if(belt.id === 1){ // Special case for brown belt with "st" as a suffix
+                                return(
+                                  <>
+                                  <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "st kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                  </>
+                                )}
+                              else {
+                                  return(
+                                    <>
+                                    <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option>
+                                    </>
+                                  )}
+                        })}
+                        <br />
+
+                         
                         {this.state.technique_type.map(type => {
-                        console.log("Testing 1 2 3"); // These print statments aren't being hit
+
+                        console.log("Testing 1 2 3"); 
                         console.log("LHS " + type.id + "RHS " + this.state.technique.technique_type_id);
                          if(type.id === this.state.technique.technique_type_id){
                          return(
                              <>
-                                {<text style={{fontWeight:"italics"}}>type.category</text> }
+                                {<text style={{fontStyle:"italic"}}>{type.category}</text> }
                                 <br />
                                 {type.sub_category}
                                 </>
@@ -111,6 +148,16 @@ class TechniqueShowPage extends Component {
                         <br />
                         {this.state.technique.summary}
                         <br />
+                        <br />
+                        {/* Hardcoded video URL for now */}
+                        <iframe src='https://www.youtube.com/embed/E7wJTI-1dvQ'
+                        frameborder='0'
+                        allow='autoplay; encrypted-media'
+                        allowfullscreen
+                        title='video'
+                         />
+                        <br />
+
 
                         {/*{this.state.technique.videos_id}*/}
                         <br />
@@ -141,9 +188,11 @@ class TechniqueShowPage extends Component {
                          }
                          </>
                         
+                         <Button variant="info" type="info" onClick={id => this.updateTechnique(this.state.technique.id)}>
+                             Edit
+                           </Button>
 
-
-
+                        )}
                         </>
               </div>
         </main>

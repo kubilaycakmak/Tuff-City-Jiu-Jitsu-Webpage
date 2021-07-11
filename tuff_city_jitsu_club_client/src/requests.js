@@ -51,6 +51,16 @@ export const Technique = {
     );
   },
 
+  find() {
+    return fetch(`${BASE_URL}/techniques_find`, {
+      credentials: "include"
+    }).then(res=>{
+      console.log(res);
+      return(res.json())
+      }
+    );
+  },
+
   // Create a technique
   create(params) {
         console.log("##############", params)

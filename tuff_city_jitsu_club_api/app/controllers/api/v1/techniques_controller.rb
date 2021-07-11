@@ -12,6 +12,57 @@ class Api::V1::TechniquesController < Api::ApplicationController
     end
 
 
+    # const techniques = [
+    #     {
+    #       name: "a",
+    #       belt_grade: "yellow"
+    #     },
+    #     {
+    #       name: "b",
+    #       belt_grade: "yellow"
+    #     },
+    #     {
+    #       name: "c",
+    #       belt_grade: "black"
+    #     }
+    #   ]
+
+    # We can grab all of the above from our serializers here on the backend
+
+
+    #   const techniquesGroupedByBeltGrade = {};
+    #   for (let technique of techniques) {
+    #     const { name, belt_grade } = technique;
+    #     if (techniquesGroupedByBeltGrade[belt_grade]) {
+    #       techniquesGroupedByBeltGrade[belt_grade].push(technique)
+    #     } else {
+    #       techniquesGroupedByBeltGrade[belt_grade] = [technique]
+    #     }
+    #   }
+
+    # The above Javascript code ported to Ruby looks something like (WIP):
+
+    # techniquesGroupedByBeltGrade = {}
+    # # for loop
+    # for technique in 1..techniques
+    #     # const { name, belt_grade } = technique; # I'm thinking we need all of the technique attributes, belt_grade ids and technique type attributes here
+    #     if techniquesGroupedByBeltGrade[belt_grade]
+    # #       techniquesGroupedByBeltGrade[belt_grade].push(technique)
+    #     else
+    # #       techniquesGroupedByBeltGrade[belt_grade] = [technique]
+    #     end
+    # end
+
+    # Then we can use the following code as a basis on the React side to render:
+    #   // console.log(techniquesGroupedByBeltGrade)
+    #   Object.keys(techniquesGroupedByBeltGrade).map((belt_grade) => {
+    #     belt_grade.map((technique) => {
+    #       return(
+    #         <div> technique.name </div>
+    #       )
+    #     })
+    #   })
+
 
     def create
         # Get params for technique type and syllabus_id
@@ -73,6 +124,28 @@ class Api::V1::TechniquesController < Api::ApplicationController
                 status: 422 # Unprocessable Entity
             )
         end
+    end
+
+    def find
+        # puts "TESTING ========#{current_user.id}" 
+        # @technique = Technique.where("belt_grade LIKE ? OR technique_type.category LIKE ?", "%#{params[:search_string]}%", "%#{params[:search_string]}%")
+        belt_id = BeltGrade.where("user_id = ?", current_user.id).first.id
+        technique = Technique.where("belt_id = ?", belt_id) #, current_user.id)
+        puts "This is the belt we're referring to", belt_id
+        puts "This is the technique we want", @technique
+
+        
+        # render(
+        #     json: technique #, each_serializer: TechniquesSerializer
+        #     )
+
+        technique_types = TechniqueType.all
+        render(
+            json: technique_types.as_json
+        )
+
+
+        
     end
 
     private 

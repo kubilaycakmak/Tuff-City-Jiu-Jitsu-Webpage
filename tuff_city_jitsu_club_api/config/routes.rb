@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         resources :mindmap
       end
       resources :techniques
+      get "/techniques_find", {to: "techniques#find"}
       resources :profiles
       resources :whatisjitsu
       resources :admin

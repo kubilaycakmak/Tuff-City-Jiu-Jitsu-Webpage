@@ -19,35 +19,45 @@ export class SyllabusIndexPage extends React.Component {
         technique_types: [],
         belts : [],
         belts_group : [],
+        rendered_techniques : [],
         isLoading: true
 
       };
     }
 
     componentDidMount() {
-      Belt.all().then(belts => {
-        this.setState({
-          belts: belts,
-        });
-      });
+      // Belt.all().then(belts => {
+      //   this.setState({
+      //     belts: belts,
+      //   });
+      // });
 
-      Technique.all().then(techniques => {
-          // console.log(techniques)
-        this.setState({
-          techniques: techniques,
-          belts_group: this.group_techniques_belts[techniques]
-        });
-        console.log("techniques", this.state.techniques)
-      });
+      // Technique.all().then(techniques => {
+      //     // console.log(techniques)
+      //   this.setState({
+      //     techniques: techniques,
+      //     belts_group: this.group_techniques_belts[techniques]
+      //   });
+      //   console.log("techniques", this.state.techniques)
+      // });
 
 
-        Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
-            this.setState({
-            technique_types: syllabus.technique_types,
+      //   Syllabus.one(2).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing
+      //       this.setState({
+      //       technique_types: syllabus.technique_types,
+      //       isLoading: false
+      //       });
+      //   });
+
+        Technique.find().then(techniques => {
+          this.setState({
+            rendered_techniques: [...techniques],
             isLoading: false
-            });
-        });
+          })
+      });
       }
+
+
     
     deleteTechnique(id) {
         Technique.destroy(id).then(() => {
@@ -94,11 +104,11 @@ export class SyllabusIndexPage extends React.Component {
         console.log("These are the belts" + Belt.all())
         console.log(Array.isArray(this.state.belts))
 
-        // const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 400);
+        const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 400);
         let previousBeltId = 0;
         let previousTechniqueTypeId = 0;
         let technique_types_array = [];
-        console.log("these are the technique types", this.state.technique_types)
+        console.log("these are the rendered technique types", this.state.rendered_techniques)
 
 
         return (
@@ -106,6 +116,18 @@ export class SyllabusIndexPage extends React.Component {
                 <br />
                 <div className="central">
                 <h2>SYLLABUS</h2>
+                
+                <div>{this.state.rendered_techniques.map(tech => {
+                  return(
+                  // (<h1>{tech.category}</h1>)
+                  // (<h1>{tech.id}</h1>)
+                  <>
+                  {tech.techniques.summary}
+                  </>
+                  )
+                })}</div>
+                
+                
                 </div>
                 <br />
                     <div

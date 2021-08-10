@@ -7,5 +7,3 @@ class TechniqueTypesSerializer < ActiveModel::Serializer
     :updated_at
 )
 end
-
-has_many :techniques

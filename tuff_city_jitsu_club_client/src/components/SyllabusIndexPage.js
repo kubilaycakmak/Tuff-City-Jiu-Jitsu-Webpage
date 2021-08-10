@@ -1,7 +1,7 @@
 // Fetch all syllabus data and render here, not on the show page(s)
 
 import React, {useState} from 'react';
-import { Technique, Syllabus, Belt } from '../requests';
+import { Technique, TechniqueType, Syllabus, Belt } from '../requests';
 // import { Link } from 'react-router-dom';
 import moment from "moment";
 import Button from "react-bootstrap/Button";
@@ -20,17 +20,19 @@ export class SyllabusIndexPage extends React.Component {
         belts : [],
         belts_group : [],
         rendered_techniques : [],
+        rendered_technique_types : [],
+        formatted_techniques : [],
         isLoading: true
 
       };
     }
 
     componentDidMount() {
-      // Belt.all().then(belts => {
-      //   this.setState({
-      //     belts: belts,
-      //   });
-      // });
+      Belt.all().then(belts => {
+        this.setState({
+          belts: belts,
+        });
+      });
 
       // Technique.all().then(techniques => {
       //     // console.log(techniques)
@@ -50,12 +52,67 @@ export class SyllabusIndexPage extends React.Component {
       //   });
 
         Technique.find().then(techniques => {
+          // console.log("Found anything yet?")
           this.setState({
             rendered_techniques: [...techniques],
-            isLoading: false
           })
       });
-      }
+      
+      TechniqueType.find().then(technique_types => {
+        let result = [];
+        result = technique_types.reduce(function (r, a) {
+          r[a.belt_id] = r[a.belt_id] || [];
+          r[a.belt_id].push(a);
+          return r;
+      }, Object.create(null))
+
+      console.log("This is the result", result);
+        // technique_types.map(item)
+        // console.log("There!")
+        // console.log("These are the types", technique_types)
+        this.setState({
+          // rendered_technique_types: [...technique_types],
+          result: Object.values(result),
+          rendered_technique_types: 
+          technique_types.sort((belt1, belt2) => belt2.belt_id - belt1.belt_id),
+          isLoading: false
+        })
+
+
+          // Following block doesn't work
+          // technique_types.forEach(type => {
+
+          // let output = {};
+          // this.state.rendered_techniques.forEach(tech => {
+          //   console.log("Here")
+          //   if(type.id === tech.technique_type.id) {
+          //     output.technique = tech;
+          //     output.technique_type = type;
+          //   }
+  
+          // })
+          // this.setState(previousState => ({
+          //   formatted_techniques: [...previousState.formatted_techniques, output]
+          // }))
+    });
+    console.log("anything")
+  }
+  
+
+      // this.state.rendered_technique_types.forEach(type => {
+      //   let output = {};
+      //   this.state.rendered_techniques.forEach(tech => {
+      //     console.log("Here")
+      //     if( type.id === tech.technique_type.id) {
+      //       output.technique = tech;
+      //       output.technique_type = type;
+      //     }
+
+      //   })
+      //   this.setState({
+      //     formatted_techniques: [...output],
+      //   })
+      // }
 
 
     
@@ -72,43 +129,45 @@ export class SyllabusIndexPage extends React.Component {
       return str.trim().split(" ");
  };
 
-    group_techniques_belts = function (techniques) {
-      const output = [];
-      const belt_array = this.state.belts.map(belt => belt.id);
-      const j = 0;
-      // First belt id's technique id should be the first technique's belt id
-      // Then keep comparing the belt id with the next belt id, and keep reassigning it 
-      let belt = this.state.techniques[0].belt_id;
-      this.state.techniques.forEach(technique => {
-        let group = [];
-        if(belt === technique.belt_id){
-          group.push(technique)
+    // group_techniques_belts = function (techniques) {
+    //   const output = [];
+    //   const belt_array = this.state.belts.map(belt => belt.id);
+    //   const j = 0;
+    //   // First belt id's technique id should be the first technique's belt id
+    //   // Then keep comparing the belt id with the next belt id, and keep reassigning it 
+    //   let belt = this.state.techniques[0].belt_id;
+    //   this.state.techniques.forEach(technique => {
+    //     let group = [];
+    //     if(belt === technique.belt_id){
+    //       group.push(technique)
 
-        }
-        belt = technique.belt_id;
-        output.push(group);
-        // Loop through each technique
-        // Push all the techniques that have the same belt id into the belt array
-        // When displaying at the bottom take everything from the belt array, hence grouping them by the belt id
-      })
-      return output;
-    };
+    //     }
+    //     belt = technique.belt_id;
+    //     output.push(group);
+    //     // Loop through each technique
+    //     // Push all the techniques that have the same belt id into the belt array
+    //     // When displaying at the bottom take everything from the belt array, hence grouping them by the belt id
+    //   })
+    //   return output;
+    // };
 
 
     render() {
         const currentUser = this.props.currentUser;
         const { showAll = false} = this.props;
         
-        this.state.techniques.forEach(t => console.log(t))
+        // this.state.techniques.forEach(t => console.log(t))
         // this.state.belts.forEach(b => console.log(b))
-        console.log("These are the belts" + Belt.all())
-        console.log(Array.isArray(this.state.belts))
+        // console.log("These are the belts" + Belt.all())
+        // console.log(Array.isArray(this.state.belts))
 
         const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 400);
         let previousBeltId = 0;
         let previousTechniqueTypeId = 0;
         let technique_types_array = [];
-        console.log("these are the rendered technique types", this.state.rendered_techniques)
+        // console.log("these are the rendered techniques", this.state.rendered_techniques)
+        console.log("these are the rendered technique types", this.state.rendered_technique_types)
+        // console.log("these are the formatted techniques", this.state.formatted_techniques)
 
 
         return (
@@ -116,18 +175,47 @@ export class SyllabusIndexPage extends React.Component {
                 <br />
                 <div className="central">
                 <h2>SYLLABUS</h2>
-                
-                <div>{this.state.rendered_techniques.map(tech => {
+
+                {/* <div>{this.state.formatted_techniques.map(all => {
                   return(
-                  // (<h1>{tech.category}</h1>)
-                  // (<h1>{tech.id}</h1>)
+                    <>
+                    {all}
+                    </>
+                  )
+                })}
+
+                </div> */}
+                
+                <div>{this.state.rendered_technique_types?
+                this.state.result.map(type => {
+                return(
+                <>
+                {type.belt.colour}
+                <br />
+                {type.category}
+                <br />
+                {type.sub_category}
+                <br />
+                {type.techniques.map(technique => 
+                  (<> 
+                  {technique.summary} 
+                  </>))}
+                <br />
+                <br />
+
+                {/* {this.state.rendered_techniques.map(tech => {
+                  return(
                   <>
-                  {tech.techniques.summary}
+                    {tech.technique_type.id === type.id ? tech.summary:""}
+                    <br />
                   </>
                   )
-                })}</div>
-                
-                
+                })} */}
+                </>
+                )
+                })
+              : ""}
+                </div>       
                 </div>
                 <br />
                     <div
@@ -243,4 +331,4 @@ export class SyllabusIndexPage extends React.Component {
     }
 }
 
-// First fix this page and then adapt it to React Bootstrap
+ {/* First fix this page and then adapt it to React Bootstrap */}

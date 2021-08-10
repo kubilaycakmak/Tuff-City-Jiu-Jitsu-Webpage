@@ -139,9 +139,9 @@ class Api::V1::TechniquesController < Api::ApplicationController
         #     json: technique #, each_serializer: TechniquesSerializer
         #     )
 
-        technique_types = TechniqueType.all
+        technique = Technique.all
         render(
-            json: technique_types.as_json
+            json: technique.as_json
         )
 
 

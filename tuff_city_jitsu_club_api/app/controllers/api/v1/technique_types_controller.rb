@@ -1,114 +1,32 @@
 class Api::V1::TechniqueTypesController < Api::ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :find_technique, only: [:edit, :update, :destroy]
+    before_action :find_technique_types, only: [:edit, :update, :destroy]
     
     rescue_from(ActiveRecord:: RecordNotFound, with: :record_not_found)
     rescue_from(ActiveRecord:: RecordInvalid, with: :record_invalid)
 
 
-    def index
-        techniques = Technique.all.order(belt_id: :desc) # This should order the techniques by beltcode
-        render(json: techniques, each_serializer: TechniquesSerializer) # Find out what should be in this serializer
-    end
-
-
-    # const techniques = [
-    #     {
-    #       name: "a",
-    #       belt_grade: "yellow"
-    #     },
-    #     {
-    #       name: "b",
-    #       belt_grade: "yellow"
-    #     },
-    #     {
-    #       name: "c",
-    #       belt_grade: "black"
-    #     }
-    #   ]
-
-    # We can grab all of the above from our serializers here on the backend
-
-
-    #   const techniquesGroupedByBeltGrade = {};
-    #   for (let technique of techniques) {
-    #     const { name, belt_grade } = technique;
-    #     if (techniquesGroupedByBeltGrade[belt_grade]) {
-    #       techniquesGroupedByBeltGrade[belt_grade].push(technique)
-    #     } else {
-    #       techniquesGroupedByBeltGrade[belt_grade] = [technique]
-    #     }
-    #   }
-
-    # The above Javascript code ported to Ruby looks something like (WIP):
-
-    # techniquesGroupedByBeltGrade = {}
-    # # for loop
-    # for technique in 1..techniques
-    #     # const { name, belt_grade } = technique; # I'm thinking we need all of the technique attributes, belt_grade ids and technique type attributes here
-    #     if techniquesGroupedByBeltGrade[belt_grade]
-    # #       techniquesGroupedByBeltGrade[belt_grade].push(technique)
-    #     else
-    # #       techniquesGroupedByBeltGrade[belt_grade] = [technique]
-    #     end
+    # def index
+    #     technique_types = TechniqueTypes.all.order(belt_id: :desc) # This should order the technique types by beltcode
+    #     render(json: technique_types, each_serializer: TechniquesSerializer) # Find out what should be in this serializer
     # end
 
-    # Then we can use the following code as a basis on the React side to render:
-    #   // console.log(techniquesGroupedByBeltGrade)
-    #   Object.keys(techniquesGroupedByBeltGrade).map((belt_grade) => {
-    #     belt_grade.map((technique) => {
-    #       return(
-    #         <div> technique.name </div>
-    #       )
-    #     })
-    #   })
-
-
-    def create
-        # Get params for technique type and syllabus_id
-        # Save technique_type 
-        # Create technique with technique_type and the params
-        # Use belt and technique_type serializers to help display that info
-
-        # {"syllabus"=>"Canada", "summary"=>"O-goshi", "category"=>"Nage-waza (throwing)", "sub_category"=>"Hip throw", "is_different"=>"No", "difference_content"=>"", "format"=>:json, "controller"=>"api/v1/techniques", "action"=>"create", "technique"=>{"summary"=>"O-goshi", "is_different"=>"No", "difference_content"=>""}}
-
-        puts "Here are the params", params
-        new_syllabus = Syllabus.find_by(country: params["syllabus"])
-        puts new_syllabus
-        existing_technique_type = TechniqueType.where(category: params["category"], sub_category: params["sub_category"])
-        if existing_technique_type.length > 0
-            technique_type_id = existing_technique_type[0].id
-        else 
-            type_of_technique = TechniqueType.new category: params["category"], sub_category: params["sub_category"], syllabus_id:new_syllabus.id
-            puts type_of_technique
-            type_of_technique.save! # Note: on next lines, videos is hardcoded until video functionality added
-            technique_type_id = type_of_technique.id
-        end
-        puts "The technique type ID is ", technique_type_id
-        puts "This is the summary", params["technique"]["summary"]
-        technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i
-        puts "This is the belt", technique.belt_id
-        technique.save!
-        render json: { id: new_syllabus.id }
-    end
-
     def show
-
         puts "Here are the params", params["id"]
-        technique = Technique.find params["id"]
-        puts technique
-        if technique
-        puts "Here is the technique", technique
+        technique_type = TechniqueType.find params["id"]
+        puts technique_type
+        if technique_type
+        puts "Here is the technique type", technique_type
         render(
-            json: technique
+            json: technique_type
                 )
         else
-            render(json: {error: "Technique Not Found"})
+            render(json: {error: "Technique Type Not Found"})
         end
     end
 
     def destroy
-        @technique.destroy
+        @technique_type.destroy
         render(json: { status: 200 }, status: 200)
     end
 
@@ -116,23 +34,25 @@ class Api::V1::TechniqueTypesController < Api::ApplicationController
     end
 
     def update
-        if @technique.update technique_params
-            render json: { id: @technique.id }
+        if @technique_type.update technique_params
+            render json: { id: @technique_type.id }
         else
             render(
-                json: { errors: technique.errors },
+                json: { errors: technique_type.errors },
                 status: 422 # Unprocessable Entity
             )
         end
     end
 
+
+
     def find
         # puts "TESTING ========#{current_user.id}" 
         # @technique = Technique.where("belt_grade LIKE ? OR technique_type.category LIKE ?", "%#{params[:search_string]}%", "%#{params[:search_string]}%")
-        belt_id = BeltGrade.where("user_id = ?", current_user.id).first.id
-        technique = Technique.where("belt_id = ?", belt_id) #, current_user.id)
-        puts "This is the belt we're referring to", belt_id
-        puts "This is the technique we want", @technique
+        # belt_id = BeltGrade.where("user_id = ?", current_user.id).first.id # Might need to change this one and so on, test
+        # technique_type = TechniqueType.where("belt_id = ?", belt_id) #, current_user.id)
+        # puts "This is the belt we're referring to", belt_id
+        # puts "This is the technique type we want", technique_type
 
         
         # render(
@@ -140,6 +60,18 @@ class Api::V1::TechniqueTypesController < Api::ApplicationController
         #     )
 
         technique_types = TechniqueType.all
+        
+        puts "#################", technique_types
+        techniques = Technique.all
+
+        # render(
+        #     json: technique_types, each_serializer: TechniqueTypesSerializer
+        # )
+
+        # render(
+        #     json: techniques, each_serializer:TechniquesSerializer
+        # )
+
         render(
             json: technique_types.as_json
         )
@@ -150,18 +82,16 @@ class Api::V1::TechniqueTypesController < Api::ApplicationController
 
     private 
 
-    def technique_params
-        params.require(:technique)
+    def technique_type_params
+        params.require(:technique_type)
         .permit( # Replace these as appropriate
-            :summary,
-            :is_different,
-            :difference_content,
-            :belt_id
+            :category,
+            :sub_category
         )
     end
     
-    def find_technique
-        @technique ||= Technique.find params[:id]
+    def find_technique_type
+        @technique_type ||= TechniqueType.find params[:id]
     end
 
     def record_not_found

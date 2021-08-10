@@ -81,9 +81,9 @@ class TechniqueShowPage extends Component {
 
 
         const currentUser = this.props.currentUser;
-        console.log(currentUser)
+        console.log("This is the user", currentUser)
 
-        console.log(this.state);
+        console.log("This is the state", this.state);
 
         return (
             <main className="TechniqueShowPage">

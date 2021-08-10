@@ -38,6 +38,31 @@ export const Belt = {
   // },
 }
 
+export const TechniqueType = {
+
+  // Fetch all techniques from the server
+  all() {
+    return fetch(`${BASE_URL}/technique_types`, {
+      credentials: "include"
+    }).then(res=>{
+      console.log(res);
+      return(res.json())
+      }
+    );
+  },
+
+  find() {
+    return fetch(`${BASE_URL}/technique_types_find`, {
+      credentials: "include"
+    }).then(res=>{
+      console.log(res);
+      return(res.json())
+      }
+    );
+  },
+}
+
+
 export const Technique = {
 
   // Fetch all techniques from the server

@@ -31,10 +31,11 @@ class Api::V1::BeltsController < Api::ApplicationController
         end
     end
 
-    # def destroy
-    #     @belt.destroy
-    #     render(json: { status: 200 }, status: 200)
-    # end
+    def destroy
+        @belt = Belt.find(params[:id])
+        @belt.destroy
+        render(json: { status: 200 }, status: 200)
+    end
 
     # def edit
     # end

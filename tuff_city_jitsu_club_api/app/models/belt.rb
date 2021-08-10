@@ -3,6 +3,7 @@ class Belt < ApplicationRecord
   has_many :instructor_qualifications
   has_many :qualifications
   has_many :techniques
+  has_many :technique_types
   # belongs_to :syllabus
   
   validates :colour, presence: true

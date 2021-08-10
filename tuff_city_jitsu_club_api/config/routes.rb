@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       end
       resources :techniques
       get "/techniques_find", {to: "techniques#find"}
+      resources :technique_types
+      get "/technique_types_find", {to: "technique_types#find"}
       resources :profiles
       resources :whatisjitsu
       resources :admin

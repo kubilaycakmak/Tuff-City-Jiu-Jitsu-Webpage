@@ -72,6 +72,7 @@ export class SyllabusIndexPage extends React.Component {
         // console.log("These are the types", technique_types)
         this.setState({
           // rendered_technique_types: [...technique_types],
+          beltColors: result,
           result: Object.values(result),
           rendered_technique_types: 
           technique_types.sort((belt1, belt2) => belt2.belt_id - belt1.belt_id),
@@ -183,23 +184,25 @@ export class SyllabusIndexPage extends React.Component {
                     </>
                   )
                 })}
-
-                </div> */}
                 
-                <div>{this.state.rendered_technique_types?
-                this.state.result.map(type => {
-                return(
-                <>
-                {type.belt.colour}
+                </div> */}
+                {/* {JSON.stringify(this.state.result)} */}
+                {Object.keys(this.state?.beltColors).map(key => (<div key = {key}>{key}</div>))}
+                <div>{this.state.rendered_technique_types &&
+                this.state.result?.map(type => 
+                type.map((item, index) => 
+                  (
+                <div key={index}>
+                {item.belt.colour}
                 <br />
-                {type.category}
+                {item.category}
                 <br />
-                {type.sub_category}
+                {item.sub_category}
                 <br />
-                {type.techniques.map(technique => 
-                  (<> 
+                {item.techniques.map(technique => 
+                  (<div key={technique.id}> 
                   {technique.summary} 
-                  </>))}
+                  </div>))}
                 <br />
                 <br />
 
@@ -211,10 +214,11 @@ export class SyllabusIndexPage extends React.Component {
                   </>
                   )
                 })} */}
-                </>
+                </div>
                 )
-                })
-              : ""}
+              )
+                )
+              }
                 </div>       
                 </div>
                 <br />

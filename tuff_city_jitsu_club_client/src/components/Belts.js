@@ -47,50 +47,56 @@ function capitaliseTheFirstLetterOfEachWord(words) {
 }
 
 function Belts(props) {
+    let orderArray = ["Waza", "Ukemi", "Atemi", "Kansetsu", "Ne-Waza", "Nage-Waza", "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", "Henka-waza", "Kaeshi-waza", "Bunkai", "(Misc)"];
     let itemShorthand = props.item[0].belt
 
     console.log("This is the Kyu number", itemShorthand.id)
     // const htmlContent = "<i>Kyu</i>"
-    const groupedEntries = _.keyBy(props.item, "category")
+    const groupedEntries = _.groupBy(props.item, "category")
     console.log("Grouped entries are", groupedEntries);
     return(
         <>
 {/* <option className="gradecoloroption" style={{backgroundColor:belt.colour, pointerEvents:"none"}}>{belt.id + "th kyu (" + belt.colour.charAt(0).toUpperCase() + belt.colour.slice(1) + ")"} </option> */}
 
     <h1 style={{fontWeight:"bold", display: "flex", justifyContent:'center', backgroundColor:itemShorthand.colour.replace(/ +/g, ""), color:textColour(itemShorthand.id), pointerEvents:"none"}}>{itemShorthand.id  + finishKyu(itemShorthand.id) + " Kyu (" + capitaliseTheFirstLetterOfEachWord(itemShorthand.colour) + ")"}</h1>
-    {/* {JSON.stringify(_.keyBy(props.item, "category"))} */}
-    {Object.keys(groupedEntries).map(key => <div key = {key}>{groupedEntries[key].map(item => {
-        console.log("This is of interest", item.id)
+    {/* {JSON.stringify(_.groupBy(props.item, "category"))} */}
+
+    {Object.keys(groupedEntries).map(key => 
+    <div key = {key}>
+    <div style={{fontWeight:"bold", fontStyle:"italic"}}>{key + ":"}</div> 
+        {
+        groupedEntries[key].map(item => {
+        console.log("This is of interest", item.category)
+    
         return(
             <div key = {item.id}>
-            <br />
             {/* <div style={{fontWeight:"bold", fontStyle:"italic"}}>{item.category + ":"}</div>  */}
-            <div>{key}</div>
-            <br />
              {item.techniques.map(element => {
                 return(
                 <div key = {element.id}>
                 <div>{element.summary}</div>
+                <div>{item.sub_category}</div>
+
                 {element.is_different ? (
                     <>
                     {<text style={{fontWeight:"bold"}}>What's different to the UK syllabus?</text> }
                     <br />
                     {element.difference_content}
                     <br />
-                    <br />
-                    <p>Posted on {moment(element.created_at ).format("MMM Do, YYYY")}</p>
-
                     </>
                     ) : (
-
-                    <p>Posted on {moment(element.created_at ).format("MMM Do, YYYY")}</p>
+                    // Adjust the next line so it's absent (don't need redundant p-tags)
+                    <></>
                     )}
                     </div>
                 )
             })}
-            <div>{item.sub_category}</div>
+            <br />
+            {/* Test that the following date is for the correct thing, i.e. the technique creation date */}
+            <p>Posted on {moment(item.created_at ).format("MMM Do, YYYY")}</p>
+
             {/* Need to sort category according to this pattern:
-             Waza, Ukemi, Atemi, Kansetsu, Ne-waza, Nage-Waza, ------. Henka-waza, Bunka, (Misc)*/}
+             Waza, Ukemi, Atemi, Kansetsu, Ne-waza, Nage-Waza, ------. Henka-Waza, Kaeshi-Waza Bunkai, (Misc)*/}
             <div>{item.techniques_id}</div>
             <br />
             </div>

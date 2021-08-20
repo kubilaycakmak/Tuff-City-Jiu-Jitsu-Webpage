@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import { Technique, TechniqueType, Syllabus, Belt } from '../requests';
 // import { Link } from 'react-router-dom';
 import moment from "moment";
+import Belts from "./Belts";
 import Button from "react-bootstrap/Button";
 import { Nav } from 'react-bootstrap'
 // import {confirm} from 'react-bootstrap-confirmation';
@@ -67,6 +68,7 @@ export class SyllabusIndexPage extends React.Component {
       }, Object.create(null))
 
       console.log("This is the result", result);
+      console.log("Final result", Object.values(result))
         // technique_types.map(item)
         // console.log("There!")
         // console.log("These are the types", technique_types)
@@ -77,6 +79,11 @@ export class SyllabusIndexPage extends React.Component {
           rendered_technique_types: 
           technique_types.sort((belt1, belt2) => belt2.belt_id - belt1.belt_id),
           isLoading: false
+        })
+        this.state.result.map(item => {
+          item.map(element => {
+            console.log("this is the element", element.belt_id)
+          })
         })
 
 
@@ -175,51 +182,17 @@ export class SyllabusIndexPage extends React.Component {
             <main className="SyllabusIndexPage">
                 <br />
                 <div className="central">
-                <h2>SYLLABUS</h2>
-
-                {/* <div>{this.state.formatted_techniques.map(all => {
-                  return(
-                    <>
-                    {all}
-                    </>
-                  )
-                })}
-                
-                </div> */}
-                {/* {JSON.stringify(this.state.result)} */}
-                {Object.keys(this.state?.beltColors).map(key => (<div key = {key}>{key}</div>))}
-                <div>{this.state.rendered_technique_types &&
-                this.state.result?.map(type => 
-                type.map((item, index) => 
-                  (
-                <div key={index}>
-                {item.belt.colour}
-                <br />
-                {item.category}
-                <br />
-                {item.sub_category}
-                <br />
-                {item.techniques.map(technique => 
-                  (<div key={technique.id}> 
-                  {technique.summary} 
-                  </div>))}
-                <br />
+                <h2 style={{display: "flex", justifyContent:'center'}}>SYLLABUS</h2>
                 <br />
 
-                {/* {this.state.rendered_techniques.map(tech => {
+
+                {this.state.result && this.state.result.reverse().map((item, i) => { // Reverse causes it to sort the list from yellow to brown, scrolling down
                   return(
-                  <>
-                    {tech.technique_type.id === type.id ? tech.summary:""}
-                    <br />
-                  </>
+                    <Belts item={item} key={i} />
                   )
-                })} */}
-                </div>
-                )
-              )
-                )
-              }
-                </div>       
+                  })}     
+
+
                 </div>
                 <br />
                     <div

@@ -22,7 +22,7 @@ function NewTechniqueForm(props) {
             difference_content: formData.get("difference_content")
         });
 
-        console.log(props);
+        console.log("########", props);
 
         
 
@@ -45,8 +45,8 @@ function NewTechniqueForm(props) {
         {/* Note: italicise options */}
         <Form.Group controlId="formBasicGrade">
             <Form.Label>Grade</Form.Label>
-            <Form.Control className="color-belt" name = "belt" type="belt" as="select" defaultValue="Yellow">
-                <option className="gradecoloroption" style={{backgroundColor:"yellow"}} value={7}>Yellow </option>
+            <Form.Control className="color-belt" name = "belt" type="belt" as="select" defaultValue={7}>
+                <option className="gradecoloroption" style={{backgroundColor:"yellow"}} value={7} >Yellow </option>
                 <option className="gradecoloroption" style={{backgroundColor:"orange"}} value={6}>Orange</option>
                 <option className="gradecoloroption" style={{backgroundColor:"green"}} value={5}>Green</option>
                 <option className="gradecoloroption" style={{backgroundColor:"purple"}} value={4}>Purple</option>
@@ -93,7 +93,7 @@ function NewTechniqueForm(props) {
           <Form.Control name = "difference_content" type="difference_content" placeholder="E.g. transitions aren't present for the UK syllabus"/>
         </Form.Group>
         <Form.Group controlId="formBasicSecondaryVideo">
-          <Form.Label>If different, provide the UK video URL</Form.Label>
+          <Form.Label>If different, provide the UK video URL if present</Form.Label>
           <Form.Control name = "secondary_video" type="secondary_video" placeholder="Try to source this from YouTube if possible."/>
         </Form.Group>
         <Button variant="primary" type="submit">

@@ -1,7 +1,7 @@
 class Technique < ApplicationRecord
     before_save :capitalize_summary
     belongs_to :belt
-    belongs_to :belt_grade
+    # belongs_to :belt_grade # Think about whether this is needed e.g. for users only seeing certain amount of syllabus
     # belongs_to :syllabus
     belongs_to :technique_type
     # has_many :videos

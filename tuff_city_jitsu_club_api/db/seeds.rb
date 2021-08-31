@@ -51,6 +51,8 @@ instructor_user = User.create(
     # training_bubble_id: "Seumas Finlayson" # The other instructor, a brown belt new to the region
 )
 
+
+
 kyu_grade_array = ["brown", "dark blue", "light blue", "purple", "green", "orange", "yellow", "white"] # These are the "kyu" grades, the coloured belts below black
 # This reverse order list means that brown will have a belt_id of 1 which matches how it is denoted as 1st Kyu, and so on going down the ladder.
 dan_grade_array = ["shodan", "nidan", "sandan"] # These latter three grades are not colours, but types of black belt or "dan" grade
@@ -201,10 +203,12 @@ puts beltgrades
     end
 end
 
-
+s = Syllabus.create(country:"canada", belt_id: 1, user_id:1)
+s.save
 
 puts Cowsay.say("Generated #{User.count} users", :sheep) 
 puts Cowsay.say("Generated #{Belt.count} belt colours", :beavis) 
+puts Cowsay.say("Generated #{Syllabus.count} syllabi", :sheep) 
 puts Cowsay.say("Generated #{BeltGrade.count} belt grades for users", :cow) 
 puts Cowsay.say("Generated #{Qualification.count} instructor qualification types", :tux) 
 puts Cowsay.say("Generated #{InstructorQualification.count} instructor qualifications for users", :frogs) 

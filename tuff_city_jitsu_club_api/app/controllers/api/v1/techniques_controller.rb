@@ -86,7 +86,10 @@ class Api::V1::TechniquesController < Api::ApplicationController
         end
         puts "The technique type ID is ", technique_type_id
         puts "This is the summary", params["technique"]["summary"]
-        technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i
+        puts "This "
+        puts "*************************************************************************"
+        puts "these are the params:", params["technique"]["summary"],params["technique"]["is_different"], params["difference_content"],technique_type_id, params["belt"].to_i
+        technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["technique"]["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i
         puts "This is the belt", technique.belt_id
         technique.save!
         render json: { id: new_syllabus.id }
@@ -143,9 +146,6 @@ class Api::V1::TechniquesController < Api::ApplicationController
         render(
             json: technique.as_json
         )
-
-
-        
     end
 
     private 

@@ -11,6 +11,7 @@ import { SignUpPage } from "./SignUpPage";
 import { User, Session } from "../requests";
 import { Welcome } from "./Welcome";
 import { SyllabusIndexPage } from "./SyllabusIndexPage";
+import { SyllabusShowPage } from "./SyllabusShowPage";
 // import SyllabusMindmapPage from "./SyllabusMindmapPage";
 import TechniqueNewPage from "./TechniqueNewPage";
 import TechniqueShowPage from "./TechniqueShowPage";
@@ -72,10 +73,15 @@ class App extends React.Component {
 
 <Route path="/profiles" exact component={WhoAreWe} />
 
-                            <AuthRoute
+                            {/* <AuthRoute
                             isAuthenticated={currentUser}
                             path="/syllabus"
                             component={SyllabusIndexPage}
+                            /> */}
+                           <AuthRoute
+                            isAuthenticated={currentUser}
+                            path="/syllabus"
+                            component={SyllabusShowPage}
                             />
                             <AuthRoute
                             isAuthenticated={currentUser}

@@ -55,8 +55,10 @@ function capitaliseTheFirstLetterOfEachWord(words) {
 function Belts(props) {
     // "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~",
     let orderArray = ["Waza (techniques)", "Ukemi (breakfalling)", "Atemi (striking)", "Kansetsu (locks)", "Ne-Waza (groundwork)", "Nage-waza (throwing)", "Henka-waza (transition techniques)", "Kaeshi-waza (counter techniques)", "Bunkai (application)", "(Misc)"];
+    console.log("We need to shorthand this", props.item)
     let itemShorthand = props.item[0].belt
     console.log("These are the props", props)
+    console.log("This is the item", itemShorthand)
 
     //console.log("This is the Kyu number", itemShorthand.id)
     // const htmlContent = "<i>Kyu</i>"
@@ -93,7 +95,6 @@ function Belts(props) {
              {item.techniques.map(element => {
                 return(
                 <div key = {element.id}>
-                <div>{element.summary}</div>
                 <div>{item.sub_category}</div>
 
                 {element.is_different ? (

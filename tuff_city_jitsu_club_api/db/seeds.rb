@@ -60,7 +60,8 @@ dan_grade_array = ["shodan", "nidan", "sandan"] # These latter three grades are 
 
 kyu_grade_array.size.times do |x|
     Belt.create!({
-        colour:kyu_grade_array[x]
+        colour:kyu_grade_array[x],
+        # syllabus_id: 1 # Does this work??? No... chicken and egg problem!
     })
 end
 

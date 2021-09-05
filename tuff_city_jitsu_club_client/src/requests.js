@@ -6,7 +6,7 @@ export const Syllabus = {
 
   // Fetch a syllabus from the server
   one(id) {
-    return fetch(`${BASE_URL}/syllabi/${id}`, {
+    return fetch(`${BASE_URL}/syllabi/`, {
       credentials: "include"
     }).then(res => res.json());
   },

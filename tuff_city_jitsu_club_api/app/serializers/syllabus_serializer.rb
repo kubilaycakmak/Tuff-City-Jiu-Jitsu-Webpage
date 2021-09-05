@@ -4,17 +4,18 @@ class SyllabusSerializer < ActiveModel::Serializer
   :country,
   :user_id,
   :belt_id,
+  :belts,
   :technique_types,
   :techniques
   )
 
-  class BeltSerializer < ActiveModel::Serializer
+  class BeltsSerializer < ActiveModel::Serializer
     attributes(
       :id, 
       :colour,
       :created_at, 
       :updated_at
-  )
+    )
   end
 
   class TechniquesSerializer < ActiveModel::Serializer
@@ -44,7 +45,10 @@ class SyllabusSerializer < ActiveModel::Serializer
     TechniqueType.where("syllabus_id = " +  object.id.to_s)
   end
 
-
+  # Current stumbling block is writing the following method. Believe this requires a migration to add the syllabus id to belts, so this has now been done. Seed file will need to be adjusted accordingly.
+  def belts
+    Belt.where("syllabus_id = " +  object.id.to_s)
+  end
   
   def techniques
     techniques_array = []

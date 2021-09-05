@@ -1,6 +1,8 @@
 class Api::V1::SyllabiController < Api::ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :find_syllabus, only: [:show, :edit, :update, :destroy]
+    before_action :get_syllabus_index_page_data, only: [:show, :edit, :update, :destroy]
+    # Following line may be redundant given preceding line
+    # before_action :find_syllabus, only: [:show, :edit, :update, :destroy]
     
     rescue_from(ActiveRecord:: RecordNotFound, with: :record_not_found)
     rescue_from(ActiveRecord:: RecordInvalid, with: :record_invalid)
@@ -10,7 +12,7 @@ class Api::V1::SyllabiController < Api::ApplicationController
     def index
         syllabi = Syllabus.order(belt_id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
         render(json: syllabi, each_serializer: SyllabusSerializer) 
-        # Now do we need a belt/technique_type controller to account for their serializers, or can we simply call their serializers in this controller?
+        # Now do we need a belt/technique_type/technique controller to account for their serializers, or can we simply call their serializers in this controller?
     end
 
     def create
@@ -54,15 +56,34 @@ class Api::V1::SyllabiController < Api::ApplicationController
     def syllabus_params
         params.require(:syllabus)
         .permit( # Replace these as appropriate
-            :title,
-            :description,
-            :end_date,
-            :reserve_price
+            :id,
+            :country,
+            :user_id,
+            :belt_id
         )
     end
     
     def find_syllabus
-        @syllabus ||= Syllabus.find params[:id]
+        @syllabus||= Syllabus.find params[:id]
+    end
+    
+    def get_syllabus_index_page_data
+        # Don't think this method is firing at all! And why is that?
+        puts "testing 1 2 3"
+        belt_id = params[:belt_id]
+        syllabus_id = params[:syllabus_id]
+        payload = Hash.new # This is a hash in Rails with everything we need: belts, techniques, technique types, etc, as an all-in-one
+        payload[:belts] = Belt.find_by(belt_id)
+        payload[:techniques] = Technique.find_by(belt_id)
+        payload[:technique_types] = TechniqueType.find_by(belt_id)
+        if payload
+            puts "Here is the syllabus", payload
+            render(
+                json: payload
+            )
+        else
+            render(json: {error: "Syllabus Not Found"})
+        end
     end
 
     def record_not_found

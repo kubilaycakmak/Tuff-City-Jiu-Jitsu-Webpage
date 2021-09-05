@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :belts
       resources :instructorqualifications
       resources :syllabi do
+        get "/syllabi_find", {to: "syllabi#find"}
         resources :mindmap
       end
       resources :techniques

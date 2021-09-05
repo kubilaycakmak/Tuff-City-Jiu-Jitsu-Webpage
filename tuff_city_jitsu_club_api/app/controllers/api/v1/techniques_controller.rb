@@ -88,7 +88,7 @@ class Api::V1::TechniquesController < Api::ApplicationController
         puts "This is the summary", params["technique"]["summary"]
         puts "This "
         puts "*************************************************************************"
-        puts "these are the params:", params["technique"]["summary"],params["technique"]["is_different"], params["difference_content"],technique_type_id, params["belt"].to_i
+        puts "these are the params:", "summary: ", params["technique"]["summary"], "is it different?: ", params["technique"]["is_different"], "if so what is the difference? ", params["difference_content"], "technique type id: ", technique_type_id, "belt id: ", params["belt"].to_i
         technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["technique"]["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i
         puts "This is the belt", technique.belt_id
         technique.save!
@@ -96,15 +96,14 @@ class Api::V1::TechniquesController < Api::ApplicationController
     end
 
     def show
-
         puts "Here are the params", params["id"]
         technique = Technique.find params["id"]
         puts technique
         if technique
-        puts "Here is the technique", technique
-        render(
-            json: technique
-                )
+            puts "Here is the technique", technique
+            render(
+                json: technique
+                    )
         else
             render(json: {error: "Technique Not Found"})
         end
@@ -172,15 +171,21 @@ class Api::V1::TechniquesController < Api::ApplicationController
     end
     
     def record_invalid(error) 
+        # Rewrite these and similar methods in other controllers for optimisation and json rendering; for now using a .join which will print on the Rails console
         invalid_record = error.record 
-        errors = invalid_record.errors.map do |field, message|
-        {
-            type: error.class.to_s, 
-            record_type: invalid_record.class.to_s,
-            field: field,
-            message: message
-        }
-        end
+        # errors = invalid_record.errors.map do |field, message|
+        # errors = invalid_record.errors.map do |error|
+        # {
+        #     # type: error.class.to_s, 
+        #     # record_type: invalid_record.class.to_s,
+        #     attribute: error.attribute,
+        #     #field: error.field,
+        #     message: error.message
+        # }
+        # end
+        errors = invalid_record.errors.map(&:full_message).join(", ")
+        puts "These are the errors", errors
+        # Currently an error is "Belts must exist"... do not understand this! They do exist.
         render(
             json: { status: 422, errors: errors }
         )

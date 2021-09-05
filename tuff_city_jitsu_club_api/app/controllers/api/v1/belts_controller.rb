@@ -10,7 +10,7 @@ class Api::V1::BeltsController < Api::ApplicationController
         belts = Belt.all.order(id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
         # belts = Belt.all
         puts "Here are the belts", belts
-        render(json: belts, each_serializer: BeltSerializer) 
+        render(json: belts, each_serializer: BeltsSerializer) 
         # render :json=>belts
     end
 
@@ -59,7 +59,8 @@ class Api::V1::BeltsController < Api::ApplicationController
             :id,
             :colour,
             :created_at,
-            :updated_at
+            :updated_at,
+            :syllabus_id
         )
     end
     

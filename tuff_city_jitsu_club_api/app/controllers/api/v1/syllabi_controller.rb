@@ -10,7 +10,7 @@ class Api::V1::SyllabiController < Api::ApplicationController
     # Note- have instructed the initializer "inflection" file about the proper plural form of syllabus
 
     def index
-        syllabi = Syllabus.order(belt_id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
+        syllabi = Syllabus.order(id: :asc) # This should order the pages by yellow(7), orange(6), green(5) etc.
         render(json: syllabi, each_serializer: SyllabusSerializer) 
         # Now do we need a belt/technique_type/technique controller to account for their serializers, or can we simply call their serializers in this controller?
     end
@@ -51,6 +51,43 @@ class Api::V1::SyllabiController < Api::ApplicationController
         end
     end
 
+    def get_syllabus_index_page_data
+        puts "testing 1 2 3"
+        search_belt = params[:belt_id]
+        syllabus_id = params[:syllabus_id]
+        payload = Hash.new # This is a hash in Rails with everything we need: one belt, with all techniques, technique types, etc, as an all-in-one
+        payload[:belts] = Belt.find_by(id:search_belt)
+        payload[:techniques] = Technique.where(:belt_id=>search_belt)
+        payload[:technique_types] = TechniqueType.where(:belt_id=>search_belt)
+        if payload
+            puts "Here is the syllabus", payload
+            render(json: payload) 
+        else
+            render(json: {error: "Syllabus Not Found"})
+        end
+    end
+
+    def find_all_belts
+        puts "testing 1 2 3" 
+        search_syllabus = params[:syllabus_id]
+        payload = Hash.new # This is a hash in Rails with everything we need: all belts, techniques, technique types, etc, as an all-in-one
+        belts = Belt.where(:syllabus_id=>search_syllabus)
+        payload[:belts]=belts.map do |belt, index|
+            puts belt
+            techniques = Technique.where(:belt_id=>belt.id)
+            technique_types = TechniqueType.where(:belt_id=>belt.id)
+            {colour: belt.colour, id: belt.id, techniques:  techniques, technique_types: technique_types}
+        end
+        #payload[:techniques] = Technique.where(:belt_id=>search_belt)
+        # payload[:technique_types] = TechniqueType.where(:belt_id=>search_belt)
+        if payload
+            puts "Here is the syllabus", payload
+            render(json: payload) 
+        else
+            render(json: {error: "Syllabus Not Found"})
+        end
+    end
+
     private 
 
     def syllabus_params
@@ -58,32 +95,12 @@ class Api::V1::SyllabiController < Api::ApplicationController
         .permit( # Replace these as appropriate
             :id,
             :country,
-            :user_id,
-            :belt_id
+            :user_id
         )
     end
     
     def find_syllabus
         @syllabus||= Syllabus.find params[:id]
-    end
-    
-    def get_syllabus_index_page_data
-        # Don't think this method is firing at all! And why is that?
-        puts "testing 1 2 3"
-        belt_id = params[:belt_id]
-        syllabus_id = params[:syllabus_id]
-        payload = Hash.new # This is a hash in Rails with everything we need: belts, techniques, technique types, etc, as an all-in-one
-        payload[:belts] = Belt.find_by(belt_id)
-        payload[:techniques] = Technique.find_by(belt_id)
-        payload[:technique_types] = TechniqueType.find_by(belt_id)
-        if payload
-            puts "Here is the syllabus", payload
-            render(
-                json: payload
-            )
-        else
-            render(json: {error: "Syllabus Not Found"})
-        end
     end
 
     def record_not_found

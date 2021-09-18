@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :belt_grade
-      resources :belts
       resources :instructorqualifications
       resources :syllabi do
-        get "/syllabi_find", {to: "syllabi#find"}
+        get "/syllabi_full", {to: "syllabi#find_all_belts"}
+        resources :belts do
+          get "/syllabi_find", {to: "syllabi#get_syllabus_index_page_data"}
+        end
         resources :mindmap
       end
       resources :techniques

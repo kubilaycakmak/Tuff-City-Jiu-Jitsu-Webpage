@@ -58,10 +58,35 @@ kyu_grade_array = ["brown", "dark blue", "light blue", "purple", "green", "orang
 dan_grade_array = ["shodan", "nidan", "sandan"] # These latter three grades are not colours, but types of black belt or "dan" grade
 # As there are no dan/black belt grades in the club yet, we will just include that array for later when we do have them
 
+s = Syllabus.create(country:"canada", user_id:1)
+s.save!
+v = Video.create(canadian_version: "canada", uk_version: "uk") # Videos are dummy functionality for now but will be implemented later
+v.save!
+
+# Now for "boilerplate" formatting technique types
+yw = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 7, syllabus_id: 1) # Dummy Waza category which will have no techniques at yellow and read "All previous syllabus" for all subsequent grades
+yw.save!
+ow = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 6, syllabus_id: 1)
+ow.save!
+gw = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 5, syllabus_id: 1)
+gw.save!
+pw = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 4, syllabus_id: 1)
+pw.save!
+lbw = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 3, syllabus_id: 1)
+lbw.save!
+dbw = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 2, syllabus_id: 1)
+dbw.save!
+bw = TechniqueType.create!(category: "Waza (techniques)", sub_category: "", belt_id: 1, syllabus_id: 1)
+bw.save!
+
+ysqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 7, syllabus_id: 1) # Dummy category which is just a bit of formatting sugar for the syllabus
+ysqg.save!
+
+
 kyu_grade_array.size.times do |x|
     Belt.create!({
         colour:kyu_grade_array[x],
-        # syllabus_id: 1 # Does this work??? No... chicken and egg problem!
+        syllabus_id: 1 
     })
 end
 
@@ -204,15 +229,14 @@ puts beltgrades
     end
 end
 
-s = Syllabus.create(country:"canada", belt_id: 1, user_id:1)
-s.save
-
 puts Cowsay.say("Generated #{User.count} users", :sheep) 
 puts Cowsay.say("Generated #{Belt.count} belt colours", :beavis) 
 puts Cowsay.say("Generated #{Syllabus.count} syllabi", :sheep) 
 puts Cowsay.say("Generated #{BeltGrade.count} belt grades for users", :cow) 
 puts Cowsay.say("Generated #{Qualification.count} instructor qualification types", :tux) 
-puts Cowsay.say("Generated #{InstructorQualification.count} instructor qualifications for users", :frogs) 
+puts Cowsay.say("Generated #{InstructorQualification.count} instructor qualifications for users", :frogs)
+puts Cowsay.say("Generated #{TechniqueTypes.count} technique types", :frogs)
+puts Cowsay.say("Generated #{Video.count} videos", :sheep) 
 
 
 puts "Login with #{admin_user.email} and password of '#{PASSWORD}'"

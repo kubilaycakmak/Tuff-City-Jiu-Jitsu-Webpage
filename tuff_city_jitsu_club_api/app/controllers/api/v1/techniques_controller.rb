@@ -81,6 +81,7 @@ class Api::V1::TechniquesController < Api::ApplicationController
         else 
             type_of_technique = TechniqueType.new category: params["category"], sub_category: params["sub_category"], syllabus_id:new_syllabus.id
             puts type_of_technique
+            type_of_technique.belt = Belt.where(id: params["belt"])[0]
             type_of_technique.save! # Note: on next lines, videos is hardcoded until video functionality added
             technique_type_id = type_of_technique.id
         end

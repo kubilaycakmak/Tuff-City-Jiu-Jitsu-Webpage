@@ -59,6 +59,7 @@ function NewTechniqueForm(props) {
         <Form.Group controlId="formBasicCategory">
             <Form.Label>Category of technique</Form.Label>
             <Form.Control name = "category" type="category" as="select" defaultValue="Waza(techniques)">
+                <option>Waza (techniques) </option>
                 <option>Ukemi (breakfalling) </option>
                 <option>Atemi (striking)</option>
                 <option>Kansetsu (locks)</option>

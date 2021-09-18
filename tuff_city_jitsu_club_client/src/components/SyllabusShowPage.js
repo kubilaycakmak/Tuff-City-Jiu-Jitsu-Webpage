@@ -2,13 +2,70 @@
 
 import React, {useState} from 'react';
 import { Technique, TechniqueType, Syllabus, Belt } from '../requests';
-// import { Link } from 'react-router-dom';
+import _ from "lodash";
+import { Link } from 'react-router-dom';
 import moment from "moment";
-import Belts from "./Belts";
-import Button from "react-bootstrap/Button";
-import { Nav } from 'react-bootstrap'
+// import Belts from "./Belts";
+// import Button from "react-bootstrap/Button";
+// import { Nav } from 'react-bootstrap'
 // import {confirm} from 'react-bootstrap-confirmation';
 import "../App.css";
+
+/* TO DO:
+Include working delete and update buttons
+Order categories according to syllabus
+Word-specific highlighting in sentences?
+Link techniques to their show pages*/
+
+function capitaliseTheFirstLetterOfEachWord(words) {
+  let individualWord = words.toLowerCase().split(' ');
+  for (var i = 0; i < individualWord.length; i++) {
+      individualWord[i] = individualWord[i].charAt(0).toUpperCase() +
+      individualWord[i].substring(1);
+  }
+  return individualWord.join(' ');
+}
+
+function textColour(integer) {
+  let color = "";
+  if (integer === 2 || integer === 4 ) { 
+      color = "white"; // This makes the dark blue's or purple's header text display better
+      return color;
+  } else {
+      color = "black";
+      return color;
+  }
+}
+
+let finishKyuNumber = function(integer) {
+  let suffix = "";
+  if (integer === 1) {
+      suffix = "st";
+      return suffix;
+  } else if (integer === 2) {
+      suffix = "nd";
+      return suffix;
+  } else if (integer === 3) {
+      suffix  = "rd";
+      return suffix;
+  } else {
+      suffix = "th";
+      return suffix;
+  }
+}
+
+let orderArray = ["Waza (techniques)", "Ukemi (breakfalling)", "Atemi (striking)", "Kansetsu (locks)", "Ne-Waza (groundwork)", "Nage-waza (throwing)", "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", "Henka-waza (transition techniques)", "Kaeshi-waza (counter techniques)", "Bunkai (application)", "(Misc)"];
+let sortedArray = [];
+// Where to put the following lines?
+function groupedTechniqueTypes(technique_types){
+    const groupedEntries = _.groupBy(technique_types, "category")
+    const testArray = Object.entries(groupedEntries).sort((a, b) => {
+    return orderArray.indexOf(a[0]) - orderArray.indexOf(b[0])
+    }).map(item => item[1])
+    return testArray
+}
+
+
 
 export class SyllabusShowPage extends React.Component {
     constructor(props) {
@@ -18,155 +75,54 @@ export class SyllabusShowPage extends React.Component {
         syllabus: [],
         techniques: [],
         technique_types: [],
-        belts : [],
-        belts_group : [],
-        rendered_techniques : [],
-        rendered_technique_types : [],
-        formatted_techniques : [],
+        belts: [],
+        belts_group: [],
+        rendered_techniques: [],
+        rendered_technique_types: [],
+        formatted_techniques: [],
         isLoading: true
 
+        
       };
     }
 
+
     componentDidMount() {
 
-        Syllabus.one(1).then(syllabus => { // This is hardcoded for Canada in this version of the database, fine as it is the only syllabus we are showing currently
+        Syllabus.all(1).then(syllabus => { // Hardcoded as 1 for now for Canada but eventually move it to be dynamic
             this.setState({
-            syllabus: [...syllabus],
+            syllabus: syllabus,
             technique_types: syllabus.technique_types,
             techniques: syllabus.techniques,
             belts: syllabus.belts,
             isLoading: false
             });
         });
-
-    //     Technique.find().then(techniques => {
-    //       // console.log("Found anything yet?")
-    //       this.setState({
-    //         rendered_techniques: [...techniques],
-    //       })
-    //   });
-      
-    //   TechniqueType.find().then(technique_types => {
-    //     let result = [];
-    //     result = technique_types.reduce(function (r, a) {
-    //       r[a.belt_id] = r[a.belt_id] || [];
-    //       r[a.belt_id].push(a);
-    //       return r;
-    //   }, Object.create(null))
-
-    //   console.log("This is the result", result);
-    //   console.log("Final result", Object.values(result))
-    //     // technique_types.map(item)
-    //     // console.log("There!")
-    //     // console.log("These are the types", technique_types)
-    //     this.setState({
-    //       // rendered_technique_types: [...technique_types],
-    //       beltColors: result,
-    //       result: Object.values(result),
-    //       rendered_technique_types: 
-    //       technique_types.sort((belt1, belt2) => belt2.belt_id - belt1.belt_id),
-    //       isLoading: false
-    //     })
-    //     this.state.result.map(item => {
-    //       item.map(element => {
-    //         console.log("this is the element", element.belt_id)
-    //       })
-    //     })
-
-
-          // Following block doesn't work
-          // technique_types.forEach(type => {
-
-          // let output = {};
-          // this.state.rendered_techniques.forEach(tech => {
-          //   console.log("Here")
-          //   if(type.id === tech.technique_type.id) {
-          //     output.technique = tech;
-          //     output.technique_type = type;
-          //   }
-  
-          // })
-          // this.setState(previousState => ({
-          //   formatted_techniques: [...previousState.formatted_techniques, output]
-          // }))
-    // });
-    console.log("anything")
   }
-  
-
-      // this.state.rendered_technique_types.forEach(type => {
-      //   let output = {};
-      //   this.state.rendered_techniques.forEach(tech => {
-      //     console.log("Here")
-      //     if( type.id === tech.technique_type.id) {
-      //       output.technique = tech;
-      //       output.technique_type = type;
-      //     }
-
-      //   })
-      //   this.setState({
-      //     formatted_techniques: [...output],
-      //   })
-      // }
-
-
-    
+ 
     deleteTechnique(id) {
         Technique.destroy(id).then(() => {
             this.setState({
             techniques: this.state.techniques.filter(q => q.id !== id)
             });
         });
-
     }
 
     string_to_array = function (str) {
       return str.trim().split(" ");
  };
 
-    // group_techniques_belts = function (techniques) {
-    //   const output = [];
-    //   const belt_array = this.state.belts.map(belt => belt.id);
-    //   const j = 0;
-    //   // First belt id's technique id should be the first technique's belt id
-    //   // Then keep comparing the belt id with the next belt id, and keep reassigning it 
-    //   let belt = this.state.techniques[0].belt_id;
-    //   this.state.techniques.forEach(technique => {
-    //     let group = [];
-    //     if(belt === technique.belt_id){
-    //       group.push(technique)
-
-    //     }
-    //     belt = technique.belt_id;
-    //     output.push(group);
-    //     // Loop through each technique
-    //     // Push all the techniques that have the same belt id into the belt array
-    //     // When displaying at the bottom take everything from the belt array, hence grouping them by the belt id
-    //   })
-    //   return output;
-    // };
-
+ 
 
     render() {
         const currentUser = this.props.currentUser;
         const { showAll = false} = this.props;
         
-        // this.state.techniques.forEach(t => console.log(t))
-        // this.state.belts.forEach(b => console.log(b))
-        // console.log("These are the belts" + Belt.all())
-        // console.log(Array.isArray(this.state.belts))
 
-        // const filteredTechnique = showAll ? this.state.techniques : this.state.techniques.filter((t, i) => i < 400);
-        let previousBeltId = 0;
-        let previousTechniqueTypeId = 0;
-        let technique_types_array = [];
-        // console.log("these are the rendered techniques", this.state.rendered_techniques)
+        console.log("These are the belts" + this.state.belts)
         console.log("these are the rendered technique types", this.state.rendered_technique_types)
         console.log("this is the syllabus", this.state.syllabus)
-        console.log("these are the belts", this.state.belts) // Undefined so not being triggered
-        // console.log("these are the formatted techniques", this.state.formatted_techniques)
-
+        console.log("These are the belts" + this.state.belts)
 
         return (
             <main className="SyllabusShowPage">
@@ -174,22 +130,78 @@ export class SyllabusShowPage extends React.Component {
                 <div className="central">
                 <h2 style={{display: "flex", justifyContent:'center'}}>SYLLABUS</h2>
                 <br />
+                
+                    {this.state.belts.reverse().filter(belt => belt.id !== 8).map(belt =>
+                        <>
+                        <h1 style={{fontWeight:"bold", display: "flex", justifyContent:'center', backgroundColor:belt.colour.replace(/ +/g, ""), color:textColour(belt.id), pointerEvents:"none"}}>{belt.id  + finishKyuNumber(belt.id) + " Kyu (" + capitaliseTheFirstLetterOfEachWord(belt.colour) + ")"}</h1>
+                        
+                        {/* {this.state.technique_types.map(type => {<div>type.category</div>})} */}
 
 
-                {/* {this.state.syllabus && this.state.syllabus.reverse().map(item)}
-                return(
-                    <div>{this.state.syllabus.reverse()}</div>
- 
-                ) */}
+                        
+                        {groupedTechniqueTypes(belt.technique_types).map((key, index) => 
+                            <div key = {index}>
+                            {
+                            (key[0].category === "Waza (techniques)") 
+                            ? (
+                            <div style={{fontWeight:"bold", fontStyle:"italic"}}>{"Waza (techniques)"}</div> 
+                            ) : (key[0].category === "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" )
+                            ? (
+                            <div style={{fontWeight:"bold", fontStyle:"italic"}}>{"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"}</div> 
+                            ) : (
+                            <div style={{fontWeight:"bold", fontStyle:"italic"}}>{key[0].category + ":"}</div> 
+                            )}
+                            {key.map(technique_type => {
 
 
-                {this.state.syllabus && this.state.syllabus.reverse().map((item, i) => { // Reverse causes it to sort the list from yellow to brown, scrolling down
-                  return(
-                    <Belts item={item} key={i} />
-                  )
-                  })}     
+                            return(
+                                <div key = {technique_type.id}>
+                                {belt.techniques.filter(technique => technique.technique_type_id === technique_type.id).map(element => {
+                                    console.log("This is the technique we want", element)
+                                    return(
+                                    <div key = {element.id}>
+                                    <div>{element.summary}</div>
+                                    {/* <Link key=element.id} to={`/techniques/${element.id}`}>
+                                    </Link> */}
+                                    <div>{technique_type.sub_category}</div>
+                                    
 
-
+                                    {element.is_different ? (
+                                        <>
+                                        {<p style={{fontWeight:"bold"}}>What's different to the UK syllabus?</p> }
+                                        <br />
+                                        {element.difference_content}
+                                        <br />
+                                        </>
+                                        ) : (
+                                        // Adjust the next line so it's absent (don't need redundant p-tags)
+                                        <></>
+                                        )}
+                                        </div>
+                                    )
+                                })}
+                                <br />
+                                {/* Test that the following date is for the correct thing, i.e. the technique creation date */}
+                                {
+                                (technique_type.category === "Waza (techniques)" ) 
+                                ? (
+                                <span></span> // Try to make this so it's not a new line
+                                ) : (technique_type.category === "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" )
+                                ? (
+                                    <span></span>
+                                ) : ( 
+                                    <p>Posted on {moment(technique_type.created_at ).format("MMM Do, YYYY")}</p> // This needs to be adjusted to become the date the technique was created, not the type
+                                )}
+                                {/* <p>Posted on {moment(technique_type.created_at ).format("MMM Do, YYYY")}</p> */}
+                                <div>{technique_type.techniques_id}</div>
+                                <br />
+                                </div>
+                            )
+                        })}</div>)}
+                        
+                        </>
+                                              
+                                        )}
                 </div>
                 <br />
                     <div
@@ -206,4 +218,4 @@ export class SyllabusShowPage extends React.Component {
     }
 }
 
- {/* First fix this page and then adapt it to React Bootstrap */}
+//   First fix this page and then adapt it to React Bootstrap

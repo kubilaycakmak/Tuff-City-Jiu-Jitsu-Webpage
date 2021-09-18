@@ -6,11 +6,20 @@ export const Syllabus = {
 
   // Fetch a syllabus from the server
   one(id) {
-    return fetch(`${BASE_URL}/syllabi/`, {
+    return fetch(`${BASE_URL}/syllabi/${id}`, {
+      credentials: "include"
+    }).then(res => res.json());
+  },
+  
+// Fetch all syllabi from the server
+  all(id) {
+    return fetch(`${BASE_URL}/syllabi/${id}/syllabi_full`, {
       credentials: "include"
     }).then(res => res.json());
   },
 }
+
+
 export const Video = {
 
   // Fetch all videos from the server
@@ -88,7 +97,7 @@ export const Technique = {
 
   // Create a technique
   create(params) {
-        console.log("##############", params)
+        console.log("############## test", params)
             // Params is an object that represents a technique
         return fetch(`${BASE_URL}/techniques`, {
             method: 'POST',

@@ -1,4 +1,4 @@
-// Fetch all syllabus data and render here, not on the show page(s)
+// Note: this page has been retooled into SyllabusShowPage.js. So this page will be deactivated for now then later retooled into an index of syllabi e.g. UK 2011, 2021, Canada 2018 etc.
 
 import React, {useState} from 'react';
 import { Technique, TechniqueType, Syllabus, Belt } from '../requests';

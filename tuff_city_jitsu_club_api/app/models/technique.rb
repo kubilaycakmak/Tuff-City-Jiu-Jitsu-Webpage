@@ -8,7 +8,7 @@ class Technique < ApplicationRecord
     # has_many :videos
     
 
-    validates :summary, uniqueness: true, presence: true 
+    validates :summary, uniqueness: true
 
     private
     

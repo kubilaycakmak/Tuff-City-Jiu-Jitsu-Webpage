@@ -5,17 +5,15 @@ import { Technique, TechniqueType, Syllabus, Belt } from '../requests';
 import _ from "lodash";
 import { Link } from 'react-router-dom';
 import moment from "moment";
-// import Belts from "./Belts";
 // import Button from "react-bootstrap/Button";
-// import { Nav } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 // import {confirm} from 'react-bootstrap-confirmation';
 import "../App.css";
 
 /* TO DO:
 Include working delete and update buttons
-Order categories according to syllabus
 Word-specific highlighting in sentences?
-Link techniques to their show pages*/
+Correct date stamps*/
 
 function capitaliseTheFirstLetterOfEachWord(words) {
   let individualWord = words.toLowerCase().split(' ');
@@ -54,7 +52,7 @@ let finishKyuNumber = function(integer) {
   }
 }
 
-let orderArray = ["Waza (techniques)", "Ukemi (breakfalling)", "Atemi (striking)", "Kansetsu (locks)", "Ne-Waza (groundwork)", "Nage-waza (throwing)", "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", "Henka-waza (transition techniques)", "Kaeshi-waza (counter techniques)", "Bunkai (application)", "(Misc)"];
+let orderArray = ["Waza (techniques)", "Ukemi (breakfalling)", "Atemi (striking)", "Kansetsu (locks)", "Ne-Waza (groundwork)", "Nage-waza (throwing)", "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", "Henka-waza (transition techniques)", "Kaeshi-waza (counter techniques)", "Bunkai (application for defence)", "(Misc)"];
 let sortedArray = [];
 // Where to put the following lines?
 function groupedTechniqueTypes(technique_types){
@@ -133,7 +131,7 @@ export class SyllabusShowPage extends React.Component {
                 
                     {this.state.belts.reverse().filter(belt => belt.id !== 8).map(belt =>
                         <>
-                        <h1 style={{fontWeight:"bold", display: "flex", justifyContent:'center', backgroundColor:belt.colour.replace(/ +/g, ""), color:textColour(belt.id), pointerEvents:"none"}}>{belt.id  + finishKyuNumber(belt.id) + " Kyu (" + capitaliseTheFirstLetterOfEachWord(belt.colour) + ")"}</h1>
+                        <h1 style={{fontWeight:"bold", textDecorationLine: 'underline', textDecorationSkipInk: 'none', display: "flex", justifyContent:'center', backgroundColor:belt.colour.replace(/ +/g, ""), color:textColour(belt.id), pointerEvents:"none"}}>{belt.id  + finishKyuNumber(belt.id) + " Kyu (" + capitaliseTheFirstLetterOfEachWord(belt.colour) + ")"}</h1>
                         
                         {/* {this.state.technique_types.map(type => {<div>type.category</div>})} */}
 
@@ -144,12 +142,20 @@ export class SyllabusShowPage extends React.Component {
                             {
                             (key[0].category === "Waza (techniques)") 
                             ? (
-                            <div style={{fontWeight:"bold", fontStyle:"italic"}}>{"Waza (techniques)"}</div> 
+                                <div class="underline-me" style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Waza (techniques)"}</div> 
                             ) : (key[0].category === "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" )
                             ? (
-                            <div style={{fontWeight:"bold", fontStyle:"italic"}}>{"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"}</div> 
-                            ) : (
-                            <div style={{fontWeight:"bold", fontStyle:"italic"}}>{key[0].category + ":"}</div> 
+                                <div style={{fontWeight:"bold", fontStyle:"italic"}}>{"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"}</div> 
+                            ) : (key[0].category === "Bunkai (application for defence)" )
+                            ? (
+                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Bunkai (application for defence)"}</div> 
+                            ) : (key[0].category === "Henka-waza (transition techniques)" )
+                            ? ( 
+                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Henka-waza (transition techniques)"}</div> 
+                            ) : (key[0].category === "Kaeshi-waza (counter techniques)" )
+                            ? ( 
+                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Kaeshi-waza (counter techniques)"}</div> 
+                            ) : (    <div style={{fontWeight:"bold", fontStyle:"italic"}}>{key[0].category}</div> 
                             )}
                             {key.map(technique_type => {
 
@@ -160,16 +166,14 @@ export class SyllabusShowPage extends React.Component {
                                     console.log("This is the technique we want", element)
                                     return(
                                     <div key = {element.id}>
-                                    <div>{element.summary}</div>
-                                    {/* <Link key=element.id} to={`/techniques/${element.id}`}>
-                                    </Link> */}
+                                    <Nav.Link key = {element.id} style={{ paddingLeft: 0, paddingTop: 0 }} href={`/techniques/${element.id}`}>{element.summary}</Nav.Link>
                                     <div>{technique_type.sub_category}</div>
                                     
 
                                     {element.is_different ? (
                                         <>
-                                        {<p style={{fontWeight:"bold"}}>What's different to the UK syllabus?</p> }
                                         <br />
+                                        {<p style={{fontWeight:"bold"}}>What's different to the UK syllabus?</p> }                                        
                                         {element.difference_content}
                                         <br />
                                         </>

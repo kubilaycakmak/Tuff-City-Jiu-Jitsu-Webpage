@@ -81,6 +81,19 @@ bw.save!
 
 ysqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 7, syllabus_id: 1) # Dummy category which is just a bit of formatting sugar for the syllabus
 ysqg.save!
+osqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 6, syllabus_id: 1)
+osqg.save!
+gsqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 5, syllabus_id: 1)
+gsqg.save!
+psqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 4, syllabus_id: 1)
+psqg.save!
+lbsqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 3, syllabus_id: 1)
+lbsqg.save!
+dbsqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 2, syllabus_id: 1)
+dbsqg.save!
+bsqg = TechniqueType.create!(category: "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", sub_category: "", belt_id: 1, syllabus_id: 1)
+bsqg.save!
+
 
 
 kyu_grade_array.size.times do |x|

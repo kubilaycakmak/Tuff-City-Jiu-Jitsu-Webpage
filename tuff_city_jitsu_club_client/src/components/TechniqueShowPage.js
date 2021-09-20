@@ -46,7 +46,7 @@ class TechniqueShowPage extends Component {
             });
         });
     }
-
+// The following button is NOT working.
     deleteTechnique() {
         this.setState({
             technique: null

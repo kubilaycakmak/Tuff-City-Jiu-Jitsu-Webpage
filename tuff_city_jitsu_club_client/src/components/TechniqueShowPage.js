@@ -2,8 +2,6 @@
 // Work in progress
 
 import React, { Component } from "react";
-
-
 import { Technique, Syllabus, Belt  } from "../requests";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
@@ -18,7 +16,7 @@ class TechniqueShowPage extends Component {
         technique_type: [],
         belt : [],
         isLoading: true,
-        errors: []
+        error: false
       };
     }
 
@@ -28,7 +26,8 @@ class TechniqueShowPage extends Component {
         Technique.one(this.props.match.params.id).then(technique=> {
             this.setState({
                 technique: technique,
-                isLoading: false
+                isLoading: false,
+                error: false
             });
         });
 
@@ -46,11 +45,19 @@ class TechniqueShowPage extends Component {
             });
         });
     }
-// The following button is NOT working.
-    deleteTechnique() {
-        this.setState({
-            technique: null
-        });
+
+    deleteTechnique(id) {
+      Technique.destroy(id).then(data =>{
+        if (data.status === 200){
+          this.props.history.push("/syllabus")
+        }
+        else {
+          this.setState((state)=>{
+            return{
+            error: true
+        }})}
+      })
+        
     }
 
     // Edit the following codeblock for updating a technique; never really did this in CodeCore
@@ -64,7 +71,7 @@ class TechniqueShowPage extends Component {
     //         },
     //         body: JSON.stringify(params)
     //     }).then(res => res.json());
-    // },
+    // }
 
     // Modify this block to delete comments
 
@@ -180,6 +187,9 @@ class TechniqueShowPage extends Component {
                              <Button variant="danger" type="danger" onClick={id => this.deleteTechnique(this.state.technique.id)}>
                              Delete
                            </Button>
+                           {this.state.error ? 
+                             <p>Cannot delete technique</p>
+                              :<></>}
                            <br />
                            <br />
                            <br />
@@ -192,7 +202,6 @@ class TechniqueShowPage extends Component {
                              Edit
                            </Button>
 
-                        )}
                         </>
               </div>
         </main>

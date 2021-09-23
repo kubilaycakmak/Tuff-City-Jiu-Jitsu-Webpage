@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       get "/techniques_find", {to: "techniques#find"}
       resources :technique_types
       get "/technique_types_find", {to: "technique_types#find"}
+      resources :videos do
+        resources :urls, only: [:create, :destroy]
+      end
       resources :profiles
       resources :whatisjitsu
       resources :admin

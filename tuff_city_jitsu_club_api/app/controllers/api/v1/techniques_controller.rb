@@ -90,6 +90,11 @@ class Api::V1::TechniquesController < Api::ApplicationController
         puts "This "
         puts "*************************************************************************"
         puts "these are the params:", "summary: ", params["technique"]["summary"], "is it different?: ", params["technique"]["is_different"], "if so what is the difference? ", params["difference_content"], "technique type id: ", technique_type_id, "belt id: ", params["belt"].to_i
+        
+        # if 
+
+        
+        # end
         technique = Technique.new summary: params["technique"]["summary"], videos_id:1, is_different:params["technique"]["is_different"], difference_content:params["technique"]["difference_content"], technique_type_id: technique_type_id, belt_id: params["belt"].to_i
         puts "This is the belt", technique.belt_id
         technique.save!

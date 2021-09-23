@@ -11,7 +11,7 @@ import { Nav } from 'react-bootstrap'
 import "../App.css";
 
 /* TO DO:
-Include working delete and update buttons
+Include working update/edit button
 Word-specific highlighting in sentences?
 Correct date stamps*/
 

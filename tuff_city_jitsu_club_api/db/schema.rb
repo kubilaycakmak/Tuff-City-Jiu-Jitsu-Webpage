@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_03_084732) do
+ActiveRecord::Schema.define(version: 2021_09_22_024200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_09_03_084732) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "technique_type_id", null: false
     t.bigint "belt_id", null: false
+    t.integer "videourls", default: [], array: true
     t.index ["belt_id"], name: "index_techniques_on_belt_id"
     t.index ["technique_type_id"], name: "index_techniques_on_technique_type_id"
     t.index ["videos_id"], name: "index_techniques_on_videos_id"
@@ -92,6 +93,15 @@ ActiveRecord::Schema.define(version: 2021_09_03_084732) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_training_bubbles_on_user_id"
+  end
+
+  create_table "urls", force: :cascade do |t|
+    t.bigint "technique_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["technique_id"], name: "index_urls_on_technique_id"
+    t.index ["video_id"], name: "index_urls_on_video_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -132,4 +142,6 @@ ActiveRecord::Schema.define(version: 2021_09_03_084732) do
   add_foreign_key "techniques", "technique_types"
   add_foreign_key "techniques", "videos", column: "videos_id"
   add_foreign_key "training_bubbles", "users"
+  add_foreign_key "urls", "techniques"
+  add_foreign_key "urls", "videos"
 end

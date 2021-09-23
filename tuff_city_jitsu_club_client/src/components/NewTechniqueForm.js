@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 // import FormErrors from "./FormErrors";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,10 +6,34 @@ import "../App.css";
 
 
 function NewTechniqueForm(props) {
+    const [videos, setVideos] = useState([{canadianUrl: "", britishUrl: ""}]);
+        
+    // handle input change
+    const handleInputChange = (e, index) => {
+      const { name, value } = e.target;
+      const list = [...videos];
+      list[index][name] = value;
+      setVideos(list);
+    };
+
+    // handle click event of the Remove button
+    const handleRemoveClick = index => {
+      const list = [...videos];
+      list.splice(index, 1);
+      setVideos(list);
+    };
+
+    // handle click event of the Add button
+    const handleAddClick = () => {
+      setVideos([...videos, { canadianUrl: "", britishURL: "" }]);
+    };
+
+
     function handleSubmit(event) {
         event.preventDefault();
         const { currentTarget } = event;
         const formData = new FormData(currentTarget);
+
 
         props.onSubmit({
             syllabus: formData.get("country").toLowerCase(),
@@ -17,18 +41,15 @@ function NewTechniqueForm(props) {
             summary: formData.get("summary"),
             category: formData.get("category"),
             sub_category: formData.get("sub_category"),
-            // videos: formData.get("videos"), This is an ID so need a different way to share e.g. YouTube URLs?
+            videos: formData.get("videos"), // This is an ID so need a different way to share e.g. YouTube URLs?
             is_different: formData.get("is_different") ==="No"?false:true,
             difference_content: formData.get("difference_content")
         });
 
         console.log("########", props);
 
-        
-
         currentTarget.reset();
-        
-        
+           
     }
     return (
         <Form onSubmit={handleSubmit}>
@@ -78,9 +99,41 @@ function NewTechniqueForm(props) {
           <Form.Label>Sub Category</Form.Label>
           <Form.Control name = "sub_category" type="sub_category" placeholder="Can be blank if none comes to mind." />
         </Form.Group>
-        <Form.Group controlId="formBasicPrimaryVideo">
-          <Form.Label>Video URL</Form.Label>
-          <Form.Control name = "primary_video" type="primary_video" placeholder="Try to source this from YouTube if possible."/>
+        <Form.Group controlId="formBasicVideos">
+        {videos.map((x, i) => {
+          return (
+            <>
+              <Form.Label>Canadian video URL</Form.Label>
+              <Form.Control name = "canadianUrl"
+              value = {x.canadianUrl}
+              type="primary_video"
+              placeholder="Try to source this from YouTube if possible."
+              onChange={e =>handleInputChange(e, i)}/>
+              
+              <br />
+              <Form.Label>If the UK technique is different, provide the UK video URL if present</Form.Label>
+              <Form.Control name = "britishUrl" 
+              value = {x.britishUrl}
+              type="secondary_video"
+              placeholder="Try to source this from YouTube if possible."
+              onChange={e =>handleInputChange(e, i)}/>
+              <div className="btn-box">
+              {videos.length !== 1 && 
+              
+              <button className="mr10"
+              onClick={() => handleRemoveClick(i)}>Remove</button>}
+              <br/>
+              {videos.length - 1 === i &&         <Button variant="secondary" type="add">
+          Add
+        </Button>}
+            </div>
+          </>
+          );
+        })}
+        <div style={{ marginTop: 20 }}>{JSON.stringify(videos)}</div>
+
+        
+          {/* This should be a form which permits multiple URL inputs with a plus button causing new input fields to appear, with an onChange handler, and groups the URLs into an array (print this on the console, and also on the TechniqueShowPage) */}
         </Form.Group>
         <Form.Group controlId="formBasicDifferenceCheck">
           <Form.Label>Is this different from the UK syllabus?</Form.Label>

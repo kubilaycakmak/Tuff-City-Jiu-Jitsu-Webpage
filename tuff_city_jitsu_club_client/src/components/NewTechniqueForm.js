@@ -84,7 +84,7 @@ function NewTechniqueForm(props) {
                 <option>Ukemi (breakfalling) </option>
                 <option>Atemi (striking)</option>
                 <option>Kansetsu (locks)</option>
-                <option>Shime-waza (chokes)</option>
+                <option>Shime-waza (strangles)</option>
                 <option>Ne-waza (groundwork)</option>
                 <option>Nage-waza (throwing)</option>
                 <option>Nage-no-kata (throwing form)</option>
@@ -123,7 +123,7 @@ function NewTechniqueForm(props) {
               <button className="mr10"
               onClick={() => handleRemoveClick(i)}>Remove</button>}
               <br/>
-              {videos.length - 1 === i &&         <Button variant="secondary" type="add">
+              {videos.length - 1 === i &&         <Button onClick={handleAddClick} variant="secondary" type="add">
           Add
         </Button>}
             </div>

@@ -13,7 +13,11 @@ import "../App.css";
 /* TO DO:
 Include working update/edit button
 Word-specific highlighting in sentences?
-Correct date stamps*/
+Correct date stamps, hover-over instead of permanent
+Try for cards/borders between the techniques
+Collapse all techniques under technique types
+
+*/
 
 function capitaliseTheFirstLetterOfEachWord(words) {
   let individualWord = words.toLowerCase().split(' ');
@@ -52,7 +56,7 @@ let finishKyuNumber = function(integer) {
   }
 }
 
-let orderArray = ["Waza (techniques)", "Ukemi (breakfalling)", "Atemi (striking)", "Kansetsu (locks)", "Ne-Waza (groundwork)", "Nage-waza (throwing)", "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", "Henka-waza (transition techniques)", "Kaeshi-waza (counter techniques)", "Bunkai (application for defence)", "(Misc)"];
+let orderArray = ["Waza (techniques)", "Ukemi (breakfalling)", "Atemi (striking)", "Kansetsu (locks)", "Shime-waza (strangles)", "Ne-waza (groundwork)", "Nage-waza (throwing)", "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~", "Henka-waza (transition techniques)", "Kaeshi-waza (counter techniques)", "Bunkai (application for defence)", "(Misc)"];
 let sortedArray = [];
 // Where to put the following lines?
 function groupedTechniqueTypes(technique_types){
@@ -79,14 +83,11 @@ export class SyllabusShowPage extends React.Component {
         rendered_technique_types: [],
         formatted_techniques: [],
         isLoading: true
-
-        
       };
     }
 
 
     componentDidMount() {
-
         Syllabus.all(1).then(syllabus => { // Hardcoded as 1 for now for Canada but eventually move it to be dynamic
             this.setState({
             syllabus: syllabus,
@@ -115,8 +116,6 @@ export class SyllabusShowPage extends React.Component {
     render() {
         const currentUser = this.props.currentUser;
         const { showAll = false} = this.props;
-        
-
         console.log("These are the belts" + this.state.belts)
         console.log("these are the rendered technique types", this.state.rendered_technique_types)
         console.log("this is the syllabus", this.state.syllabus)
@@ -148,14 +147,14 @@ export class SyllabusShowPage extends React.Component {
                                 <div style={{fontWeight:"bold", fontStyle:"italic"}}>{"~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~"}</div> 
                             ) : (key[0].category === "Bunkai (application for defence)" )
                             ? (
-                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Bunkai (application for defence)"}</div> 
+                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Bunkai (application for defence):"}</div> 
                             ) : (key[0].category === "Henka-waza (transition techniques)" )
                             ? ( 
-                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Henka-waza (transition techniques)"}</div> 
+                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Henka-waza (transition techniques):"}</div> 
                             ) : (key[0].category === "Kaeshi-waza (counter techniques)" )
                             ? ( 
-                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Kaeshi-waza (counter techniques)"}</div> 
-                            ) : (    <div style={{fontWeight:"bold", fontStyle:"italic"}}>{key[0].category}</div> 
+                                <div style={{fontWeight:"bold", fontStyle:"italic", textDecorationLine: 'underline', textDecorationSkipInk: 'none'}}>{"Kaeshi-waza (counter techniques):"}</div> 
+                            ) : (    <div style={{fontWeight:"bold", fontStyle:"italic", borderTop: "1px solid"}}>{key[0].category + ":"}</div> 
                             )}
                             {key.map(technique_type => {
 
@@ -181,7 +180,10 @@ export class SyllabusShowPage extends React.Component {
                                         // Adjust the next line so it's absent (don't need redundant p-tags)
                                         <></>
                                         )}
+                                         <p>Posted on {moment(element.created_at ).format("MMM Do, YYYY")}</p>
+                                        {/* use onFocus handler, use state called setDisplay, setDisplay to true to render the date on hover over */}
                                         </div>
+
                                     )
                                 })}
                                 <br />
@@ -193,9 +195,8 @@ export class SyllabusShowPage extends React.Component {
                                 ) : (technique_type.category === "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~" )
                                 ? (
                                     <span></span>
-                                ) : ( 
-                                    <p>Posted on {moment(technique_type.created_at ).format("MMM Do, YYYY")}</p> // This needs to be adjusted to become the date the technique was created, not the type
-                                )}
+                                ) : (  <></>
+                                 )}
                                 {/* <p>Posted on {moment(technique_type.created_at ).format("MMM Do, YYYY")}</p> */}
                                 <div>{technique_type.techniques_id}</div>
                                 <br />

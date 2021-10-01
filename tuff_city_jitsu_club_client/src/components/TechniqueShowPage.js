@@ -1,7 +1,7 @@
 // Show an individual technique here, including it's video, and allow for an edit function
 // Work in progress
 
-import React, { Component } from "react";
+import React, { Component, Link } from "react";
 import { Technique, Syllabus, Belt  } from "../requests";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
@@ -62,16 +62,21 @@ class TechniqueShowPage extends Component {
 
     // Edit the following codeblock for updating a technique; never really did this in CodeCore
 
-    // updateTechnique(id, params) {
-    //     return fetch(`${BASE_URL}/techniques/${id}`, {
-    //         method: 'PATCH',
-    //         credentials: "include",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(params)
-    //     }).then(res => res.json());
-    // }
+    updateTechnique(id, params) {
+        console.log("These are the params", params)
+        console.log("These is the id", id)
+
+        return fetch(`${process.env.REACT_APP_BASE_URL}/techniques/${id}`, {
+            method: 'PATCH',
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(params)
+        }).then(res => res.json());
+    }
+
+  
 
     // Modify this block to delete comments
 
@@ -198,9 +203,14 @@ class TechniqueShowPage extends Component {
                          }
                          </>
                         
-                         <Button variant="info" type="info" onClick={id => this.updateTechnique(this.state.technique.id)}>
+                         <Button variant="info" type="info" onClick={id =>
+                          
+                          {console.log("This is the technique object", this.state.technique); this.updateTechnique(this.state.technique.id, this.state.technique)}}>
                              Edit
                            </Button>
+                           <Link to={`/techniques/edit/${id}`}>
+                            Edit
+                          </Link>
 
                         </>
               </div>

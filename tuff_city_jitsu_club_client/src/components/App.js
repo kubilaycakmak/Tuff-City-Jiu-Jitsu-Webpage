@@ -4,11 +4,11 @@ import NavBar from "./NavBar";
 // Next step: incorporate navbar at top of the page
 import Footer from "./Footer";
 import AuthRoute from "./AuthRoute";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 // import NotFoundPage from "./NotFoundPage";
 import SignInPage from "./SignInPage";
 import { SignUpPage } from "./SignUpPage";
-import { User, Session } from "../requests";
+import { User, Session, Technique } from "../requests";
 import { Welcome } from "./Welcome";
 import { SyllabusIndexPage } from "./SyllabusIndexPage";
 import { SyllabusShowPage } from "./SyllabusShowPage";
@@ -104,6 +104,11 @@ class App extends React.Component {
                             <AuthRoute
                             isAuthenticated={currentUser}
                             path="/technique/new"
+                            component={TechniqueNewPage}
+                            />
+                            <Link to 
+                            isAuthenticated={currentUser}
+                            path={`/techniques/${Technique.id}/edit`}
                             component={TechniqueNewPage}
                             />
                             {/*

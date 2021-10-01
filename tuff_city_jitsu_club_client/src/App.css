@@ -66,6 +66,10 @@
   margin-left:0;
 }
 
+.central {
+  border-left: "1px solid";
+}
+
 /* .gradecoloroption {
   font-size: 20px;
 } */
